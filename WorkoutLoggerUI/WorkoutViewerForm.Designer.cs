@@ -200,7 +200,6 @@
             this.textBoxEx1.Name = "textBoxEx1";
             this.textBoxEx1.Size = new System.Drawing.Size(149, 35);
             this.textBoxEx1.TabIndex = 4;
-            this.textBoxEx1.TextChanged += new System.EventHandler(this.textBoxEx1_TextChanged);
             // 
             // labelExercises1
             // 
@@ -431,7 +430,6 @@
             this.textBoxEx6We1.Name = "textBoxEx6We1";
             this.textBoxEx6We1.Size = new System.Drawing.Size(52, 35);
             this.textBoxEx6We1.TabIndex = 35;
-            this.textBoxEx6We1.TextChanged += new System.EventHandler(this.textBoxWeight6_TextChanged);
             // 
             // textBoxEx10We2
             // 
