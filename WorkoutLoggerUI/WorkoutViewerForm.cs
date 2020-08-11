@@ -16,5 +16,15 @@ namespace WorkoutLoggerUI
         {
             InitializeComponent();
         }
+
+        private void textBoxWeight6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxEx1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
