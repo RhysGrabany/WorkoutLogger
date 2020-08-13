@@ -7,13 +7,17 @@ namespace WorkoutLoggerLibrary
     public class DateModel
     {
         /// <summary>
+        /// Unique Id for the day
+        /// </summary>
+        public int Id { get; set; }
+        /// <summary>
         /// The date the selected day is on
         /// </summary>
         public DateTime DateDay { get; set; }
         /// <summary>
         /// The list of exercises completed on this day
         /// </summary>
-        public List<ExerciseModel> ExercisesDay { get; set; }
+        public List<ExerciseModel> ExercisesDay { get; set; } = new List<ExerciseModel>();
         /// <summary>
         /// The weight the user was during this day
         /// </summary>

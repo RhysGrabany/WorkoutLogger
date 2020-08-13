@@ -9,10 +9,10 @@ namespace WorkoutLoggerLibrary
         /// <summary>
         /// List of Exercises saved for the day
         /// </summary>
-        public List<ExerciseModel> ExerciseDay { get; set; }
+        public List<ExerciseModel> ExerciseTemplate { get; set; } = new List<ExerciseModel>();
         /// <summary>
         /// The name given for this template of day
         /// </summary>
-        public string NameDay { get; set; }
+        public string NameTemplate{ get; set; }
     }
 }

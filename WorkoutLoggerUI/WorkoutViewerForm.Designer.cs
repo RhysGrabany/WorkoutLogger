@@ -158,6 +158,8 @@
             this.labelWeightDay = new System.Windows.Forms.Label();
             this.textBoxWeightDay = new System.Windows.Forms.TextBox();
             this.labelWeightKg = new System.Windows.Forms.Label();
+            this.labelWeight6 = new System.Windows.Forms.Label();
+            this.labelReps6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboBoxLoad
@@ -220,11 +222,11 @@
             // labelReps1
             // 
             this.labelReps1.AutoSize = true;
-            this.labelReps1.Location = new System.Drawing.Point(224, 138);
+            this.labelReps1.Location = new System.Drawing.Point(575, 39);
             this.labelReps1.Name = "labelReps1";
-            this.labelReps1.Size = new System.Drawing.Size(53, 30);
+            this.labelReps1.Size = new System.Drawing.Size(73, 30);
             this.labelReps1.TabIndex = 7;
-            this.labelReps1.Text = "Rep:";
+            this.labelReps1.Text = "Rep(R)";
             // 
             // textBoxEx2Re1
             // 
@@ -355,11 +357,12 @@
             // labelWeight1
             // 
             this.labelWeight1.AutoSize = true;
-            this.labelWeight1.Location = new System.Drawing.Point(135, 138);
+            this.labelWeight1.Location = new System.Drawing.Point(568, 9);
             this.labelWeight1.Name = "labelWeight1";
-            this.labelWeight1.Size = new System.Drawing.Size(84, 30);
+            this.labelWeight1.Size = new System.Drawing.Size(111, 30);
             this.labelWeight1.TabIndex = 28;
-            this.labelWeight1.Text = "Weight:";
+            this.labelWeight1.Text = "Weight(W)";
+            this.labelWeight1.Click += new System.EventHandler(this.labelWeight1_Click);
             // 
             // textBoxEx5We1
             // 
@@ -994,7 +997,7 @@
             // labelWeight2
             // 
             this.labelWeight2.AutoSize = true;
-            this.labelWeight2.Location = new System.Drawing.Point(289, 138);
+            this.labelWeight2.Location = new System.Drawing.Point(175, 138);
             this.labelWeight2.Name = "labelWeight2";
             this.labelWeight2.Size = new System.Drawing.Size(38, 30);
             this.labelWeight2.TabIndex = 137;
@@ -1003,7 +1006,7 @@
             // labelReps2
             // 
             this.labelReps2.AutoSize = true;
-            this.labelReps2.Location = new System.Drawing.Point(353, 138);
+            this.labelReps2.Location = new System.Drawing.Point(239, 138);
             this.labelReps2.Name = "labelReps2";
             this.labelReps2.Size = new System.Drawing.Size(31, 30);
             this.labelReps2.TabIndex = 136;
@@ -1012,7 +1015,7 @@
             // labelWeight3
             // 
             this.labelWeight3.AutoSize = true;
-            this.labelWeight3.Location = new System.Drawing.Point(409, 138);
+            this.labelWeight3.Location = new System.Drawing.Point(295, 138);
             this.labelWeight3.Name = "labelWeight3";
             this.labelWeight3.Size = new System.Drawing.Size(38, 30);
             this.labelWeight3.TabIndex = 139;
@@ -1021,7 +1024,7 @@
             // labelReps3
             // 
             this.labelReps3.AutoSize = true;
-            this.labelReps3.Location = new System.Drawing.Point(473, 138);
+            this.labelReps3.Location = new System.Drawing.Point(359, 138);
             this.labelReps3.Name = "labelReps3";
             this.labelReps3.Size = new System.Drawing.Size(31, 30);
             this.labelReps3.TabIndex = 138;
@@ -1030,7 +1033,7 @@
             // labelWeight4
             // 
             this.labelWeight4.AutoSize = true;
-            this.labelWeight4.Location = new System.Drawing.Point(528, 138);
+            this.labelWeight4.Location = new System.Drawing.Point(414, 138);
             this.labelWeight4.Name = "labelWeight4";
             this.labelWeight4.Size = new System.Drawing.Size(38, 30);
             this.labelWeight4.TabIndex = 141;
@@ -1039,7 +1042,7 @@
             // labelReps4
             // 
             this.labelReps4.AutoSize = true;
-            this.labelReps4.Location = new System.Drawing.Point(592, 138);
+            this.labelReps4.Location = new System.Drawing.Point(478, 138);
             this.labelReps4.Name = "labelReps4";
             this.labelReps4.Size = new System.Drawing.Size(31, 30);
             this.labelReps4.TabIndex = 140;
@@ -1048,7 +1051,7 @@
             // labelWeight5
             // 
             this.labelWeight5.AutoSize = true;
-            this.labelWeight5.Location = new System.Drawing.Point(646, 138);
+            this.labelWeight5.Location = new System.Drawing.Point(532, 138);
             this.labelWeight5.Name = "labelWeight5";
             this.labelWeight5.Size = new System.Drawing.Size(38, 30);
             this.labelWeight5.TabIndex = 143;
@@ -1057,7 +1060,7 @@
             // labelReps5
             // 
             this.labelReps5.AutoSize = true;
-            this.labelReps5.Location = new System.Drawing.Point(710, 138);
+            this.labelReps5.Location = new System.Drawing.Point(596, 138);
             this.labelReps5.Name = "labelReps5";
             this.labelReps5.Size = new System.Drawing.Size(31, 30);
             this.labelReps5.TabIndex = 142;
@@ -1106,12 +1109,32 @@
             this.labelWeightKg.TabIndex = 148;
             this.labelWeightKg.Text = "Kg";
             // 
+            // labelWeight6
+            // 
+            this.labelWeight6.AutoSize = true;
+            this.labelWeight6.Location = new System.Drawing.Point(647, 138);
+            this.labelWeight6.Name = "labelWeight6";
+            this.labelWeight6.Size = new System.Drawing.Size(38, 30);
+            this.labelWeight6.TabIndex = 150;
+            this.labelWeight6.Text = "W:";
+            // 
+            // labelReps6
+            // 
+            this.labelReps6.AutoSize = true;
+            this.labelReps6.Location = new System.Drawing.Point(711, 138);
+            this.labelReps6.Name = "labelReps6";
+            this.labelReps6.Size = new System.Drawing.Size(31, 30);
+            this.labelReps6.TabIndex = 149;
+            this.labelReps6.Text = "R:";
+            // 
             // WorkoutViewerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(769, 593);
+            this.ClientSize = new System.Drawing.Size(769, 592);
+            this.Controls.Add(this.labelWeight6);
+            this.Controls.Add(this.labelReps6);
             this.Controls.Add(this.labelWeightKg);
             this.Controls.Add(this.textBoxWeightDay);
             this.Controls.Add(this.labelWeightDay);
@@ -1383,6 +1406,8 @@
         private System.Windows.Forms.Label labelWeightDay;
         private System.Windows.Forms.TextBox textBoxWeightDay;
         private System.Windows.Forms.Label labelWeightKg;
+        private System.Windows.Forms.Label labelWeight6;
+        private System.Windows.Forms.Label labelReps6;
     }
 }
 

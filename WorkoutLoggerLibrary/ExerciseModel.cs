@@ -17,11 +17,11 @@ namespace WorkoutLoggerLibrary
         /// <summary>
         /// The reps for the number of sets done for the exercise
         /// </summary>
-        public List<int> ExerciseReps { get; set; }
+        public List<int> ExerciseReps { get; set; } = new List<int>();
         /// <summary>
-        /// The weight completed for the exercise
+        /// The weight completed for the exercise for each rep
         /// </summary>
-        public float ExerciseWeight { get; set; }
+        public List<float> ExerciseWeight { get; set; } = new List<float>();
 
     }
 }

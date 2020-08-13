@@ -17,5 +17,9 @@ namespace WorkoutLoggerUI
             InitializeComponent();
         }
 
+        private void labelWeight1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
