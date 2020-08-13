@@ -27,5 +27,22 @@ namespace WorkoutLoggerLibrary
         /// this day
         /// </summary>
         public string DescriptionDay { get; set; }
+
+        public DateModel()
+        {
+               
+        }
+
+        public DateModel(
+            List<ExerciseModel> exercisesDay, 
+            string weightDay)
+        {
+            ExercisesDay = exercisesDay;
+
+            float weightDayValue = 0;
+            float.TryParse(weightDay, out weightDayValue);
+            WeightDay = weightDayValue;
+
+        }
     }
 }

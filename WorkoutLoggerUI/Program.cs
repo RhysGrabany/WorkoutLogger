@@ -16,6 +16,10 @@ namespace WorkoutLoggerUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Initialise database connections
+            WorkoutLoggerLibrary.GlobalConfig.InitialiseConnections(true, true, true);
+
             Application.Run(new WorkoutViewerForm());
         }
     }

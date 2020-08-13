@@ -13,7 +13,7 @@ namespace WorkoutLoggerLibrary
         /// <summary>
         /// The number of sets for the selected exercise
         /// </summary>
-        public int ExerciseSet { get; set; }
+        public int ExerciseSets { get; set; }
         /// <summary>
         /// The reps for the number of sets done for the exercise
         /// </summary>
@@ -22,6 +22,30 @@ namespace WorkoutLoggerLibrary
         /// The weight completed for the exercise for each rep
         /// </summary>
         public List<float> ExerciseWeight { get; set; } = new List<float>();
+
+        public ExerciseModel()
+        {
+
+        }
+
+        public ExerciseModel(
+            string exerciseName, 
+            string exerciseSets, 
+            List<int> exerciseReps, 
+            List<float> exerciseWeight)
+        {
+            ExerciseName = exerciseName;
+
+            int exerciseSetsValue = 0;
+            int.TryParse(exerciseSets, out exerciseSetsValue);
+            ExerciseSets = exerciseSetsValue;
+
+            ExerciseReps = exerciseReps;
+
+            ExerciseWeight = exerciseWeight;
+
+
+        }
 
     }
 }

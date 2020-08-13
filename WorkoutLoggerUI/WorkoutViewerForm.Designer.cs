@@ -362,7 +362,6 @@
             this.labelWeight1.Size = new System.Drawing.Size(111, 30);
             this.labelWeight1.TabIndex = 28;
             this.labelWeight1.Text = "Weight(W)";
-            this.labelWeight1.Click += new System.EventHandler(this.labelWeight1_Click);
             // 
             // textBoxEx5We1
             // 
@@ -1083,6 +1082,7 @@
             this.buttonSaveDay.TabIndex = 145;
             this.buttonSaveDay.Text = "Save";
             this.buttonSaveDay.UseVisualStyleBackColor = true;
+            this.buttonSaveDay.Click += new System.EventHandler(this.buttonSaveDay_Click);
             // 
             // labelWeightDay
             // 
