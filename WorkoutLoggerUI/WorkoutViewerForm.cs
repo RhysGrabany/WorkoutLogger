@@ -23,8 +23,9 @@ namespace WorkoutLoggerUI
             if (ValidateForm())
             {
                 DateModel model = new DateModel();
+                List<ExerciseModel> exercises = ExerciseReturn();
 
-                model
+                
             }
 
         }
@@ -73,6 +74,7 @@ namespace WorkoutLoggerUI
                 output = false;
             }
 
+            // TODO - Does not check for negative numbers
             // This loops through the number of exercises that the form has, then
             // it loops through the WaR text boxes
             // First it checks if any of the text boxes have a length, if yes then 
@@ -111,5 +113,99 @@ namespace WorkoutLoggerUI
 
             return output;
         }
+
+        // TODO - Deal with the magic numbers in these three methods (in the FOR loops)
+        /// <summary>
+        /// This is the method that creates a List<ExerciseModel> that will have the 
+        /// details populated with the correct reps, weights, sets, and name
+        /// </summary>
+        /// <returns>Returns a List<ExerciseModel> that can be used</returns>
+        private List<ExerciseModel> ExerciseReturn()
+        {
+            
+            List<ExerciseModel> exercises = new List<ExerciseModel>();
+
+            for (int i = 1; i < 11; i++)
+            {
+                string exercise;
+                TextBox exerciseBox = (TextBox)this.Controls["textBoxEx" + i.ToString()];
+                if (exerciseBox.Text.Length > 0)
+                {
+                    exercise = exerciseBox.Text;
+                    List<int> reps = RepsList(i);
+                    int sets = reps.Capacity;
+                    List<float> weights = WeightsList(i, sets);
+
+                    exercises.Add(new ExerciseModel(exercise, sets, reps, weights));
+
+                } 
+                else
+                {
+                    break;
+                }
+            }
+
+            return exercises;
+        }
+
+        /// <summary>
+        /// This populates a List<int> of the reps in the exercise
+        /// </summary>
+        /// <param name="exerciseNo">The exercise number</param>
+        /// <returns>List<int> of reps completed for the exercise</returns>
+        private List<int> RepsList(int exerciseNo)
+        {
+            List<int> reps = new List<int>();
+
+            for (int i = 1; i < 6; i++)
+            {
+                TextBox repBox = (TextBox)this.Controls["textBoxEx" + exerciseNo.ToString() + "Re" + i.ToString()];
+                
+                int repsValue = 0;
+                if (repBox.Text.Length > 0)
+                {
+                    int.TryParse(repBox.Text, out repsValue);
+                    reps.Add(repsValue);
+                }
+            }
+
+            return reps;
+
+        }
+
+        /// <summary>
+        /// This populates a List<float> of the weights used for the exercise
+        /// </summary>
+        /// <param name="exerciseNo">This is the current number for the exercise</param>
+        /// <param name="noOfSets">This is how many sets there are for the weights (this means you can skip weights)</param>
+        /// <returns>Returns a populated list of what weights were used for the exercise</returns>
+        private List<float> WeightsList(int exerciseNo, int noOfSets)
+        {
+            List<float> weights = new List<float>();
+
+            for (int i = 1; i < noOfSets+1; i++)
+            {
+                TextBox weightBox = (TextBox)this.Controls["textBoxEx" + exerciseNo.ToString() + "Re" + i.ToString()];
+
+                // If the weight text box is empty, but there's still sets to look over,
+                // The last used weight will be added to the List
+                // e.g. {7.5, 19.5} -> next weight box is empty, add last used weight -> {7.5, 19.5, 19.5}
+                // Then it will continue
+                float weightValue = 0;
+                if (weightBox.Text.Length == 0)
+                {
+                    weights.Add(weights.Last());
+                } 
+                else
+                {
+                    float.TryParse(weightBox.Text, out weightValue);
+                    weights.Add(weightValue);
+                }
+            }
+
+            return weights;
+        }
+
+
     }
 }

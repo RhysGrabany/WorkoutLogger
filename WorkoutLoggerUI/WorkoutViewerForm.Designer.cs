@@ -160,6 +160,8 @@
             this.labelWeightKg = new System.Windows.Forms.Label();
             this.labelWeight6 = new System.Windows.Forms.Label();
             this.labelReps6 = new System.Windows.Forms.Label();
+            this.labelDescription = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBoxLoad
@@ -1127,12 +1129,31 @@
             this.labelReps6.TabIndex = 149;
             this.labelReps6.Text = "R:";
             // 
+            // labelDescription
+            // 
+            this.labelDescription.AutoSize = true;
+            this.labelDescription.Location = new System.Drawing.Point(17, 584);
+            this.labelDescription.Name = "labelDescription";
+            this.labelDescription.Size = new System.Drawing.Size(208, 30);
+            this.labelDescription.TabIndex = 151;
+            this.labelDescription.Text = "Description of Today:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(231, 584);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(520, 91);
+            this.textBox2.TabIndex = 152;
+            // 
             // WorkoutViewerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(769, 592);
+            this.ClientSize = new System.Drawing.Size(769, 687);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.labelWeight6);
             this.Controls.Add(this.labelReps6);
             this.Controls.Add(this.labelWeightKg);
@@ -1408,6 +1429,8 @@
         private System.Windows.Forms.Label labelWeightKg;
         private System.Windows.Forms.Label labelWeight6;
         private System.Windows.Forms.Label labelReps6;
+        private System.Windows.Forms.Label labelDescription;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 

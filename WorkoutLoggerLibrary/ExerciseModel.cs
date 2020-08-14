@@ -30,15 +30,13 @@ namespace WorkoutLoggerLibrary
 
         public ExerciseModel(
             string exerciseName, 
-            string exerciseSets, 
+            int exerciseSets, 
             List<int> exerciseReps, 
             List<float> exerciseWeight)
         {
             ExerciseName = exerciseName;
 
-            int exerciseSetsValue = 0;
-            int.TryParse(exerciseSets, out exerciseSetsValue);
-            ExerciseSets = exerciseSetsValue;
+            ExerciseSets = exerciseSets;
 
             ExerciseReps = exerciseReps;
 
