@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WorkoutLoggerLibrary;
+
 
 namespace WorkoutLoggerUI
 {
     public partial class WorkoutViewerForm : Form
     {
+        public const int NO_OF_EXERCISES = 10;
+        public const int NO_OF_SETS = 5;
+
         public WorkoutViewerForm()
         {
             InitializeComponent();
@@ -22,10 +21,19 @@ namespace WorkoutLoggerUI
         {
             if (ValidateForm())
             {
-                DateModel model = new DateModel();
+                string dailyWeight = textBoxWeightDay.Text;
                 List<ExerciseModel> exercises = ExerciseReturn();
 
-                
+                DateModel model = new DateModel(exercises, dailyWeight);
+
+                foreach (IDataConnection db in GlobalConfig.Connections)
+                {
+                    db.CreateDay(model);
+                }
+            }
+            else
+            {
+                MessageBox.Show("This form has invalid information.\nPlease check it and try again.");
             }
 
         }
@@ -40,17 +48,11 @@ namespace WorkoutLoggerUI
 
             float weightNo = 0;
             bool weightNoValid = float.TryParse(textBoxWeightDay.Text, out weightNo);
-            if (!weightNoValid)
+            if (!weightNoValid && textBoxWeightDay.Text != "" && weightNo < 0)
             {
                 output = false;
             }
 
-            if (weightNo < 1)
-            {
-                output = false;
-            }
-
-            // TODO - Check for skipped boxes for exercise textboxes
             // This loops through the Exercise Text Boxes to check if they have any
             // text inside them. If they do then the maxNoExercises is increased
             // This does not take into account for any skipped boxes
@@ -58,15 +60,15 @@ namespace WorkoutLoggerUI
             for (int i = 1; i < 11; i++)
             {
                 TextBox exerciseBox = (TextBox)this.Controls["textBoxEx" + i.ToString()];
-                if (exerciseBox.Text.Length > 0)
+                // This is a placeholder box, basically checks if the exercise box was skipped
+                // might be used when an exercise is a continuation
+                TextBox phWeightBox = (TextBox)this.Controls["textBoxEx" + i.ToString() + "We1"];
+                if (exerciseBox.Text.Length > 0 || phWeightBox.Text.Length > 0)
                 {
                     maxNoExercises += 1;
                 }
             }
 
-            float weightSet = 0;
-            int repSet = 0;
-            
             // This checks if there is any exercises actually logged into
             // the program before starting the WaR checks
             if (maxNoExercises < 1)
@@ -74,13 +76,12 @@ namespace WorkoutLoggerUI
                 output = false;
             }
 
-            // TODO - Does not check for negative numbers
             // This loops through the number of exercises that the form has, then
-            // it loops through the WaR text boxes
+            // it loops through the Weight And Rep(WaR) text boxes
             // First it checks if any of the text boxes have a length, if yes then 
             // it will check if it is a valid value, otherwise it is skipped
             // This does take into account for skipped textboxes
-            for (int exercise = 1; exercise < maxNoExercises+1; exercise++)
+            for (int exercise = 1; exercise < maxNoExercises + 1; exercise++)
             {
                 for (int war = 1; war < 6; war++)
                 {
@@ -88,23 +89,31 @@ namespace WorkoutLoggerUI
                     TextBox repBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString() + "Re" + war.ToString()];
 
                     float weightBoxValue = 0;
-                    if (weightBox.Text.Length > 0)
+                    bool weightBoxValid = true;
+                    if (weightBox != null && weightBox.Text != "")
                     {
-                        bool weightBoxValid = float.TryParse(weightBox.Text, out weightBoxValue);
-                        if (!weightBoxValid)
+                        weightBoxValid = float.TryParse(weightBox.Text, out weightBoxValue);
+                        if (!weightBoxValid && weightBoxValue < 0)
                         {
                             output = false;
                         }
                     }
 
                     int repBoxValue = 0;
-                    if (repBox.Text.Length > 0)
+                    bool repBoxValid = true;
+                    if (repBox != null && repBox.Text != "")
                     {
-                        bool repBoxValid = int.TryParse(repBox.Text, out repBoxValue);
-                        if (!repBoxValid)
+                        repBoxValid = int.TryParse(repBox.Text, out repBoxValue);
+                        if (!repBoxValid || repBoxValue < 0)
                         {
                             output = false;
                         }
+                    }
+
+
+                    if (!weightBoxValid || !repBoxValid)
+                    {
+                        break;
                     }
 
                 }
@@ -114,7 +123,6 @@ namespace WorkoutLoggerUI
             return output;
         }
 
-        // TODO - Deal with the magic numbers in these three methods (in the FOR loops)
         /// <summary>
         /// This is the method that creates a List<ExerciseModel> that will have the 
         /// details populated with the correct reps, weights, sets, and name
@@ -122,23 +130,26 @@ namespace WorkoutLoggerUI
         /// <returns>Returns a List<ExerciseModel> that can be used</returns>
         private List<ExerciseModel> ExerciseReturn()
         {
-            
+
             List<ExerciseModel> exercises = new List<ExerciseModel>();
 
-            for (int i = 1; i < 11; i++)
+            for (int i = 1; i < NO_OF_EXERCISES+1; i++)
             {
                 string exercise;
                 TextBox exerciseBox = (TextBox)this.Controls["textBoxEx" + i.ToString()];
-                if (exerciseBox.Text.Length > 0)
+                // This is a placeholder box, basically checks if the exercise box was skipped
+                // might be used when an exercise is a continuation
+                TextBox phWeightBox = (TextBox)this.Controls["textBoxEx" + i.ToString() + "We1"];
+                if (exerciseBox.Text.Length > 0 || phWeightBox.Text.Length > 0)
                 {
                     exercise = exerciseBox.Text;
                     List<int> reps = RepsList(i);
-                    int sets = reps.Capacity;
+                    int sets = reps.Count;
                     List<float> weights = WeightsList(i, sets);
 
                     exercises.Add(new ExerciseModel(exercise, sets, reps, weights));
 
-                } 
+                }
                 else
                 {
                     break;
@@ -157,10 +168,10 @@ namespace WorkoutLoggerUI
         {
             List<int> reps = new List<int>();
 
-            for (int i = 1; i < 6; i++)
+            for (int i = 1; i < NO_OF_SETS+1; i++)
             {
                 TextBox repBox = (TextBox)this.Controls["textBoxEx" + exerciseNo.ToString() + "Re" + i.ToString()];
-                
+
                 int repsValue = 0;
                 if (repBox.Text.Length > 0)
                 {
@@ -183,9 +194,9 @@ namespace WorkoutLoggerUI
         {
             List<float> weights = new List<float>();
 
-            for (int i = 1; i < noOfSets+1; i++)
+            for (int i = 1; i < noOfSets + 1; i++)
             {
-                TextBox weightBox = (TextBox)this.Controls["textBoxEx" + exerciseNo.ToString() + "Re" + i.ToString()];
+                TextBox weightBox = (TextBox)this.Controls["textBoxEx" + exerciseNo.ToString() + "We" + i.ToString()];
 
                 // If the weight text box is empty, but there's still sets to look over,
                 // The last used weight will be added to the List
@@ -195,7 +206,7 @@ namespace WorkoutLoggerUI
                 if (weightBox.Text.Length == 0)
                 {
                     weights.Add(weights.Last());
-                } 
+                }
                 else
                 {
                     float.TryParse(weightBox.Text, out weightValue);

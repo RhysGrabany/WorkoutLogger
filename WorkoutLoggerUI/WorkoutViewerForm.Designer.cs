@@ -144,7 +144,7 @@
             this.textBoxEx4Re5 = new System.Windows.Forms.TextBox();
             this.textBoxEx3Re5 = new System.Windows.Forms.TextBox();
             this.textBoxEx2Re5 = new System.Windows.Forms.TextBox();
-            this.textBoxEx1Rep5 = new System.Windows.Forms.TextBox();
+            this.textBoxEx1Re5 = new System.Windows.Forms.TextBox();
             this.labelWeight2 = new System.Windows.Forms.Label();
             this.labelReps2 = new System.Windows.Forms.Label();
             this.labelWeight3 = new System.Windows.Forms.Label();
@@ -988,12 +988,12 @@
             this.textBoxEx2Re5.Size = new System.Drawing.Size(52, 35);
             this.textBoxEx2Re5.TabIndex = 114;
             // 
-            // textBoxEx1Rep5
+            // textBoxEx1Re5
             // 
-            this.textBoxEx1Rep5.Location = new System.Drawing.Point(699, 171);
-            this.textBoxEx1Rep5.Name = "textBoxEx1Rep5";
-            this.textBoxEx1Rep5.Size = new System.Drawing.Size(52, 35);
-            this.textBoxEx1Rep5.TabIndex = 112;
+            this.textBoxEx1Re5.Location = new System.Drawing.Point(699, 171);
+            this.textBoxEx1Re5.Name = "textBoxEx1Re5";
+            this.textBoxEx1Re5.Size = new System.Drawing.Size(52, 35);
+            this.textBoxEx1Re5.TabIndex = 112;
             // 
             // labelWeight2
             // 
@@ -1188,7 +1188,7 @@
             this.Controls.Add(this.textBoxEx4Re5);
             this.Controls.Add(this.textBoxEx3Re5);
             this.Controls.Add(this.textBoxEx2Re5);
-            this.Controls.Add(this.textBoxEx1Rep5);
+            this.Controls.Add(this.textBoxEx1Re5);
             this.Controls.Add(this.textBoxEx10We4);
             this.Controls.Add(this.textBoxEx9We4);
             this.Controls.Add(this.textBoxEx8We4);
@@ -1413,7 +1413,7 @@
         private System.Windows.Forms.TextBox textBoxEx4Re5;
         private System.Windows.Forms.TextBox textBoxEx3Re5;
         private System.Windows.Forms.TextBox textBoxEx2Re5;
-        private System.Windows.Forms.TextBox textBoxEx1Rep5;
+        private System.Windows.Forms.TextBox textBoxEx1Re5;
         private System.Windows.Forms.Label labelWeight2;
         private System.Windows.Forms.Label labelReps2;
         private System.Windows.Forms.Label labelWeight3;
