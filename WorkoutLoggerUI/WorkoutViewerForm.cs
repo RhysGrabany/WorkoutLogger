@@ -19,6 +19,9 @@ namespace WorkoutLoggerUI
 
         private void buttonSaveDay_Click(object sender, EventArgs e)
         {
+            // Checks if the form is valid
+            // If yes, then it will create a new entry for DBConnection and move the model over, then clear boxes
+            // If no, then message box will show warning the user and will not save nor clear the boxes
             if (ValidateForm())
             {
                 string dailyWeight = textBoxWeightDay.Text;
@@ -30,6 +33,9 @@ namespace WorkoutLoggerUI
                 {
                     db.CreateDay(model);
                 }
+
+                ClearTextboxes();
+
             }
             else
             {
@@ -37,6 +43,8 @@ namespace WorkoutLoggerUI
             }
 
         }
+
+        #region Form Validation
 
         /// <summary>
         /// Checks the filled in textboxes if they are valid or not
@@ -123,6 +131,10 @@ namespace WorkoutLoggerUI
             return output;
         }
 
+        #endregion
+
+        #region Parsing of TextBox Exercise Data
+
         /// <summary>
         /// This is the method that creates a List<ExerciseModel> that will have the 
         /// details populated with the correct reps, weights, sets, and name
@@ -164,13 +176,13 @@ namespace WorkoutLoggerUI
         /// </summary>
         /// <param name="exerciseNo">The exercise number</param>
         /// <returns>List<int> of reps completed for the exercise</returns>
-        private List<int> RepsList(int exerciseNo)
+        private List<int> RepsList(int exercise)
         {
             List<int> reps = new List<int>();
 
             for (int i = 1; i < NO_OF_SETS+1; i++)
             {
-                TextBox repBox = (TextBox)this.Controls["textBoxEx" + exerciseNo.ToString() + "Re" + i.ToString()];
+                TextBox repBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString() + "Re" + i.ToString()];
 
                 int repsValue = 0;
                 if (repBox.Text.Length > 0)
@@ -190,13 +202,13 @@ namespace WorkoutLoggerUI
         /// <param name="exerciseNo">This is the current number for the exercise</param>
         /// <param name="noOfSets">This is how many sets there are for the weights (this means you can skip weights)</param>
         /// <returns>Returns a populated list of what weights were used for the exercise</returns>
-        private List<float> WeightsList(int exerciseNo, int noOfSets)
+        private List<float> WeightsList(int exercise, int noOfSets)
         {
             List<float> weights = new List<float>();
 
             for (int i = 1; i < noOfSets + 1; i++)
             {
-                TextBox weightBox = (TextBox)this.Controls["textBoxEx" + exerciseNo.ToString() + "We" + i.ToString()];
+                TextBox weightBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString() + "We" + i.ToString()];
 
                 // If the weight text box is empty, but there's still sets to look over,
                 // The last used weight will be added to the List
@@ -217,6 +229,38 @@ namespace WorkoutLoggerUI
             return weights;
         }
 
+        #endregion
+
+        #region General Utilities
+
+        // Utilities - Clear Exercise Textboxes
+
+        /// <summary>
+        /// This method clears all the Exercise, Weight, Rep, and Daily Weight
+        /// text boxes.
+        /// </summary>
+        private void ClearTextboxes()
+        {
+
+            textBoxWeightDay.Text = "";
+
+            for (int exercise = 1; exercise < NO_OF_EXERCISES+1; exercise++)
+            {
+                for (int set = 1; set < NO_OF_SETS+1; set++)
+                {
+                    TextBox exerciseBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString()];
+                    TextBox repBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString() + "Re" + set.ToString()];
+                    TextBox weightBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString() + "We" + set.ToString()];
+
+                    exerciseBox.Text = "";
+                    repBox.Text = "";
+                    weightBox.Text = "";
+
+                }
+            }
+        }
+
+        #endregion 
 
     }
 }
