@@ -12,12 +12,17 @@ namespace WorkoutLoggerLibrary.DataAccess
         /// Saves a day to the textfile
         /// </summary>
         /// <param name="model">The day info</param>
-        /// <returns>The day info, </returns>
+        /// <returns>The day info</returns>
         public DateModel CreateDay(DateModel model)
         {
-            model.Id = 1;
+            
+            // Load textfile
+            // Convert text to List<DateModel>
+            // Find max Id
+            // Add new record with new ID ( max + 1 )
+            // Convert Dates to List<string>
+            // Save the List<string> to the text file
 
-            return model;
         }
     }
 }
