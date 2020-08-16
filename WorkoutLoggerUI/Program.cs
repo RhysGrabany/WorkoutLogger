@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WorkoutLoggerLibrary;
 
 namespace WorkoutLoggerUI
 {
@@ -18,7 +19,7 @@ namespace WorkoutLoggerUI
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Initialise database connections
-            WorkoutLoggerLibrary.GlobalConfig.InitialiseConnections(true, true, true);
+            WorkoutLoggerLibrary.GlobalConfig.InitialiseConnections(DatabaseType.TEXTFILE);
 
             Application.Run(new WorkoutViewerForm());
         }

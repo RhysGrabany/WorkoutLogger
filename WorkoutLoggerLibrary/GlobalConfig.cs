@@ -1,34 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WorkoutLoggerLibrary.DataAccess;
 
 namespace WorkoutLoggerLibrary
 {
     public static class GlobalConfig
     {
-        public static List<IDataConnection> Connections { get; private set; } = new List<IDataConnection>();
+        public static IDataConnection Connection { get; private set; }
 
-        public static void InitialiseConnections(bool database, bool textFiles, bool binary)
+        public static void InitialiseConnections(DatabaseType db)
         {
-            if (database)
-            {
-                // TODO - Create the SQL connection
-                SqlConnector sql = new SqlConnector();
-                Connections.Add(sql);
-            }
 
-            if (textFiles)
+            switch (db)
             {
-                // TODO - Create the Text Connection
-                TextConnector text = new TextConnector();
-                Connections.Add(text);
-            }
-
-            if (binary)
-            {
-                // TODO - Create the Binary Connection
-                BinaryConnector bin = new BinaryConnector();
-                Connections.Add(bin);
+                case DatabaseType.SQL:
+                    // TODO - Create the SQL connection
+                    SqlConnector sql = new SqlConnector();
+                    Connection = sql;
+                    break;
+                case DatabaseType.TEXTFILE:
+                    // TODO - Create the Text Connection
+                    TextConnector text = new TextConnector();
+                    Connection = text;
+                    break;
+                case DatabaseType.BINARY:
+                    // TODO - Create the Binary Connection
+                    BinaryConnector bin = new BinaryConnector();
+                    Connection = bin;
+                    break;
+                default:
+                    break;
             }
         }
     }

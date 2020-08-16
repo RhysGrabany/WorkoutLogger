@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WorkoutLoggerLibrary
+namespace WorkoutLoggerLibrary.Models
 {
     public class DateModel
     {

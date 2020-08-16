@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WorkoutLoggerLibrary.Models;
 
-namespace WorkoutLoggerLibrary
+namespace WorkoutLoggerLibrary.DataAccess
 {
-    public class SqlConnector : IDataConnection
+    class BinaryConnector : IDataConnection
     {
-        // TODO - Make the CreateDay method actually save to database 
+        // TODO - Wire up CreateDay for Binary files
         /// <summary>
-        /// Saves a day to the database
+        /// Saves a day to a binary file
         /// </summary>
         /// <param name="model">The day info</param>
-        /// <returns>The day info, including the unique id</returns>
+        /// <returns>The day model with unique id</returns>
         public DateModel CreateDay(DateModel model)
         {
             model.Id = 1;

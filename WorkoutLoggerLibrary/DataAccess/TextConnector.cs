@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WorkoutLoggerLibrary.Models;
 
-namespace WorkoutLoggerLibrary
+namespace WorkoutLoggerLibrary.DataAccess
 {
     public class TextConnector : IDataConnection
     {

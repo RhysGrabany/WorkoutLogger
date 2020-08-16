@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using WorkoutLoggerLibrary;
-
+using WorkoutLoggerLibrary.DataAccess;
+using WorkoutLoggerLibrary.Models;
 
 namespace WorkoutLoggerUI
 {
@@ -29,17 +30,14 @@ namespace WorkoutLoggerUI
 
                 DateModel model = new DateModel(exercises, dailyWeight);
 
-                foreach (IDataConnection db in GlobalConfig.Connections)
-                {
-                    db.CreateDay(model);
-                }
+                GlobalConfig.Connection.CreateDay(model);
 
                 ClearTextboxes();
 
             }
             else
             {
-                MessageBox.Show("This form has invalid information.\nPlease check it and try again.");
+                MessageBox.Show("This form has invalid information.\nPlease check and try again.");
             }
 
         }

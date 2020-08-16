@@ -4,8 +4,10 @@ using System.Text;
 
 namespace WorkoutLoggerLibrary
 {
-    public interface IDataConnection
+    public enum DatabaseType
     {
-        DateModel CreateDay(DateModel model);
+        SQL,
+        TEXTFILE,
+        BINARY
     }
 }
