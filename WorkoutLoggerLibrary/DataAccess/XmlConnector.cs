@@ -20,7 +20,7 @@ namespace WorkoutLoggerLibrary.DataAccess
         {
 
             DateTime dayName = DateTime.Today;
-            string fileName = $"{ dayName.ToString("d").Replace("/", "_") }.xml";
+            string fileName = $"{ dayName.ToString("d").Replace("/", "_") }{ model.NameDay.Replace(" ", "") }.xml";
 
             model.WriteFile(fileName);
 

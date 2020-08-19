@@ -26,9 +26,11 @@ namespace WorkoutLoggerUI
             if (ValidateForm())
             {
                 string dailyWeight = textBoxWeightDay.Text;
+                string nameDay = textBoxDayName.Text;
+                string descriptionDay = textBoxDescription.Text;
                 List<ExerciseModel> exercises = ExerciseReturn();
 
-                DateModel model = new DateModel(exercises, dailyWeight);
+                DateModel model = new DateModel(nameDay, exercises, dailyWeight, descriptionDay);
 
                 GlobalConfig.Connection.CreateDay(model);
 
@@ -241,6 +243,7 @@ namespace WorkoutLoggerUI
         {
 
             textBoxWeightDay.Text = "";
+            textBoxDayName.Text = "";
 
             for (int exercise = 1; exercise < NoOfExercises+1; exercise++)
             {
