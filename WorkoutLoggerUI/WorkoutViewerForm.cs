@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using WorkoutLoggerLibrary;
@@ -34,6 +36,7 @@ namespace WorkoutLoggerUI
 
                 DateModel model = new DateModel(nameDay, exercises, dailyWeight, descriptionDay);
 
+                Directory.CreateDirectory($"{ ConfigurationManager.AppSettings["filePath"] }");
                 GlobalConfig.Connection.CreateDay(model);
 
                 ClearTextboxes();
@@ -54,6 +57,7 @@ namespace WorkoutLoggerUI
                 List<ExerciseModel> exercises = ExerciseReturn(true);
                 TemplateModel model = new TemplateModel(nameTemplate, exercises);
 
+                Directory.CreateDirectory($"{ ConfigurationManager.AppSettings["tfilePath"] }");
                 GlobalConfig.Connection.CreateTemplate(model);
             }
             else
