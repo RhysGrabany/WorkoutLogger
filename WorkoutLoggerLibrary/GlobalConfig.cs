@@ -14,11 +14,6 @@ namespace WorkoutLoggerLibrary
 
             switch (db)
             {
-                case DatabaseType.SQL:
-                    // TODO - Create the SQL connection
-                    SqlConnector sql = new SqlConnector();
-                    Connection = sql;
-                    break;
                 case DatabaseType.XML:
                     // TODO - Create the Text Connection
                     XmlConnector text = new XmlConnector();

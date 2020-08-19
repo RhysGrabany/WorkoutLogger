@@ -17,5 +17,10 @@ namespace WorkoutLoggerLibrary.DataAccess
         {
             return model;
         }
+
+        public TemplateModel CreateTemplate(TemplateModel model)
+        {
+            return model;
+        }
     }
 }

@@ -30,7 +30,7 @@
         {
             this.comboBoxLoad = new System.Windows.Forms.ComboBox();
             this.buttonLoadTemplate = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxTemplate = new System.Windows.Forms.TextBox();
             this.buttonSaveTemplate = new System.Windows.Forms.Button();
             this.textBoxEx1 = new System.Windows.Forms.TextBox();
             this.labelExercises1 = new System.Windows.Forms.Label();
@@ -183,13 +183,13 @@
             this.buttonLoadTemplate.Text = "Load";
             this.buttonLoadTemplate.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBoxTemplate
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(159, 35);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "Template Name";
+            this.textBoxTemplate.Location = new System.Drawing.Point(12, 56);
+            this.textBoxTemplate.Name = "textBoxTemplate";
+            this.textBoxTemplate.Size = new System.Drawing.Size(159, 35);
+            this.textBoxTemplate.TabIndex = 2;
+            this.textBoxTemplate.Text = "Template Name";
             // 
             // buttonSaveTemplate
             // 
@@ -199,6 +199,7 @@
             this.buttonSaveTemplate.TabIndex = 3;
             this.buttonSaveTemplate.Text = "Save";
             this.buttonSaveTemplate.UseVisualStyleBackColor = true;
+            this.buttonSaveTemplate.Click += new System.EventHandler(this.buttonSaveTemplate_Click);
             // 
             // textBoxEx1
             // 
@@ -1303,7 +1304,7 @@
             this.Controls.Add(this.labelExercises1);
             this.Controls.Add(this.textBoxEx1);
             this.Controls.Add(this.buttonSaveTemplate);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxTemplate);
             this.Controls.Add(this.buttonLoadTemplate);
             this.Controls.Add(this.comboBoxLoad);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1319,7 +1320,7 @@
 
         private System.Windows.Forms.ComboBox comboBoxLoad;
         private System.Windows.Forms.Button buttonLoadTemplate;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxTemplate;
         private System.Windows.Forms.Button buttonSaveTemplate;
         private System.Windows.Forms.TextBox textBoxEx1;
         private System.Windows.Forms.Label labelExercises1;

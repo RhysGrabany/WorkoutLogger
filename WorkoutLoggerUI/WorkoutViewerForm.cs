@@ -18,6 +18,8 @@ namespace WorkoutLoggerUI
             InitializeComponent();
         }
 
+        #region Form Components
+
         private void buttonSaveDay_Click(object sender, EventArgs e)
         {
             // Checks if the form is valid
@@ -28,7 +30,7 @@ namespace WorkoutLoggerUI
                 string dailyWeight = textBoxWeightDay.Text;
                 string nameDay = textBoxDayName.Text;
                 string descriptionDay = textBoxDescription.Text;
-                List<ExerciseModel> exercises = ExerciseReturn();
+                List<ExerciseModel> exercises = ExerciseReturn(false);
 
                 DateModel model = new DateModel(nameDay, exercises, dailyWeight, descriptionDay);
 
@@ -43,12 +45,32 @@ namespace WorkoutLoggerUI
             }
 
         }
+        private void buttonSaveTemplate_Click(object sender, EventArgs e)
+        {
+            if (Validate())
+            {
+                string nameTemplate = textBoxTemplate.Text;
+
+                List<ExerciseModel> exercises = ExerciseReturn(true);
+                TemplateModel model = new TemplateModel(nameTemplate, exercises);
+
+                GlobalConfig.Connection.CreateTemplate(model);
+            }
+            else
+            {
+                MessageBox.Show("This form has invalid information.\nPlease check and try again");
+            }
+
+        }
+
+        #endregion
 
         #region Form Validation
 
         /// <summary>
         /// Checks the filled in textboxes if they are valid or not
         /// </summary>
+        /// <param name="template">Bool whether validate Template class or not</param>
         /// <returns>Boolean True/False: True for valid, False for invalid</returns>
         private bool ValidateForm()
         {
@@ -107,8 +129,8 @@ namespace WorkoutLoggerUI
                         }
                     }
 
-                    int repBoxValue = 0;
                     bool repBoxValid = true;
+                    int repBoxValue = 0;
                     if (repBox != null && repBox.Text != "")
                     {
                         repBoxValid = int.TryParse(repBox.Text, out repBoxValue);
@@ -118,7 +140,6 @@ namespace WorkoutLoggerUI
                         }
                     }
 
-
                     if (!weightBoxValid || !repBoxValid)
                     {
                         break;
@@ -126,8 +147,6 @@ namespace WorkoutLoggerUI
 
                 }
             }
-
-
             return output;
         }
 
@@ -140,7 +159,7 @@ namespace WorkoutLoggerUI
         /// details populated with the correct reps, weights, sets, and name
         /// </summary>
         /// <returns>Returns a List<ExerciseModel> that can be used</returns>
-        private List<ExerciseModel> ExerciseReturn()
+        private List<ExerciseModel> ExerciseReturn(bool template)
         {
 
             List<ExerciseModel> exercises = new List<ExerciseModel>();
@@ -157,9 +176,17 @@ namespace WorkoutLoggerUI
                     exercise = exerciseBox.Text;
                     List<int> reps = RepsList(i);
                     int sets = reps.Count;
-                    List<float> weights = WeightsList(i, sets);
+                    List<float> weights = WeightsList(i);
 
-                    exercises.Add(new ExerciseModel(exercise, sets, reps, weights));
+                    if (!template)
+                    {
+                        Console.WriteLine("Test!");
+                        exercises.Add(new ExerciseModel(exercise, sets, reps, weights));
+                    } 
+                    else
+                    {
+                        exercises.Add(new ExerciseModel(exercise, sets, weights));
+                    }
 
                 }
                 else
@@ -202,11 +229,11 @@ namespace WorkoutLoggerUI
         /// <param name="exerciseNo">This is the current number for the exercise</param>
         /// <param name="noOfSets">This is how many sets there are for the weights (this means you can skip weights)</param>
         /// <returns>Returns a populated list of what weights were used for the exercise</returns>
-        private List<float> WeightsList(int exercise, int noOfSets)
+        private List<float> WeightsList(int exercise)
         {
             List<float> weights = new List<float>();
 
-            for (int i = 1; i < noOfSets + 1; i++)
+            for (int i = 1; i < NoOfSets+1 + 1; i++)
             {
                 TextBox weightBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString() + "We" + i.ToString()];
 
@@ -261,7 +288,7 @@ namespace WorkoutLoggerUI
             }
         }
 
-        #endregion 
+        #endregion
 
     }
 }

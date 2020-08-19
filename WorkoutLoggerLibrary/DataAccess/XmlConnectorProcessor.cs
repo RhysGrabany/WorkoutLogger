@@ -15,9 +15,11 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
         /// </summary>
         /// <param name="fileName">The file that is going to have the filepath returned</param>
         /// <returns>Full file path</returns>
-        public static string FullFilePath(this string fileName)
+        public static string FullFilePath(this string fileName, bool template)
         {
-            return $"{ ConfigurationManager.AppSettings["filePath"] }\\{ fileName }";
+
+            return template ? $"{ ConfigurationManager.AppSettings["tfilePath"] }\\{ fileName }"
+                : $"{ ConfigurationManager.AppSettings["filePath"] }\\{ fileName }";
         }
 
         /// <summary>
@@ -25,7 +27,7 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
         /// </summary>
         /// <param name="file">The xml file being parsed</param>
         /// <returns></returns>
-        public static DateModel LoadFile(this string file)
+        /*public static DateModel LoadFile(this string file)
         {
             if (!File.Exists(file))
             {
@@ -38,7 +40,7 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
             f.Close();
 
             return overview;
-        }
+        }*/
 
         /// <summary>
         /// This method writes the current passed model to an xml file
@@ -49,7 +51,16 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
         {
 
             System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(DateModel));
-            FileStream file = File.Create(FullFilePath(fileName));
+            FileStream file = File.Create(FullFilePath(fileName, false));
+            writer.Serialize(file, model);
+            file.Close();
+
+        }
+        public static void WriteFile(this TemplateModel model, string fileName)
+        {
+
+            System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(TemplateModel));
+            FileStream file = File.Create(FullFilePath(fileName, true));
             writer.Serialize(file, model);
             file.Close();
 

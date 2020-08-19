@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using WorkoutLoggerLibrary.Models;
 using WorkoutLoggerLibrary.DataAccess.XmlHelpers;
-using System.Configuration;
 using System.IO;
 
 namespace WorkoutLoggerLibrary.DataAccess
@@ -26,6 +25,16 @@ namespace WorkoutLoggerLibrary.DataAccess
 
             return model;
 
+        }
+
+        public TemplateModel CreateTemplate(TemplateModel model)
+        {
+            DateTime dayName = DateTime.Today;
+            string fileName = $"{ dayName.ToString("d").Replace("/", "_") }{ model.NameTemplate.Replace(" ", "") }.xml";
+
+            model.WriteFile(fileName);
+
+            return model;
         }
     }
 }

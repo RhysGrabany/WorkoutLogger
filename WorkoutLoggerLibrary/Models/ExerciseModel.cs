@@ -23,10 +23,7 @@ namespace WorkoutLoggerLibrary.Models
         /// </summary>
         public List<float> ExerciseWeight { get; set; } = new List<float>();
 
-        public ExerciseModel()
-        {
-
-        }
+        public ExerciseModel() { }
 
         public ExerciseModel(
             string exerciseName, 
@@ -35,14 +32,19 @@ namespace WorkoutLoggerLibrary.Models
             List<float> exerciseWeight)
         {
             ExerciseName = exerciseName;
-
             ExerciseSets = exerciseSets;
-
             ExerciseReps = exerciseReps;
-
             ExerciseWeight = exerciseWeight;
+        }
 
-
+        public ExerciseModel(
+            string exerciseName,
+            int exerciseSets,
+            List<float> exerciseWeight)
+        {
+            ExerciseName = exerciseName;
+            ExerciseSets = exerciseSets;
+            ExerciseWeight = exerciseWeight;
         }
 
     }
