@@ -6,14 +6,6 @@ using System.Linq;
 using System.Text;
 using WorkoutLoggerLibrary.Models;
 
-// Load textfile
-// Convert text to List<DateModel>
-// Find max Id
-// Add new record with new ID ( max + 1 )
-// Convert Dates to List<string>
-// Save the List<string> to the text file
-
-
 namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
 {
     public static class XmlConnectorProcessor
@@ -28,6 +20,11 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
             return $"{ ConfigurationManager.AppSettings["filePath"] }\\{ fileName }";
         }
 
+        /// <summary>
+        /// Loads an xml file and parses it into a DateModel 
+        /// </summary>
+        /// <param name="file">The xml file being parsed</param>
+        /// <returns></returns>
         public static DateModel LoadFile(this string file)
         {
             if (!File.Exists(file))
@@ -43,12 +40,16 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
             return overview;
         }
 
+        /// <summary>
+        /// This method writes the current passed model to an xml file
+        /// </summary>
+        /// <param name="model">The current model being written</param>
+        /// <param name="fileName">The file location being written to</param>
         public static void WriteFile(this DateModel model, string fileName)
         {
 
             System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(DateModel));
             FileStream file = File.Create(FullFilePath(fileName));
-            //FileStream file = File.Create("C:\\data\\WorkoutLogger\\DateModels.xml");
             writer.Serialize(file, model);
             file.Close();
 

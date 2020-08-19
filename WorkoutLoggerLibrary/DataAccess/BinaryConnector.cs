@@ -15,8 +15,6 @@ namespace WorkoutLoggerLibrary.DataAccess
         /// <returns>The day model with unique id</returns>
         public DateModel CreateDay(DateModel model)
         {
-            model.Id = 1;
-
             return model;
         }
     }

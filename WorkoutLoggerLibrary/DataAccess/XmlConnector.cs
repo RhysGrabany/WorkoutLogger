@@ -11,9 +11,6 @@ namespace WorkoutLoggerLibrary.DataAccess
     public class XmlConnector : IDataConnection
     {
 
-        private const string DateFile = "DateModels.xml";
-
-        // TODO - Wire up the CreateDay for text files
         /// <summary>
         /// Saves a day to the textfile
         /// </summary>
@@ -22,14 +19,10 @@ namespace WorkoutLoggerLibrary.DataAccess
         public DateModel CreateDay(DateModel model)
         {
 
-            // Load textfile
-            // Convert text to List<DateModel>
-            // Find max Id
-            // Add new record with new ID ( max + 1 )
-            // Convert Dates to List<string>
-            // Save the List<string> to the text file
-            Console.WriteLine(Directory.GetFiles(@"C:\data\WorkoutLogger"));
-            model.WriteFile(DateFile);
+            DateTime dayName = DateTime.Today;
+            string fileName = $"{ dayName.ToString("d").Replace("/", "_") }.xml";
+
+            model.WriteFile(fileName);
 
             return model;
 

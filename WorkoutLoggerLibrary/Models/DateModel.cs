@@ -7,10 +7,6 @@ namespace WorkoutLoggerLibrary.Models
     public class DateModel
     {
         /// <summary>
-        /// Unique Id for the day
-        /// </summary>
-        public int Id { get; set; }
-        /// <summary>
         /// The date the selected day is on
         /// </summary>
         public DateTime DateDay { get; set; }
@@ -28,10 +24,7 @@ namespace WorkoutLoggerLibrary.Models
         /// </summary>
         public string DescriptionDay { get; set; }
 
-        public DateModel()
-        {
-               
-        }
+        public DateModel() { }
 
         public DateModel(
             List<ExerciseModel> exercisesDay, 
@@ -42,6 +35,8 @@ namespace WorkoutLoggerLibrary.Models
             float weightDayValue = 0;
             float.TryParse(weightDay, out weightDayValue);
             WeightDay = weightDayValue;
+
+            DateDay = DateTime.Today;
 
         }
     }
