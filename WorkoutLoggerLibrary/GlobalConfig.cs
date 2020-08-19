@@ -19,9 +19,9 @@ namespace WorkoutLoggerLibrary
                     SqlConnector sql = new SqlConnector();
                     Connection = sql;
                     break;
-                case DatabaseType.TEXTFILE:
+                case DatabaseType.XML:
                     // TODO - Create the Text Connection
-                    TextConnector text = new TextConnector();
+                    XmlConnector text = new XmlConnector();
                     Connection = text;
                     break;
                 case DatabaseType.BINARY:

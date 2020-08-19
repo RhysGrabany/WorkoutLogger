@@ -10,8 +10,8 @@ namespace WorkoutLoggerUI
 {
     public partial class WorkoutViewerForm : Form
     {
-        public const int NO_OF_EXERCISES = 10;
-        public const int NO_OF_SETS = 5;
+        public const int NoOfExercises = 10;
+        public const int NoOfSets = 5;
 
         public WorkoutViewerForm()
         {
@@ -143,7 +143,7 @@ namespace WorkoutLoggerUI
 
             List<ExerciseModel> exercises = new List<ExerciseModel>();
 
-            for (int i = 1; i < NO_OF_EXERCISES+1; i++)
+            for (int i = 1; i < NoOfExercises+1; i++)
             {
                 string exercise;
                 TextBox exerciseBox = (TextBox)this.Controls["textBoxEx" + i.ToString()];
@@ -178,7 +178,7 @@ namespace WorkoutLoggerUI
         {
             List<int> reps = new List<int>();
 
-            for (int i = 1; i < NO_OF_SETS+1; i++)
+            for (int i = 1; i < NoOfSets+1; i++)
             {
                 TextBox repBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString() + "Re" + i.ToString()];
 
@@ -242,9 +242,9 @@ namespace WorkoutLoggerUI
 
             textBoxWeightDay.Text = "";
 
-            for (int exercise = 1; exercise < NO_OF_EXERCISES+1; exercise++)
+            for (int exercise = 1; exercise < NoOfExercises+1; exercise++)
             {
-                for (int set = 1; set < NO_OF_SETS+1; set++)
+                for (int set = 1; set < NoOfSets+1; set++)
                 {
                     TextBox exerciseBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString()];
                     TextBox repBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString() + "Re" + set.ToString()];
