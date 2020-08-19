@@ -175,12 +175,11 @@ namespace WorkoutLoggerUI
                 {
                     exercise = exerciseBox.Text;
                     List<int> reps = RepsList(i);
-                    int sets = reps.Count;
                     List<float> weights = WeightsList(i);
+                    int sets = template ? weights.Count : reps.Count;
 
                     if (!template)
                     {
-                        Console.WriteLine("Test!");
                         exercises.Add(new ExerciseModel(exercise, sets, reps, weights));
                     } 
                     else
@@ -227,13 +226,12 @@ namespace WorkoutLoggerUI
         /// This populates a List<float> of the weights used for the exercise
         /// </summary>
         /// <param name="exerciseNo">This is the current number for the exercise</param>
-        /// <param name="noOfSets">This is how many sets there are for the weights (this means you can skip weights)</param>
         /// <returns>Returns a populated list of what weights were used for the exercise</returns>
         private List<float> WeightsList(int exercise)
         {
             List<float> weights = new List<float>();
 
-            for (int i = 1; i < NoOfSets+1 + 1; i++)
+            for (int i = 1; i < NoOfSets+1; i++)
             {
                 TextBox weightBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString() + "We" + i.ToString()];
 
@@ -242,7 +240,7 @@ namespace WorkoutLoggerUI
                 // e.g. {7.5, 19.5} -> next weight box is empty, add last used weight -> {7.5, 19.5, 19.5}
                 // Then it will continue
                 float weightValue = 0;
-                if (weightBox.Text.Length == 0)
+                if (weightBox is null)
                 {
                     weights.Add(weights.Last());
                 }
