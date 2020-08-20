@@ -25,6 +25,8 @@ namespace WorkoutLoggerUI
 
         #region Form Components
 
+        #region Day Components
+
         private void buttonSaveDay_Click(object sender, EventArgs e)
         {
             // Checks if the form is valid
@@ -52,6 +54,14 @@ namespace WorkoutLoggerUI
 
         }
 
+        private void buttonLoadDay_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Template Components
         /// <summary>
         /// Method that dictates what happens when the Save Template button is clicked
         /// </summary>
@@ -78,6 +88,29 @@ namespace WorkoutLoggerUI
             }
 
         }
+
+        private void buttonTemplateDelete_Click(object sender, EventArgs e)
+        {
+            // load in the text for the template to be deleted (add the .xml to make it more exact)
+            // loaad in the path, then get all files and and then delete the first one that 
+            // matches the text for the template
+            // then remove that option from the combobox
+            string deleteTemplate = comboBoxLoad.Text + ".xml";
+            string path = ConfigurationManager.AppSettings["tfilePath"];
+            IEnumerable<string> files = Directory.GetFiles(path, "*.xml", SearchOption.TopDirectoryOnly);
+
+            foreach (string file in files)
+            {
+                if (file.Contains(deleteTemplate)) File.Delete(file); break;
+            }
+
+            comboBoxLoad.Items.Remove(deleteTemplate);
+        }
+        private void buttonLoadTemplate_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
 
         #endregion
 

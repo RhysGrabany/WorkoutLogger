@@ -183,6 +183,7 @@
             this.buttonLoadTemplate.TabIndex = 1;
             this.buttonLoadTemplate.Text = "Load";
             this.buttonLoadTemplate.UseVisualStyleBackColor = true;
+            this.buttonLoadTemplate.Click += new System.EventHandler(this.buttonLoadTemplate_Click);
             // 
             // textBoxTemplate
             // 
@@ -1165,6 +1166,7 @@
             this.buttonTemplateDelete.TabIndex = 155;
             this.buttonTemplateDelete.Text = "Delete Template";
             this.buttonTemplateDelete.UseVisualStyleBackColor = true;
+            this.buttonTemplateDelete.Click += new System.EventHandler(this.buttonTemplateDelete_Click);
             // 
             // buttonLoadDay
             // 
@@ -1174,6 +1176,7 @@
             this.buttonLoadDay.TabIndex = 156;
             this.buttonLoadDay.Text = "Load Day";
             this.buttonLoadDay.UseVisualStyleBackColor = true;
+            this.buttonLoadDay.Click += new System.EventHandler(this.buttonLoadDay_Click);
             // 
             // WorkoutViewerForm
             // 
