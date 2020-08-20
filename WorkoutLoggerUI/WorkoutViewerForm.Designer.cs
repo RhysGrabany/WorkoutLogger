@@ -153,7 +153,6 @@
             this.labelReps4 = new System.Windows.Forms.Label();
             this.labelWeight5 = new System.Windows.Forms.Label();
             this.labelReps5 = new System.Windows.Forms.Label();
-            this.labelSaveDay = new System.Windows.Forms.Label();
             this.buttonSaveDay = new System.Windows.Forms.Button();
             this.labelWeightDay = new System.Windows.Forms.Label();
             this.textBoxWeightDay = new System.Windows.Forms.TextBox();
@@ -164,19 +163,21 @@
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxDayName = new System.Windows.Forms.TextBox();
+            this.buttonTemplateDelete = new System.Windows.Forms.Button();
+            this.buttonLoadDay = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxLoad
             // 
             this.comboBoxLoad.FormattingEnabled = true;
-            this.comboBoxLoad.Location = new System.Drawing.Point(12, 12);
+            this.comboBoxLoad.Location = new System.Drawing.Point(501, 16);
             this.comboBoxLoad.Name = "comboBoxLoad";
             this.comboBoxLoad.Size = new System.Drawing.Size(159, 38);
             this.comboBoxLoad.TabIndex = 0;
             // 
             // buttonLoadTemplate
             // 
-            this.buttonLoadTemplate.Location = new System.Drawing.Point(177, 12);
+            this.buttonLoadTemplate.Location = new System.Drawing.Point(666, 16);
             this.buttonLoadTemplate.Name = "buttonLoadTemplate";
             this.buttonLoadTemplate.Size = new System.Drawing.Size(91, 37);
             this.buttonLoadTemplate.TabIndex = 1;
@@ -185,7 +186,7 @@
             // 
             // textBoxTemplate
             // 
-            this.textBoxTemplate.Location = new System.Drawing.Point(12, 56);
+            this.textBoxTemplate.Location = new System.Drawing.Point(501, 108);
             this.textBoxTemplate.Name = "textBoxTemplate";
             this.textBoxTemplate.Size = new System.Drawing.Size(159, 35);
             this.textBoxTemplate.TabIndex = 2;
@@ -193,7 +194,7 @@
             // 
             // buttonSaveTemplate
             // 
-            this.buttonSaveTemplate.Location = new System.Drawing.Point(177, 54);
+            this.buttonSaveTemplate.Location = new System.Drawing.Point(666, 106);
             this.buttonSaveTemplate.Name = "buttonSaveTemplate";
             this.buttonSaveTemplate.Size = new System.Drawing.Size(91, 37);
             this.buttonSaveTemplate.TabIndex = 3;
@@ -227,7 +228,7 @@
             // labelReps1
             // 
             this.labelReps1.AutoSize = true;
-            this.labelReps1.Location = new System.Drawing.Point(575, 39);
+            this.labelReps1.Location = new System.Drawing.Point(366, 50);
             this.labelReps1.Name = "labelReps1";
             this.labelReps1.Size = new System.Drawing.Size(73, 30);
             this.labelReps1.TabIndex = 7;
@@ -362,7 +363,7 @@
             // labelWeight1
             // 
             this.labelWeight1.AutoSize = true;
-            this.labelWeight1.Location = new System.Drawing.Point(568, 9);
+            this.labelWeight1.Location = new System.Drawing.Point(359, 20);
             this.labelWeight1.Name = "labelWeight1";
             this.labelWeight1.Size = new System.Drawing.Size(111, 30);
             this.labelWeight1.TabIndex = 28;
@@ -1070,29 +1071,20 @@
             this.labelReps5.TabIndex = 142;
             this.labelReps5.Text = "R:";
             // 
-            // labelSaveDay
-            // 
-            this.labelSaveDay.AutoSize = true;
-            this.labelSaveDay.Location = new System.Drawing.Point(296, 57);
-            this.labelSaveDay.Name = "labelSaveDay";
-            this.labelSaveDay.Size = new System.Drawing.Size(98, 30);
-            this.labelSaveDay.TabIndex = 144;
-            this.labelSaveDay.Text = "Save Day";
-            // 
             // buttonSaveDay
             // 
-            this.buttonSaveDay.Location = new System.Drawing.Point(400, 56);
+            this.buttonSaveDay.Location = new System.Drawing.Point(11, 111);
             this.buttonSaveDay.Name = "buttonSaveDay";
-            this.buttonSaveDay.Size = new System.Drawing.Size(91, 37);
+            this.buttonSaveDay.Size = new System.Drawing.Size(117, 37);
             this.buttonSaveDay.TabIndex = 145;
-            this.buttonSaveDay.Text = "Save";
+            this.buttonSaveDay.Text = "Save Day";
             this.buttonSaveDay.UseVisualStyleBackColor = true;
             this.buttonSaveDay.Click += new System.EventHandler(this.buttonSaveDay_Click);
             // 
             // labelWeightDay
             // 
             this.labelWeightDay.AutoSize = true;
-            this.labelWeightDay.Location = new System.Drawing.Point(296, 15);
+            this.labelWeightDay.Location = new System.Drawing.Point(44, 19);
             this.labelWeightDay.Name = "labelWeightDay";
             this.labelWeightDay.Size = new System.Drawing.Size(84, 30);
             this.labelWeightDay.TabIndex = 146;
@@ -1100,7 +1092,7 @@
             // 
             // textBoxWeightDay
             // 
-            this.textBoxWeightDay.Location = new System.Drawing.Point(400, 15);
+            this.textBoxWeightDay.Location = new System.Drawing.Point(134, 20);
             this.textBoxWeightDay.Name = "textBoxWeightDay";
             this.textBoxWeightDay.Size = new System.Drawing.Size(55, 35);
             this.textBoxWeightDay.TabIndex = 147;
@@ -1108,7 +1100,7 @@
             // labelWeightKg
             // 
             this.labelWeightKg.AutoSize = true;
-            this.labelWeightKg.Location = new System.Drawing.Point(461, 15);
+            this.labelWeightKg.Location = new System.Drawing.Point(195, 25);
             this.labelWeightKg.Name = "labelWeightKg";
             this.labelWeightKg.Size = new System.Drawing.Size(37, 30);
             this.labelWeightKg.TabIndex = 148;
@@ -1152,7 +1144,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 113);
+            this.label1.Location = new System.Drawing.Point(12, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 30);
             this.label1.TabIndex = 153;
@@ -1160,10 +1152,28 @@
             // 
             // textBoxDayName
             // 
-            this.textBoxDayName.Location = new System.Drawing.Point(134, 110);
+            this.textBoxDayName.Location = new System.Drawing.Point(134, 67);
             this.textBoxDayName.Name = "textBoxDayName";
             this.textBoxDayName.Size = new System.Drawing.Size(166, 35);
             this.textBoxDayName.TabIndex = 154;
+            // 
+            // buttonTemplateDelete
+            // 
+            this.buttonTemplateDelete.Location = new System.Drawing.Point(537, 61);
+            this.buttonTemplateDelete.Name = "buttonTemplateDelete";
+            this.buttonTemplateDelete.Size = new System.Drawing.Size(173, 41);
+            this.buttonTemplateDelete.TabIndex = 155;
+            this.buttonTemplateDelete.Text = "Delete Template";
+            this.buttonTemplateDelete.UseVisualStyleBackColor = true;
+            // 
+            // buttonLoadDay
+            // 
+            this.buttonLoadDay.Location = new System.Drawing.Point(134, 111);
+            this.buttonLoadDay.Name = "buttonLoadDay";
+            this.buttonLoadDay.Size = new System.Drawing.Size(117, 37);
+            this.buttonLoadDay.TabIndex = 156;
+            this.buttonLoadDay.Text = "Load Day";
+            this.buttonLoadDay.UseVisualStyleBackColor = true;
             // 
             // WorkoutViewerForm
             // 
@@ -1171,6 +1181,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(769, 707);
+            this.Controls.Add(this.buttonLoadDay);
+            this.Controls.Add(this.buttonTemplateDelete);
             this.Controls.Add(this.textBoxDayName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxDescription);
@@ -1181,7 +1193,6 @@
             this.Controls.Add(this.textBoxWeightDay);
             this.Controls.Add(this.labelWeightDay);
             this.Controls.Add(this.buttonSaveDay);
-            this.Controls.Add(this.labelSaveDay);
             this.Controls.Add(this.labelWeight5);
             this.Controls.Add(this.labelReps5);
             this.Controls.Add(this.labelWeight4);
@@ -1443,7 +1454,6 @@
         private System.Windows.Forms.Label labelReps4;
         private System.Windows.Forms.Label labelWeight5;
         private System.Windows.Forms.Label labelReps5;
-        private System.Windows.Forms.Label labelSaveDay;
         private System.Windows.Forms.Button buttonSaveDay;
         private System.Windows.Forms.Label labelWeightDay;
         private System.Windows.Forms.TextBox textBoxWeightDay;
@@ -1454,6 +1464,8 @@
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxDayName;
+        private System.Windows.Forms.Button buttonTemplateDelete;
+        private System.Windows.Forms.Button buttonLoadDay;
     }
 }
 
