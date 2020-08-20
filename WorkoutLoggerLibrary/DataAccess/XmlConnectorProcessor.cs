@@ -56,6 +56,12 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
             file.Close();
 
         }
+
+        /// <summary>
+        /// This method writes the current passed model to an xml file
+        /// </summary>
+        /// <param name="model">The current model being written</param>
+        /// <param name="fileName">The file location being written to</param>
         public static void WriteFile(this TemplateModel model, string fileName)
         {
 

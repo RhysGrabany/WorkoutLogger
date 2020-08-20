@@ -12,6 +12,8 @@ namespace WorkoutLoggerUI
 {
     public partial class WorkoutViewerForm : Form
     {
+        // Consts for the number of exercises and sets for the form
+        // no real need having more unless push comes to shove
         public const int NoOfExercises = 10;
         public const int NoOfSets = 5;
 
@@ -49,6 +51,12 @@ namespace WorkoutLoggerUI
             }
 
         }
+
+        /// <summary>
+        /// Method that dictates what happens when the Save Template button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSaveTemplate_Click(object sender, EventArgs e)
         {
             if (Validate())
@@ -301,9 +309,14 @@ namespace WorkoutLoggerUI
         /// </summary>
         private void PopulateComboBox()
         {
+            // save the file location for templates
+            // Get the files in the template folder, only load the *.xml files,
+            // then get the file names for each file (exclude the paths)
             string templateFolder = ConfigurationManager.AppSettings["tfilePath"];
             IEnumerable<string> files = Directory.GetFiles(templateFolder, "*.xml", SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x));
 
+            // run through the files, and remove everything except the name
+            // finally add each item to the combobox
             foreach (string file in files)
             {
                 int position = file.IndexOf(".") - 10;
