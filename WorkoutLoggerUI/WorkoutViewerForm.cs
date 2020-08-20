@@ -18,6 +18,7 @@ namespace WorkoutLoggerUI
         public WorkoutViewerForm()
         {
             InitializeComponent();
+            PopulateComboBox();
         }
 
         #region Form Components
@@ -288,6 +289,17 @@ namespace WorkoutLoggerUI
 
                 }
             }
+        }
+
+        /// <summary>
+        /// This method will populate the combobox dropdown
+        /// by going through the templates saved and adding them
+        /// to the pile.
+        /// </summary>
+        private void PopulateComboBox()
+        {
+
+            comboBoxLoad.Items.Add("test");
         }
 
         #endregion
