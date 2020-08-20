@@ -60,6 +60,9 @@ namespace WorkoutLoggerUI
 
                 Directory.CreateDirectory($"{ ConfigurationManager.AppSettings["tfilePath"] }");
                 GlobalConfig.Connection.CreateTemplate(model);
+
+                comboBoxLoad.Items.Add(nameTemplate.Replace(" ", ""));
+
             }
             else
             {
@@ -298,8 +301,16 @@ namespace WorkoutLoggerUI
         /// </summary>
         private void PopulateComboBox()
         {
+            string templateFolder = ConfigurationManager.AppSettings["tfilePath"];
+            IEnumerable<string> files = Directory.GetFiles(templateFolder, "*.xml", SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x));
 
-            comboBoxLoad.Items.Add("test");
+            foreach (string file in files)
+            {
+                int position = file.IndexOf(".") - 10;
+                comboBoxLoad.Items.Add(file.Substring(10, position));
+            }
+
+
         }
 
         #endregion
