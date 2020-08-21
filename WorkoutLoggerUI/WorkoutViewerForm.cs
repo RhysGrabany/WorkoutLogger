@@ -361,6 +361,7 @@ namespace WorkoutLoggerUI
             // Get the files in the template folder, only load the *.xml files,
             // then get the file names for each file (exclude the paths)
             string templateFolder = ConfigurationManager.AppSettings["tfilePath"];
+            if (!Directory.Exists(templateFolder)) return;
             IEnumerable<string> files = Directory.GetFiles(templateFolder, "*.xml", SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x));
 
             // run through the files, and remove everything except the name
@@ -370,8 +371,6 @@ namespace WorkoutLoggerUI
                 int position = file.IndexOf(".") - 10;
                 comboBoxLoad.Items.Add(file.Substring(10, position));
             }
-
-
         }
 
         /// <summary>
