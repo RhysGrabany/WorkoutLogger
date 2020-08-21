@@ -402,7 +402,8 @@ namespace WorkoutLoggerUI
                 for (int i = 0; i < NoOfSets; i++)
                 {
                     TextBox weightBox = (TextBox)this.Controls[$"textBoxEx{ exerciseNo }We{ i+1 }"];
-                    weightBox.Text = exercise.ExerciseWeight[i].ToString();
+
+                    if (exercise.ExerciseWeight[i] != 0) weightBox.Text = exercise.ExerciseWeight[i].ToString();
 
                 }
                 exerciseNo++;
