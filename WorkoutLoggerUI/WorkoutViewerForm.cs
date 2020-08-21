@@ -94,7 +94,7 @@ namespace WorkoutLoggerUI
             // loaad in the path, then get all files and and then delete the first one that 
             // matches the text for the template
             // then remove that option from the combobox
-            string deleteTemplate = comboBoxLoad.Text + ".xml";
+            string deleteTemplate = $"{ comboBoxLoad.Text }.xml";
             string path = ConfigurationManager.AppSettings["tfilePath"];
             IEnumerable<string> files = Directory.GetFiles(path, "*.xml", SearchOption.TopDirectoryOnly);
 
@@ -115,7 +115,7 @@ namespace WorkoutLoggerUI
 
             ClearTextboxes();
 
-            string loadTemplate = comboBoxLoad.Text + ".xml";
+            string loadTemplate = $"{ comboBoxLoad.Text }.xml";
 
             string filePath = FindFile(loadTemplate);
             TemplateModel model = GlobalConfig.Connection.LoadTemplate(filePath);
@@ -235,10 +235,10 @@ namespace WorkoutLoggerUI
             for (int i = 1; i < NoOfExercises+1; i++)
             {
                 string exercise;
-                TextBox exerciseBox = (TextBox)this.Controls["textBoxEx" + i.ToString()];
+                TextBox exerciseBox = (TextBox)this.Controls[$"textBoxEx{ i }"];
                 // This is a placeholder box, basically checks if the exercise box was skipped
                 // might be used when an exercise is a continuation
-                TextBox phWeightBox = (TextBox)this.Controls["textBoxEx" + i.ToString() + "We1"];
+                TextBox phWeightBox = (TextBox)this.Controls[$"textBoxEx{ i }We1"];
                 if (exerciseBox.Text.Length > 0 || phWeightBox.Text.Length > 0)
                 {
                     exercise = exerciseBox.Text;
@@ -276,7 +276,7 @@ namespace WorkoutLoggerUI
 
             for (int i = 1; i < NoOfSets+1; i++)
             {
-                TextBox repBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString() + "Re" + i.ToString()];
+                TextBox repBox = (TextBox)this.Controls[$"textBoxEx{ exercise }Re{ i }"];
 
                 int repsValue = 0;
                 if (repBox.Text.Length > 0)
@@ -301,7 +301,7 @@ namespace WorkoutLoggerUI
 
             for (int i = 1; i < NoOfSets+1; i++)
             {
-                TextBox weightBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString() + "We" + i.ToString()];
+                TextBox weightBox = (TextBox)this.Controls[$"textBoxEx{ exercise }We{ i }"];
 
                 // If the weight text box is empty, but there's still sets to look over,
                 // The last used weight will be added to the List
