@@ -62,11 +62,7 @@ namespace WorkoutLoggerUI
         #endregion
 
         #region Template Components
-        /// <summary>
-        /// Method that dictates what happens when the Save Template button is clicked
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void buttonSaveTemplate_Click(object sender, EventArgs e)
         {
             if (Validate())
@@ -108,6 +104,11 @@ namespace WorkoutLoggerUI
         }
         private void buttonLoadTemplate_Click(object sender, EventArgs e)
         {
+
+            // Before loading in the info clear the boxes of the form
+            // the partial file path is found by adding the file extension onto it
+            // after file path is found, the file is then deserialized into a TemplateModel
+            // And the textboxes are then filled in with the info from the model
 
             ClearTextboxes();
 
@@ -317,7 +318,11 @@ namespace WorkoutLoggerUI
 
         #region General Utilities
 
-        // Utilities - Clear Exercise Textboxes
+        /*              - Clear Exercise Textboxes
+        *  Utilities    - Populate Load Template Combobox
+        *               - Find file based on partial
+        *               - Fill text boxes based on TemplateModel
+        */
 
         /// <summary>
         /// This method clears all the Exercise, Weight, Rep, and Daily Weight
@@ -369,6 +374,11 @@ namespace WorkoutLoggerUI
 
         }
 
+        /// <summary>
+        /// This is used to find and return the path of a file when given a partial
+        /// </summary>
+        /// <param name="partial">This is a partial of a file path that needs to be found</param>
+        /// <returns></returns>
         private string FindFile(string partial)
         {
 
@@ -387,6 +397,11 @@ namespace WorkoutLoggerUI
             
         }
 
+        /// <summary>
+        /// Fill the textboxes for the Exercise Names and Weights
+        /// This is for the TemplateModel
+        /// </summary>
+        /// <param name="model">TemplateModel that is populating the textboxes</param>
         private void FillTextBoxes(TemplateModel model)
         {
             textBoxDayName.Text = model.NameTemplate;
