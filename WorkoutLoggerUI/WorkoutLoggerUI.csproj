@@ -65,6 +65,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoadDayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadDayForm.Designer.cs">
+      <DependentUpon>LoadDayForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorkoutViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="LoadDayForm.resx">
+      <DependentUpon>LoadDayForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WorkoutViewerForm.resx">
       <DependentUpon>WorkoutViewerForm.cs</DependentUpon>
     </EmbeddedResource>

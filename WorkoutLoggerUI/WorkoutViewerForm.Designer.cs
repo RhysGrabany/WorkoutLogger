@@ -165,6 +165,7 @@
             this.textBoxDayName = new System.Windows.Forms.TextBox();
             this.buttonTemplateDelete = new System.Windows.Forms.Button();
             this.buttonLoadDay = new System.Windows.Forms.Button();
+            this.buttonExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxLoad
@@ -1139,7 +1140,7 @@
             this.textBoxDescription.Location = new System.Drawing.Point(231, 606);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(520, 91);
+            this.textBoxDescription.Size = new System.Drawing.Size(401, 91);
             this.textBoxDescription.TabIndex = 152;
             // 
             // label1
@@ -1178,12 +1179,23 @@
             this.buttonLoadDay.UseVisualStyleBackColor = true;
             this.buttonLoadDay.Click += new System.EventHandler(this.buttonLoadDay_Click);
             // 
+            // buttonExit
+            // 
+            this.buttonExit.Location = new System.Drawing.Point(651, 655);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(100, 40);
+            this.buttonExit.TabIndex = 157;
+            this.buttonExit.Text = "Exit";
+            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
             // WorkoutViewerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(769, 707);
+            this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonLoadDay);
             this.Controls.Add(this.buttonTemplateDelete);
             this.Controls.Add(this.textBoxDayName);
@@ -1469,6 +1481,7 @@
         private System.Windows.Forms.TextBox textBoxDayName;
         private System.Windows.Forms.Button buttonTemplateDelete;
         private System.Windows.Forms.Button buttonLoadDay;
+        private System.Windows.Forms.Button buttonExit;
     }
 }
 

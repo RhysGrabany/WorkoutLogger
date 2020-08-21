@@ -56,10 +56,13 @@ namespace WorkoutLoggerUI
 
         private void buttonLoadDay_Click(object sender, EventArgs e)
         {
-
+            LoadDayForm LoadDay = new LoadDayForm();
+            LoadDay.Show();
         }
 
         #endregion
+
+
 
         #region Template Components
 
@@ -122,6 +125,11 @@ namespace WorkoutLoggerUI
 
         }
         #endregion
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
 
         #endregion
 
@@ -426,5 +434,6 @@ namespace WorkoutLoggerUI
 
         #endregion
 
+        
     }
 }
