@@ -109,22 +109,14 @@ namespace WorkoutLoggerUI
         private void buttonLoadTemplate_Click(object sender, EventArgs e)
         {
 
+            ClearTextboxes();
+
             string loadTemplate = comboBoxLoad.Text + ".xml";
-            string path = ConfigurationManager.AppSettings["tfilePath"];
-            IEnumerable<string> files = Directory.GetFiles(path, "*.xml", SearchOption.TopDirectoryOnly);
 
-            foreach (string file in files)
-            {
-                if (file.Contains(loadTemplate))
-                {
-                    TemplateModel model = GlobalConfig.Connection.LoadTemplate(file);
-                    break;
-                }
-            }
+            string filePath = FindFile(loadTemplate);
+            TemplateModel model = GlobalConfig.Connection.LoadTemplate(filePath);
 
-
-
-
+            FillTextBoxes(model);
 
 
         }
@@ -341,9 +333,9 @@ namespace WorkoutLoggerUI
             {
                 for (int set = 1; set < NoOfSets+1; set++)
                 {
-                    TextBox exerciseBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString()];
-                    TextBox repBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString() + "Re" + set.ToString()];
-                    TextBox weightBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString() + "We" + set.ToString()];
+                    TextBox exerciseBox = (TextBox)this.Controls[$"textBoxEx{ exercise }"];
+                    TextBox repBox = (TextBox)this.Controls[$"textBoxEx{ exercise }Re{ set }"];
+                    TextBox weightBox = (TextBox)this.Controls[$"textBoxEx{ exercise }We{ set }"];
 
                     exerciseBox.Text = "";
                     repBox.Text = "";
@@ -375,6 +367,46 @@ namespace WorkoutLoggerUI
             }
 
 
+        }
+
+        private string FindFile(string partial)
+        {
+
+            string path = ConfigurationManager.AppSettings["tfilePath"];
+            IEnumerable<string> files = Directory.GetFiles(path, "*.xml", SearchOption.TopDirectoryOnly);
+
+            foreach (string file in files)
+            {
+                if (file.Contains(partial))
+                {
+                    return file;
+                }
+            }
+
+            return null;
+            
+        }
+
+        private void FillTextBoxes(TemplateModel model)
+        {
+            textBoxDayName.Text = model.NameTemplate;
+
+
+            int exerciseNo = 1;
+            foreach (ExerciseModel exercise in model.ExerciseTemplate)
+            {
+
+                TextBox exerciseBox = (TextBox)this.Controls[$"textBoxEx{ exerciseNo }"];
+                exerciseBox.Text = exercise.ExerciseName;
+
+                for (int i = 0; i < NoOfSets; i++)
+                {
+                    TextBox weightBox = (TextBox)this.Controls[$"textBoxEx{ exerciseNo }We{ i+1 }"];
+                    weightBox.Text = exercise.ExerciseWeight[i].ToString();
+
+                }
+                exerciseNo++;
+            }
         }
 
         #endregion
