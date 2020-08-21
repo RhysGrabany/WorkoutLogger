@@ -104,10 +104,28 @@ namespace WorkoutLoggerUI
                 if (file.Contains(deleteTemplate)) File.Delete(file); break;
             }
 
-            comboBoxLoad.Items.Remove(deleteTemplate);
+            comboBoxLoad.Items.Remove(comboBoxLoad.Text);
         }
         private void buttonLoadTemplate_Click(object sender, EventArgs e)
         {
+
+            string loadTemplate = comboBoxLoad.Text + ".xml";
+            string path = ConfigurationManager.AppSettings["tfilePath"];
+            IEnumerable<string> files = Directory.GetFiles(path, "*.xml", SearchOption.TopDirectoryOnly);
+
+            foreach (string file in files)
+            {
+                if (file.Contains(loadTemplate))
+                {
+                    TemplateModel model = GlobalConfig.Connection.LoadTemplate(file);
+                    break;
+                }
+            }
+
+
+
+
+
 
         }
         #endregion

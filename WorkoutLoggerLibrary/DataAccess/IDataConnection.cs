@@ -20,5 +20,11 @@ namespace WorkoutLoggerLibrary.DataAccess
         /// <param name="model">The model being saved using the data connections</param>
         /// <returns>The model being passed</returns>
         TemplateModel CreateTemplate(TemplateModel model);
+
+        DateModel LoadDate(string path);
+        
+        TemplateModel LoadTemplate(string path);
+
+
     }
 }

@@ -22,25 +22,7 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
                 : $"{ ConfigurationManager.AppSettings["filePath"] }\\{ fileName }";
         }
 
-        /// <summary>
-        /// Loads an xml file and parses it into a DateModel 
-        /// </summary>
-        /// <param name="file">The xml file being parsed</param>
-        /// <returns></returns>
-        /*public static DateModel LoadFile(this string file)
-        {
-            if (!File.Exists(file))
-            {
-                return new DateModel();
-            }
-
-            System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(DateModel));
-            StreamReader f = new StreamReader(FullFilePath("serializing.xml"));
-            DateModel overview = (DateModel)reader.Deserialize(f);
-            f.Close();
-
-            return overview;
-        }*/
+        #region Writing to File
 
         /// <summary>
         /// This method writes the current passed model to an xml file
@@ -71,5 +53,48 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
             file.Close();
 
         }
+
+        #endregion
+
+        #region Loading from File
+
+        /// <summary>
+        /// Loads an xml file and parses it into a DateModel 
+        /// </summary>
+        /// <param name="file">The xml file being parsed</param>
+        /// <returns></returns>
+        public static DateModel LoadFileDate(this string file)
+        {
+            if (!File.Exists(file))
+            {
+                return new DateModel();
+            }
+
+            System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(DateModel));
+            StreamReader f = new StreamReader(FullFilePath(file, false));
+            DateModel overview = (DateModel)reader.Deserialize(f);
+            f.Close();
+
+            return overview;
+        }
+
+        public static TemplateModel LoadFileTemplate(this string file)
+        {
+            if (!File.Exists(file))
+            {
+                return new TemplateModel();
+            }
+
+            System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(TemplateModel));
+            StreamReader f = new StreamReader(file);
+            TemplateModel overview = (TemplateModel)reader.Deserialize(f);
+            f.Close();
+
+            return overview;
+        }
+
+
+        #endregion 
+
     }
 }

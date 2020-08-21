@@ -22,5 +22,15 @@ namespace WorkoutLoggerLibrary.DataAccess
         {
             return model;
         }
+
+        public DateModel LoadDate(string path)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TemplateModel LoadTemplate(string path)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

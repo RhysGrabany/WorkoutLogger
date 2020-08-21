@@ -36,5 +36,21 @@ namespace WorkoutLoggerLibrary.DataAccess
 
             return model;
         }
+
+        public DateModel LoadDate(string path)
+        {
+            return new DateModel();
+        }
+
+        public TemplateModel LoadTemplate(string path)
+        {
+
+
+            TemplateModel model = path.LoadFileTemplate();
+
+            return model;
+
+        }
+
     }
 }
