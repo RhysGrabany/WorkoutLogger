@@ -42,6 +42,7 @@
             this.columnName,
             this.columnDate});
             this.listViewDays.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewDays.FullRowSelect = true;
             this.listViewDays.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewDays.HideSelection = false;
             this.listViewDays.Location = new System.Drawing.Point(12, 12);

@@ -61,20 +61,48 @@ namespace WorkoutLoggerUI
         #endregion
 
 
+        /// <summary>
+        /// Adding the parsed file data to the ListView
+        /// </summary>
         private void ListAddition()
         {
+
+            // Find the folder for the day data, get all the files in that folder,
+            // iterate through the files and use the method to parse the data,
+            // then add the data to the listview
+
             string dayFilePath = $"{ ConfigurationManager.AppSettings["filePath"] }";
             IEnumerable<string> files = Directory.GetFiles(dayFilePath, "*.xml", SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x));
 
             foreach (string file in files)
             {
-                
-                listViewDays.Items.Add(new ListViewItem( new[] { "column1", "column2" } ));
+                string[] parsedFile = ParsedFile(file);
+                listViewDays.Items.Add(new ListViewItem( new[] { parsedFile[1], parsedFile[0] } ));
             }
-                      
-
 
         }
 
+        /// <summary>
+        /// Parses the file name into a useable format for the listView
+        /// </summary>
+        /// <param name="file">The file name that will be parsed</param>
+        /// <returns>Returns a String[2] with the needed data in it</returns>
+        private string[] ParsedFile(string file)
+        {
+            // Create the new array, catch the date substring from the 
+            // file name, then replace the _ with / to make it look nicer
+            // find the index of the "." and then use it to find the 
+            // name of the day. Return the parsed array.
+
+            string[] parsed = new string[2];
+
+            parsed[0] = file.Substring(0, 10).Replace("_", "/");
+            
+            int position = file.IndexOf(".") - 10;
+            parsed[1] = file.Substring(10, position);
+
+            return parsed;
+
+        }
     }
 }
