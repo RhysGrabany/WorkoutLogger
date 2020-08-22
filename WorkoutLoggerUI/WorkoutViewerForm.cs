@@ -56,8 +56,12 @@ namespace WorkoutLoggerUI
 
         private void buttonLoadDay_Click(object sender, EventArgs e)
         {
-            LoadDayForm LoadDay = new LoadDayForm();
-            LoadDay.Show();
+            LoadDayForm LoadDay = new LoadDayForm(this);
+
+            LoadDay.ShowDialog();
+
+            if (!LoadDay.FormOpen) FillTextBoxes(template);
+
         }
 
         #endregion
@@ -432,8 +436,11 @@ namespace WorkoutLoggerUI
             }
         }
 
+
+        public TemplateModel template { get; set; }
+
         #endregion
 
-        
+
     }
 }
