@@ -17,6 +17,8 @@ namespace WorkoutLoggerUI
         public const int NoOfExercises = 10;
         public const int NoOfSets = 5;
 
+        public TemplateModel TemplateData { get; set; }
+
         public WorkoutViewerForm()
         {
             InitializeComponent();
@@ -60,7 +62,7 @@ namespace WorkoutLoggerUI
 
             LoadDay.ShowDialog();
 
-            if (!LoadDay.FormOpen) FillTextBoxes(template);
+            if (!LoadDay.FormOpen && TemplateData != null) FillTextBoxes(TemplateData);
 
         }
 
@@ -437,7 +439,6 @@ namespace WorkoutLoggerUI
         }
 
 
-        public TemplateModel template { get; set; }
 
         #endregion
 

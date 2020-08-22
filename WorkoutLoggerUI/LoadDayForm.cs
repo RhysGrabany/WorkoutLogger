@@ -34,7 +34,7 @@ namespace WorkoutLoggerUI
         {
             TemplateModel test = new TemplateModel();
             test.NameTemplate = "Testing";
-            WorkoutForm.template = test;
+            WorkoutForm.TemplateData = test;
             this.Close();
             FormOpen = false;
         }
