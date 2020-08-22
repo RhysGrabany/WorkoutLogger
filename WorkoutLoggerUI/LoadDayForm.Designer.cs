@@ -30,10 +30,10 @@
         {
             this.listViewDays = new System.Windows.Forms.ListView();
             this.columnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonLoadDay = new System.Windows.Forms.Button();
             this.buttonDeleteDay = new System.Windows.Forms.Button();
             this.buttonExitForm = new System.Windows.Forms.Button();
-            this.columnDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listViewDays
@@ -41,16 +41,26 @@
             this.listViewDays.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnName,
             this.columnDate});
+            this.listViewDays.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewDays.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewDays.HideSelection = false;
             this.listViewDays.Location = new System.Drawing.Point(12, 12);
+            this.listViewDays.MultiSelect = false;
             this.listViewDays.Name = "listViewDays";
             this.listViewDays.Size = new System.Drawing.Size(206, 500);
             this.listViewDays.TabIndex = 0;
             this.listViewDays.UseCompatibleStateImageBehavior = false;
+            this.listViewDays.View = System.Windows.Forms.View.Details;
             // 
             // columnName
             // 
             this.columnName.Text = "Name";
+            this.columnName.Width = 120;
+            // 
+            // columnDate
+            // 
+            this.columnDate.Text = "Date";
+            this.columnDate.Width = 120;
             // 
             // buttonLoadDay
             // 
@@ -82,10 +92,6 @@
             this.buttonExitForm.UseVisualStyleBackColor = true;
             this.buttonExitForm.Click += new System.EventHandler(this.buttonExitForm_Click);
             // 
-            // columnDate
-            // 
-            this.columnDate.Text = "Date";
-            // 
             // LoadDayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
@@ -97,6 +103,7 @@
             this.Controls.Add(this.buttonLoadDay);
             this.Controls.Add(this.listViewDays);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.Name = "LoadDayForm";
             this.Text = "Load Day";

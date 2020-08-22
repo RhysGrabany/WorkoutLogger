@@ -17,6 +17,9 @@ namespace WorkoutLoggerUI
         public const int NoOfExercises = 10;
         public const int NoOfSets = 5;
 
+        /// <summary>
+        /// This is holding the data needed from the LoadDay window
+        /// </summary>
         public TemplateModel TemplateData { get; set; }
 
         public WorkoutViewerForm()
