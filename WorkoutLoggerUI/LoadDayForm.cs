@@ -12,6 +12,7 @@ using WorkoutLoggerLibrary;
 using WorkoutLoggerLibrary.Models;
 using System.Configuration;
 using System.IO;
+using WorkoutLoggerUtility;
 
 namespace WorkoutLoggerUI
 {
@@ -35,15 +36,18 @@ namespace WorkoutLoggerUI
             WorkoutForm = workoutForm;
         }
 
-
-
         #region Form Components
 
         private void buttonLoadDay_Click(object sender, EventArgs e)
         {
-            TemplateModel test = new TemplateModel();
-            test.NameTemplate = "Testing";
-            WorkoutForm.TemplateData = test;
+            //TODO - Change this in future for BIN
+            string loadDate = $"{ listViewDays.SelectedItems[0].Text }.xml";
+            string filePath = Utility.FindFile(loadDate, false);
+            DateModel model = GlobalConfig.Connection.LoadDate(filePath); 
+
+
+
+
             this.Close();
             FormOpen = false;
         }
@@ -72,6 +76,7 @@ namespace WorkoutLoggerUI
             // then add the data to the listview
 
             string dayFilePath = $"{ ConfigurationManager.AppSettings["filePath"] }";
+            //TODO - Change this in future for BIN
             IEnumerable<string> files = Directory.GetFiles(dayFilePath, "*.xml", SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x));
 
             foreach (string file in files)

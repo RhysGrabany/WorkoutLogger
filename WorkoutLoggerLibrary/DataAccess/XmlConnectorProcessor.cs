@@ -71,7 +71,7 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
             }
 
             System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(DateModel));
-            StreamReader f = new StreamReader(FullFilePath(file, false));
+            StreamReader f = new StreamReader(file);
             DateModel overview = (DateModel)reader.Deserialize(f);
             f.Close();
 

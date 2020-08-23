@@ -11,10 +11,10 @@ namespace WorkoutLoggerLibrary.DataAccess
     {
 
         /// <summary>
-        /// Saves a day to the textfile
+        /// Creates a serialised date model for saving to file
         /// </summary>
-        /// <param name="model">The day info</param>
-        /// <returns>The day info</returns>
+        /// <param name="model">The date model that is to be serialised</param>
+        /// <returns>Returns the passed in model</returns>
         public DateModel CreateDay(DateModel model)
         {
 
@@ -27,6 +27,11 @@ namespace WorkoutLoggerLibrary.DataAccess
 
         }
 
+        /// <summary>
+        /// Creates a serialised template model for saving to file
+        /// </summary>
+        /// <param name="model">The template model that is to be serialised</param>
+        /// <returns>Returns the passed in model</returns>
         public TemplateModel CreateTemplate(TemplateModel model)
         {
             DateTime dayName = DateTime.Today;
@@ -37,19 +42,24 @@ namespace WorkoutLoggerLibrary.DataAccess
             return model;
         }
 
+        /// <summary>
+        /// Loads a date model from a serialised source
+        /// </summary>
+        /// <param name="path">The path of the date file in storage</param>
+        /// <returns>The deserialised date model</returns>
         public DateModel LoadDate(string path)
         {
-            return new DateModel();
+            return path.LoadFileDate();
         }
 
+        /// <summary>
+        /// Loads a template model from a serialised source
+        /// </summary>
+        /// <param name="path">The path of the template file in storage</param>
+        /// <returns>The deserialised template model</returns>
         public TemplateModel LoadTemplate(string path)
         {
-
-
-            TemplateModel model = path.LoadFileTemplate();
-
-            return model;
-
+            return path.LoadFileTemplate();
         }
 
     }

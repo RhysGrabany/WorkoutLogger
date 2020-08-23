@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using WorkoutLoggerLibrary;
 using WorkoutLoggerLibrary.DataAccess;
 using WorkoutLoggerLibrary.Models;
+using WorkoutLoggerUtility;
 
 namespace WorkoutLoggerUI
 {
@@ -20,7 +21,7 @@ namespace WorkoutLoggerUI
         /// <summary>
         /// This is holding the data needed from the LoadDay window
         /// </summary>
-        public TemplateModel TemplateData { get; set; }
+        public DateModel DayData { get; set; }
 
         public WorkoutViewerForm()
         {
@@ -65,7 +66,7 @@ namespace WorkoutLoggerUI
 
             LoadDay.ShowDialog();
 
-            if (!LoadDay.FormOpen && TemplateData != null) FillTextBoxes(TemplateData);
+            if (!LoadDay.FormOpen && DayData != null) FillDateTextboxes(DayData);
 
         }
 
@@ -103,8 +104,10 @@ namespace WorkoutLoggerUI
             // loaad in the path, then get all files and and then delete the first one that 
             // matches the text for the template
             // then remove that option from the combobox
+            //TODO - Change this in future for BIN
             string deleteTemplate = $"{ comboBoxLoad.Text }.xml";
             string path = ConfigurationManager.AppSettings["tfilePath"];
+            //TODO - Change this in future for BIN
             IEnumerable<string> files = Directory.GetFiles(path, "*.xml", SearchOption.TopDirectoryOnly);
 
             foreach (string file in files)
@@ -124,9 +127,10 @@ namespace WorkoutLoggerUI
 
             ClearTextboxes();
 
+            //TODO - Change this in future for BIN
             string loadTemplate = $"{ comboBoxLoad.Text }.xml";
 
-            string filePath = FindFile(loadTemplate);
+            string filePath = Utility.FindFile(loadTemplate, true);
             TemplateModel model = GlobalConfig.Connection.LoadTemplate(filePath);
 
             FillTextBoxes(model);
@@ -166,10 +170,10 @@ namespace WorkoutLoggerUI
             int maxNoExercises = 0;
             for (int i = 1; i < 11; i++)
             {
-                TextBox exerciseBox = (TextBox)this.Controls["textBoxEx" + i.ToString()];
+                TextBox exerciseBox = (TextBox)this.Controls[$"textBoxEx{ i }"];
                 // This is a placeholder box, basically checks if the exercise box was skipped
                 // might be used when an exercise is a continuation
-                TextBox phWeightBox = (TextBox)this.Controls["textBoxEx" + i.ToString() + "We1"];
+                TextBox phWeightBox = (TextBox)this.Controls[$"textBoxEx{ i }We1"];
                 if (exerciseBox.Text.Length > 0 || phWeightBox.Text.Length > 0)
                 {
                     maxNoExercises += 1;
@@ -192,8 +196,8 @@ namespace WorkoutLoggerUI
             {
                 for (int war = 1; war < 6; war++)
                 {
-                    TextBox weightBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString() + "We" + war.ToString()];
-                    TextBox repBox = (TextBox)this.Controls["textBoxEx" + exercise.ToString() + "Re" + war.ToString()];
+                    TextBox weightBox = (TextBox)this.Controls[$"textBoxEx{ exercise }We{ war }"];
+                    TextBox repBox = (TextBox)this.Controls[$"textBoxEx{ exercise }Re{ war }"];
 
                     float weightBoxValue = 0;
                     bool weightBoxValid = true;
@@ -379,6 +383,7 @@ namespace WorkoutLoggerUI
             // then get the file names for each file (exclude the paths)
             string templateFolder = ConfigurationManager.AppSettings["tfilePath"];
             if (!Directory.Exists(templateFolder)) return;
+            //TODO - Change this in future for BIN
             IEnumerable<string> files = Directory.GetFiles(templateFolder, "*.xml", SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x));
 
             // run through the files, and remove everything except the name
@@ -388,29 +393,6 @@ namespace WorkoutLoggerUI
                 int position = file.IndexOf(".") - 10;
                 comboBoxLoad.Items.Add(file.Substring(10, position));
             }
-        }
-
-        /// <summary>
-        /// This is used to find and return the path of a file when given a partial
-        /// </summary>
-        /// <param name="partial">This is a partial of a file path that needs to be found</param>
-        /// <returns></returns>
-        private string FindFile(string partial)
-        {
-
-            string path = ConfigurationManager.AppSettings["tfilePath"];
-            IEnumerable<string> files = Directory.GetFiles(path, "*.xml", SearchOption.TopDirectoryOnly);
-
-            foreach (string file in files)
-            {
-                if (file.Contains(partial))
-                {
-                    return file;
-                }
-            }
-
-            return null;
-            
         }
 
         /// <summary>
@@ -439,6 +421,11 @@ namespace WorkoutLoggerUI
                 }
                 exerciseNo++;
             }
+        }
+
+        private void FillDateTextboxes(DateModel model)
+        {
+            
         }
 
 
