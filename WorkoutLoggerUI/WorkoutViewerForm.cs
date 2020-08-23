@@ -341,8 +341,8 @@ namespace WorkoutLoggerUI
 
         /*              - Clear Exercise Textboxes
         *  Utilities    - Populate Load Template Combobox
-        *               - Find file based on partial
         *               - Fill text boxes based on TemplateModel
+        *               - Fill text boxes based on DateModel
         */
 
         /// <summary>
@@ -423,15 +423,47 @@ namespace WorkoutLoggerUI
             }
         }
 
+        /// <summary>
+        /// Filling in the textboxes with the data from the model
+        /// And then making the textboxes readonly
+        /// </summary>
+        /// <param name="model">The model with data for the textboxes</param>
         private void FillDateTextboxes(DateModel model)
         {
-            
+            textBoxDayName.Text = model.NameDay;
+            textBoxDayName.ReadOnly = true;
+
+            buttonSaveDay.Enabled = false;
+
+            int exerciseNo = 1;
+            foreach (ExerciseModel exercise in model.ExercisesDay)
+            {
+
+                TextBox exerciseBox = (TextBox)this.Controls[$"textBoxEx{ exerciseNo }"];
+                exerciseBox.Text = exercise.ExerciseName;
+                exerciseBox.ReadOnly = true;
+
+                for (int i = 0; i < NoOfSets; i++)
+                {
+                    TextBox weightBox = (TextBox)this.Controls[$"textBoxEx{ exerciseNo }We{ i + 1 }"];
+
+                    if (exercise.ExerciseWeight[i] != 0) weightBox.Text = exercise.ExerciseWeight[i].ToString();
+                    weightBox.ReadOnly = true;
+
+                }
+
+                for (int i = 0; i < NoOfSets; i++)
+                {
+                    TextBox repBox = (TextBox)this.Controls[$"textBoxEx{ exerciseNo }Re{ i + 1 }"];
+
+                    if (exercise.ExerciseWeight[i] != 0) repBox.Text = exercise.ExerciseReps[i].ToString();
+                    repBox.ReadOnly = true;
+
+                }
+                exerciseNo++;
+            }
         }
 
-
-
         #endregion
-
-
     }
 }
