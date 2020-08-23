@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkoutLoggerLibrary", "Wor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkoutLoggerUI", "WorkoutLoggerUI\WorkoutLoggerUI.csproj", "{7FF07D24-7E74-44C8-9AEA-D725CA007AAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkoutLoggerUtility", "WorkoutLoggerUtility\WorkoutLoggerUtility.csproj", "{C8C85E58-F851-45C6-BD0B-EF81D2BD32D6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{7FF07D24-7E74-44C8-9AEA-D725CA007AAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FF07D24-7E74-44C8-9AEA-D725CA007AAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FF07D24-7E74-44C8-9AEA-D725CA007AAE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8C85E58-F851-45C6-BD0B-EF81D2BD32D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8C85E58-F851-45C6-BD0B-EF81D2BD32D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8C85E58-F851-45C6-BD0B-EF81D2BD32D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8C85E58-F851-45C6-BD0B-EF81D2BD32D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,7 +12,6 @@ using WorkoutLoggerLibrary;
 using WorkoutLoggerLibrary.Models;
 using System.Configuration;
 using System.IO;
-using WorkoutLoggerUtility;
 
 namespace WorkoutLoggerUI
 {
@@ -51,6 +50,22 @@ namespace WorkoutLoggerUI
 
         private void buttonDeleteDay_Click(object sender, EventArgs e)
         {
+            //TODO - Change this in future for BIN
+            string deleteTemplate = $"{ listViewDays.SelectedItems[0].Text }.xml";
+            string path = ConfigurationManager.AppSettings["filePath"];
+            //TODO - Change this in future for BIN
+            IEnumerable<string> files = Directory.GetFiles(path, "*.xml", SearchOption.TopDirectoryOnly);
+
+            foreach (string file in files)
+            {
+                if (file.Contains(deleteTemplate)) File.Delete(file); break;
+            }
+
+            foreach(ListViewItem eachItem in listViewDays.SelectedItems)
+            {
+                listViewDays.Items.Remove(eachItem);
+            }
+
 
         }
 

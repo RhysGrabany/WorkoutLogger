@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using WorkoutLoggerLibrary;
 using WorkoutLoggerLibrary.DataAccess;
 using WorkoutLoggerLibrary.Models;
-using WorkoutLoggerUtility;
 
 namespace WorkoutLoggerUI
 {

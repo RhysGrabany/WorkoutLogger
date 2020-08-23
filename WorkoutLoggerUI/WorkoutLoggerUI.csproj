@@ -114,10 +114,6 @@
       <Project>{e5aa1c5d-c156-4c6d-a8b7-c3451a9b803e}</Project>
       <Name>WorkoutLoggerLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WorkoutLoggerUtility\WorkoutLoggerUtility.csproj">
-      <Project>{c8c85e58-f851-45c6-bd0b-ef81d2bd32d6}</Project>
-      <Name>WorkoutLoggerUtility</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
