@@ -74,7 +74,7 @@ namespace WorkoutLoggerUI
 
             string dayFilePath = $"{ ConfigurationManager.AppSettings["filePath"] }";
             //TODO - Change this in future for BIN
-            IEnumerable<string> files = Directory.GetFiles(dayFilePath, "*.xml", SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x));
+            IEnumerable<string> files = Directory.GetFiles(dayFilePath, "*.xml", SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x)).Reverse();
 
             foreach (string file in files)
             {
