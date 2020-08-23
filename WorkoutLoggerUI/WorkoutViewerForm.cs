@@ -140,10 +140,18 @@ namespace WorkoutLoggerUI
         }
         #endregion
 
+        #region Misc
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            ClearTextboxes();
+        }
+
+        #endregion
 
         #endregion
 
@@ -158,8 +166,8 @@ namespace WorkoutLoggerUI
         {
             bool output = true;
 
-            float weightNo = 0;
-            bool weightNoValid = float.TryParse(textBoxWeightDay.Text, out weightNo);
+            decimal weightNo = 0m;
+            bool weightNoValid = decimal.TryParse(textBoxWeightDay.Text, out weightNo);
             if (!weightNoValid && textBoxWeightDay.Text != "" && weightNo < 0)
             {
                 output = false;
@@ -200,11 +208,11 @@ namespace WorkoutLoggerUI
                     TextBox weightBox = (TextBox)this.Controls[$"textBoxEx{ exercise }We{ war }"];
                     TextBox repBox = (TextBox)this.Controls[$"textBoxEx{ exercise }Re{ war }"];
 
-                    float weightBoxValue = 0;
+                    decimal weightBoxValue = 0m;
                     bool weightBoxValid = true;
                     if (weightBox != null && weightBox.Text != "")
                     {
-                        weightBoxValid = float.TryParse(weightBox.Text, out weightBoxValue);
+                        weightBoxValid = decimal.TryParse(weightBox.Text, out weightBoxValue);
                         if (!weightBoxValid && weightBoxValue < 0)
                         {
                             output = false;
@@ -305,7 +313,7 @@ namespace WorkoutLoggerUI
         }
 
         /// <summary>
-        /// This populates a List<float> of the weights used for the exercise
+        /// This populates a List<decimal> of the weights used for the exercise
         /// </summary>
         /// <param name="exerciseNo">This is the current number for the exercise</param>
         /// <returns>Returns a populated list of what weights were used for the exercise</returns>
@@ -478,5 +486,7 @@ namespace WorkoutLoggerUI
         }
 
         #endregion
+
+
     }
 }

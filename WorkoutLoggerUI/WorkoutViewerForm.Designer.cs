@@ -166,6 +166,7 @@
             this.buttonTemplateDelete = new System.Windows.Forms.Button();
             this.buttonLoadDay = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxLoad
@@ -1189,12 +1190,23 @@
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
+            // buttonClear
+            // 
+            this.buttonClear.Location = new System.Drawing.Point(257, 111);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(117, 37);
+            this.buttonClear.TabIndex = 158;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
             // WorkoutViewerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(769, 707);
+            this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonLoadDay);
             this.Controls.Add(this.buttonTemplateDelete);
@@ -1483,6 +1495,7 @@
         private System.Windows.Forms.Button buttonTemplateDelete;
         private System.Windows.Forms.Button buttonLoadDay;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.Button buttonClear;
     }
 }
 

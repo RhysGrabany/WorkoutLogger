@@ -48,7 +48,7 @@
             this.listViewDays.Location = new System.Drawing.Point(12, 12);
             this.listViewDays.MultiSelect = false;
             this.listViewDays.Name = "listViewDays";
-            this.listViewDays.Size = new System.Drawing.Size(206, 500);
+            this.listViewDays.Size = new System.Drawing.Size(194, 500);
             this.listViewDays.TabIndex = 0;
             this.listViewDays.UseCompatibleStateImageBehavior = false;
             this.listViewDays.View = System.Windows.Forms.View.Details;
@@ -56,16 +56,16 @@
             // columnName
             // 
             this.columnName.Text = "Name";
-            this.columnName.Width = 120;
+            this.columnName.Width = 100;
             // 
             // columnDate
             // 
             this.columnDate.Text = "Date";
-            this.columnDate.Width = 120;
+            this.columnDate.Width = 90;
             // 
             // buttonLoadDay
             // 
-            this.buttonLoadDay.Location = new System.Drawing.Point(224, 12);
+            this.buttonLoadDay.Location = new System.Drawing.Point(212, 12);
             this.buttonLoadDay.Name = "buttonLoadDay";
             this.buttonLoadDay.Size = new System.Drawing.Size(92, 38);
             this.buttonLoadDay.TabIndex = 1;
@@ -75,7 +75,7 @@
             // 
             // buttonDeleteDay
             // 
-            this.buttonDeleteDay.Location = new System.Drawing.Point(224, 56);
+            this.buttonDeleteDay.Location = new System.Drawing.Point(212, 56);
             this.buttonDeleteDay.Name = "buttonDeleteDay";
             this.buttonDeleteDay.Size = new System.Drawing.Size(92, 38);
             this.buttonDeleteDay.TabIndex = 2;
@@ -85,7 +85,7 @@
             // 
             // buttonExitForm
             // 
-            this.buttonExitForm.Location = new System.Drawing.Point(224, 474);
+            this.buttonExitForm.Location = new System.Drawing.Point(212, 474);
             this.buttonExitForm.Name = "buttonExitForm";
             this.buttonExitForm.Size = new System.Drawing.Size(92, 38);
             this.buttonExitForm.TabIndex = 3;
@@ -98,7 +98,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(324, 524);
+            this.ClientSize = new System.Drawing.Size(310, 524);
             this.Controls.Add(this.buttonExitForm);
             this.Controls.Add(this.buttonDeleteDay);
             this.Controls.Add(this.buttonLoadDay);
