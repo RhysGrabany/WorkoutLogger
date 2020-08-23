@@ -76,8 +76,6 @@ namespace WorkoutLoggerUI
 
         #endregion
 
-
-
         #region Template Components
 
         private void buttonSaveTemplate_Click(object sender, EventArgs e)
@@ -92,7 +90,7 @@ namespace WorkoutLoggerUI
                 Directory.CreateDirectory($"{ ConfigurationManager.AppSettings["tfilePath"] }");
                 GlobalConfig.Connection.CreateTemplate(model);
 
-                comboBoxLoad.Items.Add(nameTemplate.Replace(" ", ""));
+                if (!comboBoxLoad.Items.Contains(nameTemplate.Replace(" ", ""))) comboBoxLoad.Items.Add(nameTemplate.Replace(" ", ""));
 
             }
             else
@@ -404,8 +402,7 @@ namespace WorkoutLoggerUI
             // finally add each item to the combobox
             foreach (string file in files)
             {
-                int position = file.IndexOf(".") - 10;
-                comboBoxLoad.Items.Add(file.Substring(10, position));
+                comboBoxLoad.Items.Add(file.Substring(0, file.IndexOf(".")));
             }
         }
 
