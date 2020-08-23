@@ -66,7 +66,11 @@ namespace WorkoutLoggerUI
 
             LoadDay.ShowDialog();
 
-            if (!LoadDay.FormOpen && DayData != null) FillDateTextboxes(DayData);
+            if (!LoadDay.FormOpen && DayData != null) 
+            {
+                ClearTextboxes();
+                FillDateTextboxes(DayData); 
+            }
 
         }
 
@@ -353,7 +357,12 @@ namespace WorkoutLoggerUI
         {
 
             textBoxWeightDay.Text = "";
+            textBoxWeightDay.ReadOnly = false;
+            
             textBoxDayName.Text = "";
+            textBoxDayName.ReadOnly = false;
+
+            buttonSaveDay.Enabled = true;
 
             for (int exercise = 1; exercise < NoOfExercises+1; exercise++)
             {
@@ -364,8 +373,13 @@ namespace WorkoutLoggerUI
                     TextBox weightBox = (TextBox)this.Controls[$"textBoxEx{ exercise }We{ set }"];
 
                     exerciseBox.Text = "";
+                    exerciseBox.ReadOnly = false;
+                    
                     repBox.Text = "";
+                    repBox.ReadOnly = false;
+                    
                     weightBox.Text = "";
+                    weightBox.ReadOnly = false;
 
                 }
             }
@@ -434,6 +448,9 @@ namespace WorkoutLoggerUI
             textBoxDayName.ReadOnly = true;
 
             buttonSaveDay.Enabled = false;
+
+            textBoxWeightDay.Text = model.WeightDay.ToString();
+            textBoxWeightDay.ReadOnly = true;
 
             int exerciseNo = 1;
             foreach (ExerciseModel exercise in model.ExercisesDay)
