@@ -19,7 +19,7 @@ namespace WorkoutLoggerUI
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Initialise database connections
-            WorkoutLoggerLibrary.GlobalConfig.InitialiseConnections(DatabaseType.XML);
+            GlobalConfig.InitialiseConnections(DatabaseType.XML);
 
             Application.Run(new WorkoutViewerForm());
         }

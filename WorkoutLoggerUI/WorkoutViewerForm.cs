@@ -112,6 +112,7 @@ namespace WorkoutLoggerUI
             //TODO - Change this in future for BIN
             IEnumerable<string> files = Directory.GetFiles(path, "*.xml", SearchOption.TopDirectoryOnly);
 
+
             foreach (string file in files)
             {
                 if (file.Contains(deleteTemplate)) File.Delete(file); break;
@@ -136,8 +137,6 @@ namespace WorkoutLoggerUI
             TemplateModel model = GlobalConfig.Connection.LoadTemplate(filePath);
 
             FillTextBoxes(model);
-
-
         }
         #endregion
 
@@ -258,7 +257,7 @@ namespace WorkoutLoggerUI
                 {
                     exercise = exerciseBox.Text;
                     List<int> reps = RepsList(i);
-                    List<float> weights = WeightsList(i);
+                    List<decimal> weights = WeightsList(i);
                     int sets = template ? weights.Count : reps.Count;
 
                     if (!template)
@@ -310,9 +309,9 @@ namespace WorkoutLoggerUI
         /// </summary>
         /// <param name="exerciseNo">This is the current number for the exercise</param>
         /// <returns>Returns a populated list of what weights were used for the exercise</returns>
-        private List<float> WeightsList(int exercise)
+        private List<decimal> WeightsList(int exercise)
         {
-            List<float> weights = new List<float>();
+            List<decimal> weights = new List<decimal>();
 
             for (int i = 1; i < NoOfSets+1; i++)
             {
@@ -322,15 +321,15 @@ namespace WorkoutLoggerUI
                 // The last used weight will be added to the List
                 // e.g. {7.5, 19.5} -> next weight box is empty, add last used weight -> {7.5, 19.5, 19.5}
                 // Then it will continue
-                float weightValue = 0;
+                decimal weightValue = 0m;
                 if (weightBox is null)
                 {
                     weights.Add(weights.Last());
                 }
                 else
                 {
-                    float.TryParse(weightBox.Text, out weightValue);
-                    weights.Add(weightValue);
+                    decimal.TryParse(weightBox.Text, out weightValue);
+                    weights.Add(Math.Round(weightValue, 2));
                 }
             }
 
@@ -427,7 +426,7 @@ namespace WorkoutLoggerUI
                 {
                     TextBox weightBox = (TextBox)this.Controls[$"textBoxEx{ exerciseNo }We{ i+1 }"];
 
-                    if (exercise.ExerciseWeight[i] != 0) weightBox.Text = exercise.ExerciseWeight[i].ToString();
+                    if (exercise.ExerciseWeight[i] != 0) weightBox.Text = Math.Round(exercise.ExerciseWeight[i], 2).ToString();
 
                 }
                 exerciseNo++;
@@ -461,7 +460,7 @@ namespace WorkoutLoggerUI
                 {
                     TextBox weightBox = (TextBox)this.Controls[$"textBoxEx{ exerciseNo }We{ i + 1 }"];
 
-                    if (exercise.ExerciseWeight[i] != 0) weightBox.Text = exercise.ExerciseWeight[i].ToString();
+                    if (exercise.ExerciseWeight[i] != 0.0m) weightBox.Text = Math.Round(exercise.ExerciseWeight[i], 2).ToString();
                     weightBox.ReadOnly = true;
 
                 }

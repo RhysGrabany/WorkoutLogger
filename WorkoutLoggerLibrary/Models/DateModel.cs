@@ -21,7 +21,7 @@ namespace WorkoutLoggerLibrary.Models
         /// <summary>
         /// The weight the user was during this day
         /// </summary>
-        public float WeightDay { get; set; }
+        public decimal WeightDay { get; set; }
         /// <summary>
         /// Any further descriptions that can be added to 
         /// this day
@@ -40,9 +40,9 @@ namespace WorkoutLoggerLibrary.Models
 
             ExercisesDay = exercisesDay;
 
-            float weightDayValue = 0;
-            float.TryParse(weightDay, out weightDayValue);
-            WeightDay = weightDayValue;
+            decimal weightDayValue = 0;
+            decimal.TryParse(weightDay, out weightDayValue);
+            WeightDay = Math.Round(weightDayValue, 2);
 
             DescriptionDay = descriptionDay;
 

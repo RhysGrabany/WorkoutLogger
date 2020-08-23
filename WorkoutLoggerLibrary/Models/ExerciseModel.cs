@@ -21,7 +21,7 @@ namespace WorkoutLoggerLibrary.Models
         /// <summary>
         /// The weight completed for the exercise for each rep
         /// </summary>
-        public List<float> ExerciseWeight { get; set; } = new List<float>();
+        public List<decimal> ExerciseWeight { get; set; } = new List<decimal>();
 
         public ExerciseModel() { }
 
@@ -29,7 +29,7 @@ namespace WorkoutLoggerLibrary.Models
             string exerciseName, 
             int exerciseSets, 
             List<int> exerciseReps, 
-            List<float> exerciseWeight)
+            List<decimal> exerciseWeight)
         {
             ExerciseName = exerciseName;
             ExerciseSets = exerciseSets;
@@ -40,7 +40,7 @@ namespace WorkoutLoggerLibrary.Models
         public ExerciseModel(
             string exerciseName,
             int exerciseSets,
-            List<float> exerciseWeight)
+            List<decimal> exerciseWeight)
         {
             ExerciseName = exerciseName;
             ExerciseSets = exerciseSets;
