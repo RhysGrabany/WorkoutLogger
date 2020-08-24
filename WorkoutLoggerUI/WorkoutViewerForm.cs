@@ -47,7 +47,7 @@ namespace WorkoutLoggerUI
                 DateModel model = new DateModel(nameDay, exercises, dailyWeight, descriptionDay);
 
                 Directory.CreateDirectory($"{ ConfigurationManager.AppSettings["filePath"] }");
-                GlobalConfig.Connection.CreateDay(model);
+                GlobalConfig.Connection.Creating(model);
 
                 ClearTextboxes();
 
@@ -87,7 +87,7 @@ namespace WorkoutLoggerUI
                 TemplateModel model = new TemplateModel(nameTemplate, exercises);
 
                 Directory.CreateDirectory($"{ ConfigurationManager.AppSettings["tfilePath"] }");
-                GlobalConfig.Connection.CreateTemplate(model);
+                GlobalConfig.Connection.Creating(model);
 
                 if (!comboBoxLoad.Items.Contains(nameTemplate.Replace(" ", ""))) comboBoxLoad.Items.Add(nameTemplate.Replace(" ", ""));
 
@@ -106,10 +106,10 @@ namespace WorkoutLoggerUI
             // matches the text for the template
             // then remove that option from the combobox
             //TODO - Change this in future for BIN
-            string deleteTemplate = $"{ comboBoxLoad.Text }.xml";
+            string deleteTemplate = $"{ comboBoxLoad.Text }{ Utility.FileExtension() }";
             string path = ConfigurationManager.AppSettings["tfilePath"];
             //TODO - Change this in future for BIN
-            IEnumerable<string> files = Directory.GetFiles(path, "*.xml", SearchOption.TopDirectoryOnly);
+            IEnumerable<string> files = Directory.GetFiles(path, $"*{ Utility.FileExtension() }", SearchOption.TopDirectoryOnly);
 
 
             foreach (string file in files)
@@ -130,10 +130,10 @@ namespace WorkoutLoggerUI
             ClearTextboxes();
 
             //TODO - Change this in future for BIN
-            string loadTemplate = $"{ comboBoxLoad.Text }.xml";
+            string loadTemplate = $"{ comboBoxLoad.Text }{ Utility.FileExtension() }";
 
             string filePath = Utility.FindFile(loadTemplate, true);
-            TemplateModel model = GlobalConfig.Connection.LoadTemplate(filePath);
+            TemplateModel model = GlobalConfig.Connection.Loading<TemplateModel>(filePath);
 
             FillTextBoxes(model);
         }
@@ -402,7 +402,8 @@ namespace WorkoutLoggerUI
             string templateFolder = ConfigurationManager.AppSettings["tfilePath"];
             if (!Directory.Exists(templateFolder)) return;
             //TODO - Change this in future for BIN
-            IEnumerable<string> files = Directory.GetFiles(templateFolder, "*.xml", SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x));
+            IEnumerable<string> files = Directory.GetFiles(templateFolder, $"*{ Utility.FileExtension() }"
+                , SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x));
 
             // run through the files, and remove everything except the name
             // finally add each item to the combobox

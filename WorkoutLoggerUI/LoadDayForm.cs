@@ -40,9 +40,9 @@ namespace WorkoutLoggerUI
         private void buttonLoadDay_Click(object sender, EventArgs e)
         {
             //TODO - Change this in future for BIN
-            string loadDate = $"{ listViewDays.SelectedItems[0].Text }.xml";
+            string loadDate = $"{ listViewDays.SelectedItems[0].Text }{ Utility.FileExtension() }";
             string filePath = Utility.FindFile(loadDate, false);
-            WorkoutForm.DayData = GlobalConfig.Connection.LoadDate(filePath);
+            WorkoutForm.DayData = GlobalConfig.Connection.Loading<DateModel>(filePath);
 
             this.Close();
             FormOpen = false;
@@ -51,10 +51,10 @@ namespace WorkoutLoggerUI
         private void buttonDeleteDay_Click(object sender, EventArgs e)
         {
             //TODO - Change this in future for BIN
-            string deleteTemplate = $"{ listViewDays.SelectedItems[0].Text }.xml";
+            string deleteTemplate = $"{ listViewDays.SelectedItems[0].Text }{ Utility.FileExtension() }";
             string path = ConfigurationManager.AppSettings["filePath"];
             //TODO - Change this in future for BIN
-            IEnumerable<string> files = Directory.GetFiles(path, "*.xml", SearchOption.TopDirectoryOnly);
+            IEnumerable<string> files = Directory.GetFiles(path, $"*{ Utility.FileExtension() }", SearchOption.TopDirectoryOnly);
 
             foreach (string file in files)
             {
@@ -88,8 +88,8 @@ namespace WorkoutLoggerUI
             // then add the data to the listview
 
             string dayFilePath = $"{ ConfigurationManager.AppSettings["filePath"] }";
-            //TODO - Change this in future for BIN
-            IEnumerable<string> files = Directory.GetFiles(dayFilePath, "*.xml", SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x)).Reverse();
+            IEnumerable<string> files = Directory.GetFiles(dayFilePath, $"*{ Utility.FileExtension() }"
+                , SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x)).Reverse();
 
             foreach (string file in files)
             {
