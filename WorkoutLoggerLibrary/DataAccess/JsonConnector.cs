@@ -17,7 +17,7 @@ namespace WorkoutLoggerLibrary.DataAccess
         {
 
             DateTime dayName = DateTime.Today;
-            string fileName = $"{ dayName.ToString("d").Replace("/", "_") }{ model.NameDay.Replace(" ", "") }.xml";
+            string fileName = $"{ dayName.ToString("d").Replace("/", "_") }{ model.NameDay.Replace(" ", "") }.json";
 
             model.JsonWrite<DateModel>(fileName);
 
@@ -33,7 +33,7 @@ namespace WorkoutLoggerLibrary.DataAccess
         public TemplateModel Creating(TemplateModel model)
         {
             DateTime dayName = DateTime.Today;
-            string fileName = $"{ model.NameTemplate.Replace(" ", "") }.xml";
+            string fileName = $"{ model.NameTemplate.Replace(" ", "") }.json";
 
 
             model.JsonWrite<TemplateModel>(fileName);
