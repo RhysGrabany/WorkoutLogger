@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using WorkoutLoggerLibrary.Models;
+using WorkoutLoggerLibrary.DataAccess.JsonHelpers;
 
 namespace WorkoutLoggerLibrary.DataAccess
 {
@@ -23,14 +24,10 @@ namespace WorkoutLoggerLibrary.DataAccess
             return model;
         }
 
-        public DateModel LoadDate(string path)
+        public T Loading<T>(string path)
         {
             throw new NotImplementedException();
         }
 
-        public TemplateModel LoadTemplate(string path)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

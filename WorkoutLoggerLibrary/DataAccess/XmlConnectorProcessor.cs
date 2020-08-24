@@ -29,30 +29,20 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
         /// </summary>
         /// <param name="model">The current model being written</param>
         /// <param name="fileName">The file location being written to</param>
-        public static void WriteFile(this DateModel model, string fileName)
+        public static void XmlWrite<T>(this T model, string fileName)
         {
 
-            System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(DateModel));
-            FileStream file = File.Create(FullFilePath(fileName, false));
+            Type type = typeof(T);
+            bool template = true;
+            if (type == typeof(DateModel)) template = false;
+
+            System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(T));
+            FileStream file = File.Create(FullFilePath(fileName, template));
             writer.Serialize(file, model);
             file.Close();
 
         }
 
-        /// <summary>
-        /// This method writes the current passed model to an xml file
-        /// </summary>
-        /// <param name="model">The current model being written</param>
-        /// <param name="fileName">The file location being written to</param>
-        public static void WriteFile(this TemplateModel model, string fileName)
-        {
-
-            System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(TemplateModel));
-            FileStream file = File.Create(FullFilePath(fileName, true));
-            writer.Serialize(file, model);
-            file.Close();
-
-        }
 
         #endregion
 
@@ -63,36 +53,16 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
         /// </summary>
         /// <param name="file">The xml file being parsed</param>
         /// <returns></returns>
-        public static DateModel LoadFileDate(this string file)
+        public static T XmlLoad<T>(this string file)
         {
-            if (!File.Exists(file))
-            {
-                return new DateModel();
-            }
 
-            System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(DateModel));
+            System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(T));
             StreamReader f = new StreamReader(file);
-            DateModel overview = (DateModel)reader.Deserialize(f);
+            T overview = (T)reader.Deserialize(f);
             f.Close();
 
             return overview;
         }
-
-        public static TemplateModel LoadFileTemplate(this string file)
-        {
-            if (!File.Exists(file))
-            {
-                return new TemplateModel();
-            }
-
-            System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(TemplateModel));
-            StreamReader f = new StreamReader(file);
-            TemplateModel overview = (TemplateModel)reader.Deserialize(f);
-            f.Close();
-
-            return overview;
-        }
-
 
         #endregion 
 

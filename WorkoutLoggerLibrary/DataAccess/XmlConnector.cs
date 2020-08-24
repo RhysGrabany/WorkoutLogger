@@ -21,7 +21,7 @@ namespace WorkoutLoggerLibrary.DataAccess
             DateTime dayName = DateTime.Today;
             string fileName = $"{ dayName.ToString("d").Replace("/", "_") }{ model.NameDay.Replace(" ", "") }.xml";
 
-            model.WriteFile(fileName);
+            model.XmlWrite<DateModel>(fileName);
 
             return model;
 
@@ -38,7 +38,7 @@ namespace WorkoutLoggerLibrary.DataAccess
             string fileName = $"{ model.NameTemplate.Replace(" ", "") }.xml";
 
 
-            model.WriteFile(fileName);
+            model.XmlWrite<TemplateModel>(fileName);
 
             return model;
         }
@@ -48,19 +48,19 @@ namespace WorkoutLoggerLibrary.DataAccess
         /// </summary>
         /// <param name="path">The path of the date file in storage</param>
         /// <returns>The deserialised date model</returns>
-        public DateModel LoadDate(string path)
-        {
-            return path.LoadFileDate();
-        }
+        //public DateModel LoadDate(string path)
+        //{
+        //    return path.XmlLoad<DateModel>();
+        //}
 
         /// <summary>
         /// Loads a template model from a serialised source
         /// </summary>
         /// <param name="path">The path of the template file in storage</param>
         /// <returns>The deserialised template model</returns>
-        public TemplateModel LoadTemplate(string path)
+        public T Loading<T>(string path)
         {
-            return path.LoadFileTemplate();
+            return path.XmlLoad<T>();
         }
 
     }
