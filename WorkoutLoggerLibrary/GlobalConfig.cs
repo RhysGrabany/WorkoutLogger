@@ -9,20 +9,22 @@ namespace WorkoutLoggerLibrary
     {
         public static IDataConnection Connection { get; private set; }
 
+        public static DatabaseType DatabaseUsed { get; set; }
+
         public static void InitialiseConnections(DatabaseType db)
         {
 
             switch (db)
             {
                 case DatabaseType.XML:
-                    // TODO - Create the Text Connection
                     XmlConnector text = new XmlConnector();
                     Connection = text;
+                    DatabaseUsed = DatabaseType.XML;
                     break;
-                case DatabaseType.BINARY:
-                    // TODO - Create the Binary Connection
-                    BinaryConnector bin = new BinaryConnector();
-                    Connection = bin;
+                case DatabaseType.JSON:
+                    JsonConnector json = new JsonConnector();
+                    Connection = json;
+                    DatabaseUsed = DatabaseType.JSON;
                     break;
                 default:
                     break;

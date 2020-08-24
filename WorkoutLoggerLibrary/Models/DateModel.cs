@@ -22,6 +22,7 @@ namespace WorkoutLoggerLibrary.Models
         /// The weight the user was during this day
         /// </summary>
         public decimal WeightDay { get; set; }
+
         /// <summary>
         /// Any further descriptions that can be added to 
         /// this day

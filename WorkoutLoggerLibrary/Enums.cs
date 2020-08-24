@@ -6,8 +6,7 @@ namespace WorkoutLoggerLibrary
 {
     public enum DatabaseType
     {
-        SQL,
+        JSON,
         XML,
-        BINARY
     }
 }
