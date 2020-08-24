@@ -35,7 +35,6 @@ namespace WorkoutLoggerLibrary.DataAccess
         public TemplateModel CreateTemplate(TemplateModel model)
         {
             DateTime dayName = DateTime.Today;
-            //string fileName = $"{ dayName.ToString("d").Replace("/", "_") }{ model.NameTemplate.Replace(" ", "") }.xml";
             string fileName = $"{ model.NameTemplate.Replace(" ", "") }.xml";
 
 
