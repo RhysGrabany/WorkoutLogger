@@ -26,6 +26,7 @@ namespace WorkoutLoggerLibrary.DataAccess.JsonHelpers
             TextWriter writer = null;
             var contents = Newtonsoft.Json.JsonConvert.SerializeObject(model);
             writer = new StreamWriter(Utility.FullFilePath(fileName, template));
+            writer.Write(contents);
             writer.Close();
 
         }
