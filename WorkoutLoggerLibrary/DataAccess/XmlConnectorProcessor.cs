@@ -10,17 +10,7 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
 {
     public static class XmlConnectorProcessor
     {
-        /// <summary>
-        /// This is the method that deals with the filepath to the fileName
-        /// </summary>
-        /// <param name="fileName">The file that is going to have the filepath returned</param>
-        /// <returns>Full file path</returns>
-        public static string FullFilePath(this string fileName, bool template)
-        {
-
-            return template ? $"{ ConfigurationManager.AppSettings["tfilePath"] }\\{ fileName }"
-                : $"{ ConfigurationManager.AppSettings["filePath"] }\\{ fileName }";
-        }
+        
 
         #region Writing to File
 
@@ -37,7 +27,7 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
             if (type == typeof(DateModel)) template = false;
 
             System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(T));
-            FileStream file = File.Create(FullFilePath(fileName, template));
+            FileStream file = File.Create(Utility.FullFilePath(fileName, template));
             writer.Serialize(file, model);
             file.Close();
 

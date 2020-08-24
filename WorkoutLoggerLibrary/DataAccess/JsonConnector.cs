@@ -6,27 +6,44 @@ using WorkoutLoggerLibrary.DataAccess.JsonHelpers;
 
 namespace WorkoutLoggerLibrary.DataAccess
 {
-    class JsonConnector : IDataConnection
+    public class JsonConnector : IDataConnection
     {
-        // TODO - Wire up CreateDay for Binary files
         /// <summary>
-        /// Saves a day to a binary file
+        /// Creates a serialised date model for saving to file
         /// </summary>
-        /// <param name="model">The day info</param>
-        /// <returns>The day model with unique id</returns>
-        public DateModel CreateDay(DateModel model)
+        /// <param name="model">The date model that is to be serialised</param>
+        /// <returns>Returns the passed in model</returns>
+        public DateModel Creating(DateModel model)
         {
+
+            DateTime dayName = DateTime.Today;
+            string fileName = $"{ dayName.ToString("d").Replace("/", "_") }{ model.NameDay.Replace(" ", "") }.xml";
+
+            model.JsonWrite<DateModel>(fileName);
+
             return model;
+
         }
 
-        public TemplateModel CreateTemplate(TemplateModel model)
+        /// <summary>
+        /// Creates a serialised template model for saving to file
+        /// </summary>
+        /// <param name="model">The template model that is to be serialised</param>
+        /// <returns>Returns the passed in model</returns>
+        public TemplateModel Creating(TemplateModel model)
         {
+            DateTime dayName = DateTime.Today;
+            string fileName = $"{ model.NameTemplate.Replace(" ", "") }.xml";
+
+
+            model.JsonWrite<TemplateModel>(fileName);
+
             return model;
         }
 
         public T Loading<T>(string path)
         {
-            throw new NotImplementedException();
+            return path.JsonLoad<T>();
         }
 
     }
