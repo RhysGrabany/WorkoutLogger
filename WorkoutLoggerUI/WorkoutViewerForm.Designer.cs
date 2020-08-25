@@ -143,12 +143,10 @@
             this.textBoxEx2Re5 = new System.Windows.Forms.TextBox();
             this.textBoxEx1Re5 = new System.Windows.Forms.TextBox();
             this.buttonSaveDay = new System.Windows.Forms.Button();
-            this.labelWeightDay = new System.Windows.Forms.Label();
             this.textBoxWeightDay = new System.Windows.Forms.TextBox();
-            this.labelWeightKg = new System.Windows.Forms.Label();
+            this.labelWeightUnit = new System.Windows.Forms.Label();
             this.labelDescription = new System.Windows.Forms.Label();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBoxDayName = new System.Windows.Forms.TextBox();
             this.buttonTemplateDelete = new System.Windows.Forms.Button();
             this.buttonLoadDay = new System.Windows.Forms.Button();
@@ -166,22 +164,31 @@
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.labelWeight = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox13.SuspendLayout();
+            this.groupBox16.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxLoad
             // 
+            this.comboBoxLoad.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxLoad.FormattingEnabled = true;
-            this.comboBoxLoad.Location = new System.Drawing.Point(501, 16);
+            this.comboBoxLoad.Location = new System.Drawing.Point(583, 53);
             this.comboBoxLoad.Name = "comboBoxLoad";
-            this.comboBoxLoad.Size = new System.Drawing.Size(159, 38);
+            this.comboBoxLoad.Size = new System.Drawing.Size(159, 33);
             this.comboBoxLoad.TabIndex = 116;
             // 
             // buttonLoadTemplate
             // 
-            this.buttonLoadTemplate.Location = new System.Drawing.Point(666, 16);
+            this.buttonLoadTemplate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLoadTemplate.Location = new System.Drawing.Point(583, 94);
             this.buttonLoadTemplate.Name = "buttonLoadTemplate";
-            this.buttonLoadTemplate.Size = new System.Drawing.Size(91, 37);
+            this.buttonLoadTemplate.Size = new System.Drawing.Size(69, 29);
             this.buttonLoadTemplate.TabIndex = 117;
             this.buttonLoadTemplate.Text = "Load";
             this.buttonLoadTemplate.UseVisualStyleBackColor = true;
@@ -189,17 +196,19 @@
             // 
             // textBoxTemplate
             // 
-            this.textBoxTemplate.Location = new System.Drawing.Point(501, 108);
+            this.textBoxTemplate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTemplate.Location = new System.Drawing.Point(418, 53);
             this.textBoxTemplate.Name = "textBoxTemplate";
-            this.textBoxTemplate.Size = new System.Drawing.Size(159, 35);
+            this.textBoxTemplate.Size = new System.Drawing.Size(159, 33);
             this.textBoxTemplate.TabIndex = 119;
             this.textBoxTemplate.Text = "Template Name";
             // 
             // buttonSaveTemplate
             // 
-            this.buttonSaveTemplate.Location = new System.Drawing.Point(666, 106);
+            this.buttonSaveTemplate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSaveTemplate.Location = new System.Drawing.Point(418, 92);
             this.buttonSaveTemplate.Name = "buttonSaveTemplate";
-            this.buttonSaveTemplate.Size = new System.Drawing.Size(91, 37);
+            this.buttonSaveTemplate.Size = new System.Drawing.Size(159, 31);
             this.buttonSaveTemplate.TabIndex = 120;
             this.buttonSaveTemplate.Text = "Save";
             this.buttonSaveTemplate.UseVisualStyleBackColor = true;
@@ -977,47 +986,41 @@
             // 
             // buttonSaveDay
             // 
-            this.buttonSaveDay.Location = new System.Drawing.Point(11, 111);
+            this.buttonSaveDay.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSaveDay.Location = new System.Drawing.Point(6, 63);
             this.buttonSaveDay.Name = "buttonSaveDay";
-            this.buttonSaveDay.Size = new System.Drawing.Size(117, 37);
+            this.buttonSaveDay.Size = new System.Drawing.Size(98, 37);
             this.buttonSaveDay.TabIndex = 113;
             this.buttonSaveDay.Text = "Save Day";
             this.buttonSaveDay.UseVisualStyleBackColor = true;
             this.buttonSaveDay.Click += new System.EventHandler(this.buttonSaveDay_Click);
             // 
-            // labelWeightDay
-            // 
-            this.labelWeightDay.AutoSize = true;
-            this.labelWeightDay.Location = new System.Drawing.Point(44, 19);
-            this.labelWeightDay.Name = "labelWeightDay";
-            this.labelWeightDay.Size = new System.Drawing.Size(84, 30);
-            this.labelWeightDay.TabIndex = 146;
-            this.labelWeightDay.Text = "Weight:";
-            // 
             // textBoxWeightDay
             // 
-            this.textBoxWeightDay.Location = new System.Drawing.Point(134, 20);
+            this.textBoxWeightDay.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxWeightDay.Location = new System.Drawing.Point(97, 104);
             this.textBoxWeightDay.Name = "textBoxWeightDay";
-            this.textBoxWeightDay.Size = new System.Drawing.Size(55, 35);
+            this.textBoxWeightDay.Size = new System.Drawing.Size(85, 33);
             this.textBoxWeightDay.TabIndex = 0;
             // 
-            // labelWeightKg
+            // labelWeightUnit
             // 
-            this.labelWeightKg.AutoSize = true;
-            this.labelWeightKg.Location = new System.Drawing.Point(195, 25);
-            this.labelWeightKg.Name = "labelWeightKg";
-            this.labelWeightKg.Size = new System.Drawing.Size(37, 30);
-            this.labelWeightKg.TabIndex = 148;
-            this.labelWeightKg.Text = "Kg";
+            this.labelWeightUnit.AutoSize = true;
+            this.labelWeightUnit.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWeightUnit.Location = new System.Drawing.Point(188, 107);
+            this.labelWeightUnit.Name = "labelWeightUnit";
+            this.labelWeightUnit.Size = new System.Drawing.Size(34, 25);
+            this.labelWeightUnit.TabIndex = 148;
+            this.labelWeightUnit.Text = "Kg";
             // 
             // labelDescription
             // 
             this.labelDescription.AutoSize = true;
-            this.labelDescription.Location = new System.Drawing.Point(17, 606);
+            this.labelDescription.Location = new System.Drawing.Point(151, 609);
             this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(208, 30);
+            this.labelDescription.Size = new System.Drawing.Size(73, 30);
             this.labelDescription.TabIndex = 151;
-            this.labelDescription.Text = "Description of Today:";
+            this.labelDescription.Text = "Notes:";
             // 
             // textBoxDescription
             // 
@@ -1027,37 +1030,31 @@
             this.textBoxDescription.Size = new System.Drawing.Size(401, 91);
             this.textBoxDescription.TabIndex = 112;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 70);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 30);
-            this.label1.TabIndex = 153;
-            this.label1.Text = "Day Name:";
-            // 
             // textBoxDayName
             // 
-            this.textBoxDayName.Location = new System.Drawing.Point(134, 67);
+            this.textBoxDayName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDayName.Location = new System.Drawing.Point(6, 24);
             this.textBoxDayName.Name = "textBoxDayName";
-            this.textBoxDayName.Size = new System.Drawing.Size(166, 35);
+            this.textBoxDayName.Size = new System.Drawing.Size(218, 33);
             this.textBoxDayName.TabIndex = 1;
             // 
             // buttonTemplateDelete
             // 
-            this.buttonTemplateDelete.Location = new System.Drawing.Point(537, 61);
+            this.buttonTemplateDelete.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTemplateDelete.Location = new System.Drawing.Point(658, 94);
             this.buttonTemplateDelete.Name = "buttonTemplateDelete";
-            this.buttonTemplateDelete.Size = new System.Drawing.Size(173, 41);
+            this.buttonTemplateDelete.Size = new System.Drawing.Size(84, 29);
             this.buttonTemplateDelete.TabIndex = 118;
-            this.buttonTemplateDelete.Text = "Delete Template";
+            this.buttonTemplateDelete.Text = "Delete ";
             this.buttonTemplateDelete.UseVisualStyleBackColor = true;
             this.buttonTemplateDelete.Click += new System.EventHandler(this.buttonTemplateDelete_Click);
             // 
             // buttonLoadDay
             // 
-            this.buttonLoadDay.Location = new System.Drawing.Point(134, 111);
+            this.buttonLoadDay.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLoadDay.Location = new System.Drawing.Point(110, 63);
             this.buttonLoadDay.Name = "buttonLoadDay";
-            this.buttonLoadDay.Size = new System.Drawing.Size(117, 37);
+            this.buttonLoadDay.Size = new System.Drawing.Size(114, 37);
             this.buttonLoadDay.TabIndex = 114;
             this.buttonLoadDay.Text = "Load Day";
             this.buttonLoadDay.UseVisualStyleBackColor = true;
@@ -1075,11 +1072,12 @@
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(257, 111);
+            this.buttonClear.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClear.Location = new System.Drawing.Point(575, 137);
             this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(117, 37);
+            this.buttonClear.Size = new System.Drawing.Size(167, 37);
             this.buttonClear.TabIndex = 115;
-            this.buttonClear.Text = "Clear";
+            this.buttonClear.Text = "Clear All Boxes";
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
@@ -1204,24 +1202,75 @@
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Exercises";
             // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.groupBox14);
+            this.groupBox13.Controls.Add(this.groupBox15);
+            this.groupBox13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox13.Location = new System.Drawing.Point(415, 12);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(339, 119);
+            this.groupBox13.TabIndex = 170;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Template Functionality";
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox14.Location = new System.Drawing.Point(0, 24);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(162, 95);
+            this.groupBox14.TabIndex = 171;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Saving";
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox15.Location = new System.Drawing.Point(165, 24);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(174, 95);
+            this.groupBox15.TabIndex = 172;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Loading/Deleting";
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.labelWeight);
+            this.groupBox16.Controls.Add(this.buttonSaveDay);
+            this.groupBox16.Controls.Add(this.textBoxDayName);
+            this.groupBox16.Controls.Add(this.buttonLoadDay);
+            this.groupBox16.Controls.Add(this.textBoxWeightDay);
+            this.groupBox16.Controls.Add(this.labelWeightUnit);
+            this.groupBox16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox16.Location = new System.Drawing.Point(7, 12);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(228, 149);
+            this.groupBox16.TabIndex = 171;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Day Functionality";
+            // 
+            // labelWeight
+            // 
+            this.labelWeight.AutoSize = true;
+            this.labelWeight.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWeight.Location = new System.Drawing.Point(19, 107);
+            this.labelWeight.Name = "labelWeight";
+            this.labelWeight.Size = new System.Drawing.Size(72, 25);
+            this.labelWeight.TabIndex = 149;
+            this.labelWeight.Text = "Weight";
+            // 
             // WorkoutViewerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(769, 707);
+            this.ClientSize = new System.Drawing.Size(761, 707);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonExit);
-            this.Controls.Add(this.buttonLoadDay);
             this.Controls.Add(this.buttonTemplateDelete);
-            this.Controls.Add(this.textBoxDayName);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.labelDescription);
-            this.Controls.Add(this.labelWeightKg);
-            this.Controls.Add(this.textBoxWeightDay);
-            this.Controls.Add(this.labelWeightDay);
-            this.Controls.Add(this.buttonSaveDay);
             this.Controls.Add(this.textBoxEx10We5);
             this.Controls.Add(this.textBoxEx9We5);
             this.Controls.Add(this.textBoxEx8We5);
@@ -1347,12 +1396,17 @@
             this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox12);
+            this.Controls.Add(this.groupBox16);
+            this.Controls.Add(this.groupBox13);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.Name = "WorkoutViewerForm";
             this.Text = "Workout Logger";
             this.groupBox1.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1475,12 +1529,10 @@
         private System.Windows.Forms.TextBox textBoxEx2Re5;
         private System.Windows.Forms.TextBox textBoxEx1Re5;
         private System.Windows.Forms.Button buttonSaveDay;
-        private System.Windows.Forms.Label labelWeightDay;
         private System.Windows.Forms.TextBox textBoxWeightDay;
-        private System.Windows.Forms.Label labelWeightKg;
+        private System.Windows.Forms.Label labelWeightUnit;
         private System.Windows.Forms.Label labelDescription;
         private System.Windows.Forms.TextBox textBoxDescription;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxDayName;
         private System.Windows.Forms.Button buttonTemplateDelete;
         private System.Windows.Forms.Button buttonLoadDay;
@@ -1498,6 +1550,11 @@
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.Label labelWeight;
     }
 }
 
