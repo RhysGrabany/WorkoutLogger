@@ -6,8 +6,9 @@ This is a program that allows users to log their Workout progress in a clear and
 ---
 ## Contents Page
 * [Features](#features)
-* [Main Form](#mainform)
-* [Load Form](#loadform)
+* [Component Breakdown](#componentbreakdown)
+  * [Main Form](#mainform)
+  * [Load Form](#loadform)
 * [Footnote](#footnote)
 
 ---
@@ -22,6 +23,7 @@ This is a program that allows users to log their Workout progress in a clear and
   6. Able to save data in either XML or Json
 
 ---
+<a name="componentbreakdown"></a>
 <a name="mainform"></a>
 ## Main Form (WorkoutLogger)
 

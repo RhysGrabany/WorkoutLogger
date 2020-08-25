@@ -293,7 +293,7 @@ namespace WorkoutLoggerUI
                 TextBox repBox = (TextBox)this.Controls[$"textBoxEx{ exercise }Re{ i }"];
 
                 int repsValue = 0;
-                if (repBox.Text.Length > 0)
+                if (!(repBox is null))
                 {
                     int.TryParse(repBox.Text, out repsValue);
                     reps.Add(repsValue);
