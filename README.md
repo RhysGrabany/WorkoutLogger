@@ -1,6 +1,6 @@
 # Workout Logger
 WORK IN PROGRESS
-
+### Abstract
 This is a program that allows users to log their Workout progress in a clear and decriptive way.<br> The aim of this program is to minimise the amount of time the user has to log in their exercises and weights for each set, and spend more time in actually working out.
 
 ---
