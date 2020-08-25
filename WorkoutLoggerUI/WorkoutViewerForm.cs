@@ -154,13 +154,18 @@ namespace WorkoutLoggerUI
         /// <returns>Boolean True/False: True for valid, False for invalid</returns>
         private bool ValidateForm()
         {
-            bool output = true;
+            bool valid = true;
 
             decimal weightNo = 0m;
             bool weightNoValid = decimal.TryParse(textBoxWeightDay.Text, out weightNo);
             if (!weightNoValid && textBoxWeightDay.Text != "" && weightNo < 0)
             {
-                output = false;
+                valid = false;
+            }
+
+            if (textBoxDayName.Text == "")
+            {
+                valid = false;
             }
 
             // This loops through the Exercise Text Boxes to check if they have any
@@ -183,7 +188,7 @@ namespace WorkoutLoggerUI
             // the program before starting the WaR checks
             if (maxNoExercises < 1)
             {
-                output = false;
+                valid = false;
             }
 
             // This loops through the number of exercises that the form has, then
@@ -205,7 +210,7 @@ namespace WorkoutLoggerUI
                         weightBoxValid = decimal.TryParse(weightBox.Text, out weightBoxValue);
                         if (!weightBoxValid && weightBoxValue < 0)
                         {
-                            output = false;
+                            valid = false;
                         }
                     }
 
@@ -216,7 +221,7 @@ namespace WorkoutLoggerUI
                         repBoxValid = int.TryParse(repBox.Text, out repBoxValue);
                         if (!repBoxValid || repBoxValue < 0)
                         {
-                            output = false;
+                            valid = false;
                         }
                     }
 
@@ -227,7 +232,7 @@ namespace WorkoutLoggerUI
 
                 }
             }
-            return output;
+            return valid;
         }
 
         #endregion
@@ -295,6 +300,10 @@ namespace WorkoutLoggerUI
                 {
                     int.TryParse(repBox.Text, out repsValue);
                     reps.Add(repsValue);
+                }
+                else
+                {
+                    reps.Add(0);
                 }
             }
 
@@ -425,7 +434,7 @@ namespace WorkoutLoggerUI
                 {
                     TextBox weightBox = (TextBox)this.Controls[$"textBoxEx{ exerciseNo }We{ i+1 }"];
 
-                    if (exercise.ExerciseWeight[i] != 0) weightBox.Text = Math.Round(exercise.ExerciseWeight[i], 2).ToString();
+                    if (exercise.ExerciseWeight[i] != 0.0m) weightBox.Text = Math.Round(exercise.ExerciseWeight[i], 2).ToString();
 
                 }
                 exerciseNo++;
@@ -468,7 +477,7 @@ namespace WorkoutLoggerUI
                 {
                     TextBox repBox = (TextBox)this.Controls[$"textBoxEx{ exerciseNo }Re{ i + 1 }"];
 
-                    if (exercise.ExerciseWeight[i] != 0) repBox.Text = exercise.ExerciseReps[i].ToString();
+                    if (exercise.ExerciseReps[i] != 0) repBox.Text = exercise.ExerciseReps[i].ToString();
                     repBox.ReadOnly = true;
 
                 }

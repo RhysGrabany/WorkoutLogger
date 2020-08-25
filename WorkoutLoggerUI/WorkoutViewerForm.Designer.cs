@@ -1227,9 +1227,9 @@
             // groupBox15
             // 
             this.groupBox15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox15.Location = new System.Drawing.Point(165, 24);
+            this.groupBox15.Location = new System.Drawing.Point(168, 24);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(174, 95);
+            this.groupBox15.Size = new System.Drawing.Size(171, 95);
             this.groupBox15.TabIndex = 172;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Loading/Deleting";
@@ -1256,9 +1256,9 @@
             this.labelWeight.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWeight.Location = new System.Drawing.Point(19, 107);
             this.labelWeight.Name = "labelWeight";
-            this.labelWeight.Size = new System.Drawing.Size(72, 25);
+            this.labelWeight.Size = new System.Drawing.Size(76, 25);
             this.labelWeight.TabIndex = 149;
-            this.labelWeight.Text = "Weight";
+            this.labelWeight.Text = "Weight:";
             // 
             // WorkoutViewerForm
             // 
