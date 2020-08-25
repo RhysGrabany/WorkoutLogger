@@ -8,8 +8,15 @@ namespace WorkoutLoggerLibrary
 {
     public static class GlobalConfig
     {
+        /// <summary>
+        /// For using the correct DataConnection
+        /// </summary>
         public static IDataConnection Connection { get; private set; }
 
+        /// <summary>
+        /// This holds the DatabaseType being used
+        /// It's mostly for utility work and finding the file extension
+        /// </summary>
         public static DatabaseType DatabaseUsed { get; set; }
 
         /// <summary>
