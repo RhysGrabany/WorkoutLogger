@@ -11,12 +11,12 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
     public static class XmlConnectorProcessor
     {
         
-
         #region Writing to File
 
         /// <summary>
         /// This method writes the current passed model to an xml file
         /// </summary>
+        /// <typeparam name="T">The model being passed over to be written to file</typeparam>
         /// <param name="model">The current model being written</param>
         /// <param name="fileName">The file location being written to</param>
         public static void XmlWrite<T>(this T model, string fileName)
@@ -33,7 +33,6 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
 
         }
 
-
         #endregion
 
         #region Loading from File
@@ -42,7 +41,8 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
         /// Loads an xml file and parses it into a DateModel 
         /// </summary>
         /// <param name="file">The xml file being parsed</param>
-        /// <returns></returns>
+        /// <typeparam name="T">The model being loaded from file and being deserialised</typeparam>
+        /// <returns>The deserialised object that can be used</returns>
         public static T XmlLoad<T>(this string file)
         {
 
@@ -55,6 +55,5 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
         }
 
         #endregion 
-
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using WorkoutLoggerLibrary.DataAccess;
+using WorkoutLoggerLibrary.Models;
 
 namespace WorkoutLoggerLibrary
 {
@@ -10,6 +11,16 @@ namespace WorkoutLoggerLibrary
         public static IDataConnection Connection { get; private set; }
 
         public static DatabaseType DatabaseUsed { get; set; }
+
+        /// <summary>
+        /// This is holding the data needed from the LoadDay window
+        /// </summary>
+        public static DateModel DayData { get; set; }
+
+        // Consts for the number of exercises and sets for the form
+        // no real need having more unless push comes to shove
+        public const int NoOfExercises = 10;
+        public const int NoOfSets = 5;
 
         public static void InitialiseConnections(DatabaseType db)
         {

@@ -19,8 +19,7 @@ namespace WorkoutLoggerLibrary
 
             string path = template ? ConfigurationManager.AppSettings["tfilePath"] : 
                 ConfigurationManager.AppSettings["filePath"];
-            //TODO - Change this in future for BIN
-            IEnumerable<string> files = Directory.GetFiles(path, $"*{ Utility.FileExtension() }", SearchOption.TopDirectoryOnly);
+            IEnumerable<string> files = Directory.GetFiles(path, $"*{ FileExtension() }", SearchOption.TopDirectoryOnly);
 
             foreach (string file in files)
             {

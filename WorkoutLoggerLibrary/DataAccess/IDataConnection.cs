@@ -12,18 +12,19 @@ namespace WorkoutLoggerLibrary.DataAccess
         /// </summary>
         /// <param name="model">The model being saved using data connections</param>
         /// <returns>The model being passed</returns>
-        DateModel Creating(DateModel model);
+        void Creating(DateModel model);
 
         /// <summary>
         /// Saves a TemplateModel to a data connections
         /// </summary>
         /// <param name="model">The model being saved using the data connections</param>
         /// <returns>The model being passed</returns>
-        TemplateModel Creating(TemplateModel model);
+        void Creating(TemplateModel model);
 
         /// <summary>
         /// Loads a serialised TemplateModel from file
         /// </summary>
+        /// <typeparam name="T">The model being loaded from file and deserialized</typeparam>
         /// <param name="path">The path to which the Template is to be loaded from</param>
         /// <returns>The deserialised TemplateModel</returns>
         T Loading<T>(string path);

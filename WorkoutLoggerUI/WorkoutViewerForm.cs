@@ -12,15 +12,6 @@ namespace WorkoutLoggerUI
 {
     public partial class WorkoutViewerForm : Form
     {
-        // Consts for the number of exercises and sets for the form
-        // no real need having more unless push comes to shove
-        public const int NoOfExercises = 10;
-        public const int NoOfSets = 5;
-
-        /// <summary>
-        /// This is holding the data needed from the LoadDay window
-        /// </summary>
-        public DateModel DayData { get; set; }
 
         public WorkoutViewerForm()
         {
@@ -65,10 +56,10 @@ namespace WorkoutLoggerUI
 
             LoadDay.ShowDialog();
 
-            if (!LoadDay.FormOpen && DayData != null) 
+            if (!LoadDay.FormOpen && GlobalConfig.DayData != null) 
             {
                 ClearTextboxes();
-                FillDateTextboxes(DayData); 
+                FillDateTextboxes(GlobalConfig.DayData); 
             }
 
         }
@@ -253,7 +244,7 @@ namespace WorkoutLoggerUI
 
             List<ExerciseModel> exercises = new List<ExerciseModel>();
 
-            for (int i = 1; i < NoOfExercises+1; i++)
+            for (int i = 1; i < GlobalConfig.NoOfExercises+1; i++)
             {
                 string exercise;
                 TextBox exerciseBox = (TextBox)this.Controls[$"textBoxEx{ i }"];
@@ -295,7 +286,7 @@ namespace WorkoutLoggerUI
         {
             List<int> reps = new List<int>();
 
-            for (int i = 1; i < NoOfSets+1; i++)
+            for (int i = 1; i < GlobalConfig.NoOfSets+1; i++)
             {
                 TextBox repBox = (TextBox)this.Controls[$"textBoxEx{ exercise }Re{ i }"];
 
@@ -320,7 +311,7 @@ namespace WorkoutLoggerUI
         {
             List<decimal> weights = new List<decimal>();
 
-            for (int i = 1; i < NoOfSets+1; i++)
+            for (int i = 1; i < GlobalConfig.NoOfSets+1; i++)
             {
                 TextBox weightBox = (TextBox)this.Controls[$"textBoxEx{ exercise }We{ i }"];
 
@@ -368,9 +359,9 @@ namespace WorkoutLoggerUI
 
             buttonSaveDay.Enabled = true;
 
-            for (int exercise = 1; exercise < NoOfExercises+1; exercise++)
+            for (int exercise = 1; exercise < GlobalConfig.NoOfExercises+1; exercise++)
             {
-                for (int set = 1; set < NoOfSets+1; set++)
+                for (int set = 1; set < GlobalConfig.NoOfSets+1; set++)
                 {
                     TextBox exerciseBox = (TextBox)this.Controls[$"textBoxEx{ exercise }"];
                     TextBox repBox = (TextBox)this.Controls[$"textBoxEx{ exercise }Re{ set }"];
@@ -430,7 +421,7 @@ namespace WorkoutLoggerUI
                 TextBox exerciseBox = (TextBox)this.Controls[$"textBoxEx{ exerciseNo }"];
                 exerciseBox.Text = exercise.ExerciseName;
 
-                for (int i = 0; i < NoOfSets; i++)
+                for (int i = 0; i < GlobalConfig.NoOfSets; i++)
                 {
                     TextBox weightBox = (TextBox)this.Controls[$"textBoxEx{ exerciseNo }We{ i+1 }"];
 
@@ -464,7 +455,7 @@ namespace WorkoutLoggerUI
                 exerciseBox.Text = exercise.ExerciseName;
                 exerciseBox.ReadOnly = true;
 
-                for (int i = 0; i < NoOfSets; i++)
+                for (int i = 0; i < GlobalConfig.NoOfSets; i++)
                 {
                     TextBox weightBox = (TextBox)this.Controls[$"textBoxEx{ exerciseNo }We{ i + 1 }"];
 
@@ -473,7 +464,7 @@ namespace WorkoutLoggerUI
 
                 }
 
-                for (int i = 0; i < NoOfSets; i++)
+                for (int i = 0; i < GlobalConfig.NoOfSets; i++)
                 {
                     TextBox repBox = (TextBox)this.Controls[$"textBoxEx{ exerciseNo }Re{ i + 1 }"];
 

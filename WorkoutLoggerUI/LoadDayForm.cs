@@ -42,7 +42,7 @@ namespace WorkoutLoggerUI
             //TODO - Change this in future for BIN
             string loadDate = $"{ listViewDays.SelectedItems[0].Text }{ Utility.FileExtension() }";
             string filePath = Utility.FindFile(loadDate, false);
-            WorkoutForm.DayData = GlobalConfig.Connection.Loading<DateModel>(filePath);
+            GlobalConfig.DayData = GlobalConfig.Connection.Loading<DateModel>(filePath);
 
             this.Close();
             FormOpen = false;

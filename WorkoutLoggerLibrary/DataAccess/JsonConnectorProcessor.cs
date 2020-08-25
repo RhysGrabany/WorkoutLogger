@@ -6,6 +6,8 @@ using WorkoutLoggerLibrary.Models;
 
 namespace WorkoutLoggerLibrary.DataAccess.JsonHelpers
 {
+    // This code mostly came from a programming blog written by Daniel Schroeder
+    // It helped out a lot
     public static class JsonConnectorProcessor
     {
 
@@ -40,7 +42,7 @@ namespace WorkoutLoggerLibrary.DataAccess.JsonHelpers
         /// Loads an xml file and parses it into a DateModel 
         /// </summary>
         /// <param name="file">The xml file being parsed</param>
-        /// <returns></returns>
+        /// <returns>The deserialised object that can then be used</returns>
         public static T JsonLoad<T>(this string file)
         {
 
