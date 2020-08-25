@@ -96,10 +96,8 @@ namespace WorkoutLoggerUI
             // loaad in the path, then get all files and and then delete the first one that 
             // matches the text for the template
             // then remove that option from the combobox
-            //TODO - Change this in future for BIN
             string deleteTemplate = $"{ comboBoxLoad.Text }{ Utility.FileExtension() }";
             string path = ConfigurationManager.AppSettings["tfilePath"];
-            //TODO - Change this in future for BIN
             IEnumerable<string> files = Directory.GetFiles(path, $"*{ Utility.FileExtension() }", SearchOption.TopDirectoryOnly);
 
 

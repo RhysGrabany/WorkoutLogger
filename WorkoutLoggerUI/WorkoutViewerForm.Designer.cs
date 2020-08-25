@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WorkoutViewerForm));
             this.comboBoxLoad = new System.Windows.Forms.ComboBox();
             this.buttonLoadTemplate = new System.Windows.Forms.Button();
             this.textBoxTemplate = new System.Windows.Forms.TextBox();
@@ -1052,9 +1053,9 @@
             // buttonLoadDay
             // 
             this.buttonLoadDay.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLoadDay.Location = new System.Drawing.Point(110, 63);
+            this.buttonLoadDay.Location = new System.Drawing.Point(125, 63);
             this.buttonLoadDay.Name = "buttonLoadDay";
-            this.buttonLoadDay.Size = new System.Drawing.Size(114, 37);
+            this.buttonLoadDay.Size = new System.Drawing.Size(99, 37);
             this.buttonLoadDay.TabIndex = 114;
             this.buttonLoadDay.Text = "Load Day";
             this.buttonLoadDay.UseVisualStyleBackColor = true;
@@ -1400,6 +1401,7 @@
             this.Controls.Add(this.groupBox13);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.Name = "WorkoutViewerForm";
             this.Text = "Workout Logger";
