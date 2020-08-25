@@ -1,12 +1,14 @@
 # Workout Logger
-
+WORK IN PROGRESS
 
 This is a program that allows users to log their Workout progress in a clear and decriptive way.<br> The aim of this program is to minimise the amount of time the user has to log in their exercises and weights for each set, and spend more time in actually working out.
 
 ---
 ## Contents Page
 * [Features](#features)
-* []
+* [Main Form](#mainform)
+* [Load Form](#loadform)
+* [Footnote](#footnote)
 
 ---
 <a name="features"></a>
@@ -23,7 +25,7 @@ This is a program that allows users to log their Workout progress in a clear and
 <a name="mainform"></a>
 ## Main Form (WorkoutLogger)
 
-<img align="centre" width="763" height="741" src="readme_imgs/main.png">
+<img align="centre" width="763" height="741" src="https://github.com/RhysGrabany/WorkoutLogger/blob/master/readme_imgs/main.PNG">
 
 This is the main form for this application. This has most of the features included that have been outlined above. Design implementations outlined below:
 
@@ -48,7 +50,7 @@ This is the main form for this application. This has most of the features includ
 <a name="loadform"></a>
 ## Load Day Form
 
-<img align="right" width="312" height="558" src="readme_imgs/load.png">
+<img align="right" width="312" height="558" src="https://github.com/RhysGrabany/WorkoutLogger/blob/master/readme_imgs/load.PNG">
 
 
 This is the form with the main ability of loading previously completed, and saved, days so you can view your self-progress. <br>
@@ -65,9 +67,11 @@ The functionality for each component is outlined below:<br>
 
 
 
----
+
 <a name="footnote"></a>
+<details>
+  <summary>My footnote</summary>
 This is my first application created in C#, as such there may be design implmentations that could be questionable.
 
 Thank you for your understanding, this will be more filled out as development continues
-
+</details>
