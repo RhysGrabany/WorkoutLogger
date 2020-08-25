@@ -118,7 +118,6 @@ namespace WorkoutLoggerUI
 
             ClearTextboxes();
 
-            //TODO - Change this in future for BIN
             string loadTemplate = $"{ comboBoxLoad.Text }{ Utility.FileExtension() }";
 
             string filePath = Utility.FindFile(loadTemplate, true);
@@ -399,7 +398,6 @@ namespace WorkoutLoggerUI
             // then get the file names for each file (exclude the paths)
             string templateFolder = ConfigurationManager.AppSettings["tfilePath"];
             if (!Directory.Exists(templateFolder)) return;
-            //TODO - Change this in future for BIN
             IEnumerable<string> files = Directory.GetFiles(templateFolder, $"*{ Utility.FileExtension() }"
                 , SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x));
 
