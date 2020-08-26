@@ -15,8 +15,8 @@ namespace WorkoutLoggerUI
     {
         public SettingsForm()
         {
-            LoadPreviousSettings();
             InitializeComponent();
+            LoadPreviousSettings();
         }
         private void buttonTemplateFolder_Click(object sender, EventArgs e)
         {
@@ -58,9 +58,11 @@ namespace WorkoutLoggerUI
             switch (GlobalConfig.DatabaseUsed)
             {
                 case DatabaseType.JSON:
+                    radioXML.Checked = false;
                     radioJson.Checked = true;
                     break;
                 case DatabaseType.XML:
+                    radioJson.Checked = false;
                     radioXML.Checked = true;
                     break;
                 default:
@@ -70,9 +72,11 @@ namespace WorkoutLoggerUI
             switch (GlobalConfig.UnitUsed)
             {
                 case UnitType.METRIC:
+                    radioImperial.Checked = false;
                     radioMetric.Checked = true;
                     break;
                 case UnitType.IMPERIAL:
+                    radioMetric.Checked = false;
                     radioImperial.Checked = true;
                     break;
                 default:

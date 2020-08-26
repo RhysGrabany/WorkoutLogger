@@ -17,6 +17,7 @@ namespace WorkoutLoggerUI
         {
             InitializeComponent();
             PopulateComboBox();
+            CheckUnitLabel();
         }
 
         #region Form Components
@@ -138,6 +139,9 @@ namespace WorkoutLoggerUI
             SettingsForm Settings = new SettingsForm();
 
             Settings.ShowDialog();
+
+            PopulateComboBox();
+            CheckUnitLabel();
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
@@ -400,6 +404,7 @@ namespace WorkoutLoggerUI
         /// </summary>
         private void PopulateComboBox()
         {
+            comboBoxLoad.Items.Clear();
             // save the file location for templates
             // Get the files in the template folder, only load the *.xml files,
             // then get the file names for each file (exclude the paths)
@@ -485,6 +490,18 @@ namespace WorkoutLoggerUI
 
                 }
                 exerciseNo++;
+            }
+        }
+
+        private void CheckUnitLabel()
+        {
+            if (labelWeightUnit.Text == "Kg" && GlobalConfig.UnitUsed == UnitType.IMPERIAL)
+            {
+                labelWeightUnit.Text = "Lb";
+            }
+            else if (labelWeightUnit.Text == "Lb" && GlobalConfig.UnitUsed == UnitType.METRIC)
+            {
+                labelWeightUnit.Text = "Kg";
             }
         }
 
