@@ -49,20 +49,13 @@ namespace WorkoutLoggerUI
 
         private void buttonDeleteDay_Click(object sender, EventArgs e)
         {
-            string deleteTemplate = $"{ listViewDays.SelectedItems[0].Text }{ Utility.FileExtension() }";
+            string deleteTemplate = $"{ listViewDays.SelectedItems[0].SubItems[1].Text.Replace("/", "_") }" +
+                $"{ listViewDays.SelectedItems[0].SubItems[0].Text }{ Utility.FileExtension() }";
             string path = ConfigurationManager.AppSettings["filePath"];
-            IEnumerable<string> files = Directory.GetFiles(path, $"*{ Utility.FileExtension() }", SearchOption.TopDirectoryOnly);
 
-            foreach (string file in files)
-            {
-                if (file.Contains(deleteTemplate)) { File.Delete(file); break; }
-            }
+            File.Delete($"{ path }\\{ deleteTemplate }");
 
-            foreach(ListViewItem eachItem in listViewDays.SelectedItems)
-            {
-                listViewDays.Items.Remove(eachItem);
-            }
-
+            listViewDays.Items.Remove(listViewDays.SelectedItems[0]);
 
         }
 
@@ -91,7 +84,9 @@ namespace WorkoutLoggerUI
             foreach (string file in files)
             {
                 string[] parsedFile = ParsedFile(file);
-                listViewDays.Items.Add(new ListViewItem( new[] { parsedFile[1], parsedFile[0] } ));
+                ListViewItem listItem = new ListViewItem(parsedFile[1]);
+                listItem.SubItems.Add(parsedFile[0]);
+                listViewDays.Items.Add(listItem);
             }
 
         }
