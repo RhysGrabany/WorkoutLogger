@@ -31,9 +31,9 @@ namespace WorkoutLoggerLibrary
         /// </summary>
         public static DateModel DayData { get; set; }
 
-        public static string TemplatesFolder { get; set; } = $"{ ConfigurationManager.AppSettings["tfilePath"] }";
+        public static string TemplatesFolder { get; set; } = "test"; //= $"{ ConfigurationManager.AppSettings["tfilePath"] }";
 
-        public static string DaysFolder { get; set; } = $"{ ConfigurationManager.AppSettings["filePath"] }";
+        public static string DaysFolder { get; set; } = "test"; //= $"{ ConfigurationManager.AppSettings["filePath"] }";
 
 
         public static void InitialiseConnections(DatabaseType db)
