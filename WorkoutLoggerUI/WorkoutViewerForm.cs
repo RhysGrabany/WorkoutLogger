@@ -133,6 +133,13 @@ namespace WorkoutLoggerUI
             Application.Exit();
         }
 
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SettingsForm Settings = new SettingsForm();
+
+            Settings.ShowDialog();
+        }
+
         private void buttonClear_Click(object sender, EventArgs e)
         {
             ClearTextboxes();
@@ -481,8 +488,9 @@ namespace WorkoutLoggerUI
             }
         }
 
+
         #endregion
 
-
+        
     }
 }

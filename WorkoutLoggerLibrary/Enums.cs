@@ -9,4 +9,9 @@ namespace WorkoutLoggerLibrary
         JSON,
         XML,
     }
+    public enum UnitType
+    {
+        METRIC,
+        IMPERIAL
+    }
 }

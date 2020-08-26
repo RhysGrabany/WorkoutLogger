@@ -8,6 +8,11 @@ namespace WorkoutLoggerLibrary
 {
     public static class GlobalConfig
     {
+        // Consts for the number of exercises and sets for the form
+        // no real need having more unless push comes to shove
+        public const int NoOfExercises = 10;
+        public const int NoOfSets = 5;
+
         /// <summary>
         /// For using the correct DataConnection
         /// </summary>
@@ -18,16 +23,14 @@ namespace WorkoutLoggerLibrary
         /// It's mostly for utility work and finding the file extension
         /// </summary>
         public static DatabaseType DatabaseUsed { get; set; }
+        public static UnitType UnitUsed { get; set; }
 
         /// <summary>
         /// This is holding the data needed from the LoadDay window
         /// </summary>
         public static DateModel DayData { get; set; }
 
-        // Consts for the number of exercises and sets for the form
-        // no real need having more unless push comes to shove
-        public const int NoOfExercises = 10;
-        public const int NoOfSets = 5;
+
 
         public static void InitialiseConnections(DatabaseType db)
         {
