@@ -19,7 +19,8 @@ namespace WorkoutLoggerUI
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Initialise database connections
-            GlobalConfig.InitialiseConnections(DatabaseType.JSON);
+            Settings.Boot();
+            GlobalConfig.InitialiseConnections(Settings.Instance.DatabaseConnection);
 
             Application.Run(new WorkoutViewerForm());
         }
