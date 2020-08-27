@@ -77,6 +77,11 @@ namespace WorkoutLoggerUI
             // iterate through the files and use the method to parse the data,
             // then add the data to the listview
 
+            if (!Directory.Exists(Settings.Instance.DaysFolder))
+            {
+                return;
+            }
+
             string dayFilePath = $"{ Settings.Instance.DaysFolder }";
             IEnumerable<string> files = Directory.GetFiles(dayFilePath, $"*{ Utility.FileExtension() }"
                 , SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x)).Reverse();

@@ -1214,7 +1214,7 @@
             this.groupBox13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox13.Location = new System.Drawing.Point(415, 29);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(339, 119);
+            this.groupBox13.Size = new System.Drawing.Size(333, 119);
             this.groupBox13.TabIndex = 170;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Template Functionality";
@@ -1234,7 +1234,7 @@
             this.groupBox15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox15.Location = new System.Drawing.Point(168, 24);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(171, 95);
+            this.groupBox15.Size = new System.Drawing.Size(165, 95);
             this.groupBox15.TabIndex = 172;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Loading/Deleting";
@@ -1286,7 +1286,7 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
