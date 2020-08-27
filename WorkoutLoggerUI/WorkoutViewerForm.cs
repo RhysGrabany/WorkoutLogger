@@ -38,7 +38,7 @@ namespace WorkoutLoggerUI
 
                 DateModel model = new DateModel(nameDay, exercises, dailyWeight, descriptionDay);
 
-                Directory.CreateDirectory($"{ ConfigurationManager.AppSettings["filePath"] }");
+                Directory.CreateDirectory($"{ Settings.Instance.DaysFolder }");
                 GlobalConfig.Connection.Creating(model);
 
                 ClearTextboxes();
@@ -78,7 +78,7 @@ namespace WorkoutLoggerUI
                 List<ExerciseModel> exercises = ExerciseReturn(true);
                 TemplateModel model = new TemplateModel(nameTemplate, exercises);
 
-                Directory.CreateDirectory($"{ ConfigurationManager.AppSettings["tfilePath"] }");
+                Directory.CreateDirectory($"{ Settings.Instance.TemplatesFolder }");
                 GlobalConfig.Connection.Creating(model);
 
                 if (!comboBoxLoad.Items.Contains(nameTemplate.Replace(" ", ""))) comboBoxLoad.Items.Add(nameTemplate.Replace(" ", ""));
@@ -98,7 +98,7 @@ namespace WorkoutLoggerUI
             // matches the text for the template
             // then remove that option from the combobox
             string deleteTemplate = $"{ comboBoxLoad.Text }{ Utility.FileExtension() }";
-            string path = ConfigurationManager.AppSettings["tfilePath"];
+            string path = Settings.Instance.TemplatesFolder;
             IEnumerable<string> files = Directory.GetFiles(path, $"*{ Utility.FileExtension() }", SearchOption.TopDirectoryOnly);
 
 
@@ -408,7 +408,7 @@ namespace WorkoutLoggerUI
             // save the file location for templates
             // Get the files in the template folder, only load the *.xml files,
             // then get the file names for each file (exclude the paths)
-            string templateFolder = ConfigurationManager.AppSettings["tfilePath"];
+            string templateFolder = Settings.Instance.TemplatesFolder;
             if (!Directory.Exists(templateFolder)) return;
             IEnumerable<string> files = Directory.GetFiles(templateFolder, $"*{ Utility.FileExtension() }"
                 , SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x));

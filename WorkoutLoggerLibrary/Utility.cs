@@ -17,8 +17,8 @@ namespace WorkoutLoggerLibrary
         public static string FindFile(string partial, bool template)
         {
 
-            string path = template ? ConfigurationManager.AppSettings["tfilePath"] : 
-                ConfigurationManager.AppSettings["filePath"];
+            string path = template ? Settings.Instance.TemplatesFolder : 
+                Settings.Instance.DaysFolder;
             IEnumerable<string> files = Directory.GetFiles(path, $"*{ FileExtension() }", SearchOption.TopDirectoryOnly);
 
             foreach (string file in files)
@@ -41,8 +41,8 @@ namespace WorkoutLoggerLibrary
         public static string FullFilePath(this string fileName, bool template)
         {
 
-            return template ? $"{ ConfigurationManager.AppSettings["tfilePath"] }\\{ fileName }"
-                : $"{ ConfigurationManager.AppSettings["filePath"] }\\{ fileName }";
+            return template ? $"{ Settings.Instance.TemplatesFolder }\\{ fileName }"
+                : $"{ Settings.Instance.DaysFolder }\\{ fileName }";
         }
 
         public static string FileExtension()

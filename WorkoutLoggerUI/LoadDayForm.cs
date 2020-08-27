@@ -50,7 +50,7 @@ namespace WorkoutLoggerUI
         private void buttonDeleteDay_Click(object sender, EventArgs e)
         {
             string deleteTemplate = $"{ listViewDays.SelectedItems[0].Text }{ Utility.FileExtension() }";
-            string path = ConfigurationManager.AppSettings["filePath"];
+            string path = Settings.Instance.DaysFolder;
             IEnumerable<string> files = Directory.GetFiles(path, $"*{ Utility.FileExtension() }", SearchOption.TopDirectoryOnly);
 
             foreach (string file in files)
@@ -84,7 +84,7 @@ namespace WorkoutLoggerUI
             // iterate through the files and use the method to parse the data,
             // then add the data to the listview
 
-            string dayFilePath = $"{ ConfigurationManager.AppSettings["filePath"] }";
+            string dayFilePath = $"{ Settings.Instance.DaysFolder }";
             IEnumerable<string> files = Directory.GetFiles(dayFilePath, $"*{ Utility.FileExtension() }"
                 , SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x)).Reverse();
 
