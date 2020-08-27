@@ -12,12 +12,39 @@ namespace WorkoutLoggerLibrary
     {
         private static readonly XmlSerializer serial = new XmlSerializer(typeof(Settings));
         private static Settings instance = new Settings();
-        public static void FirstBoot()
+        private static string filename = "C:\\data\\WorkoutLogger\\settings.xml";
+
+        public static void Boot()
         {
-            if (!File.Exists("C:\\data\\WorkoutLogger\\settings.xml"))
+
+            if (!File.Exists(filename))
             {
-                FileStream file = File.Create("C:\\data\\WorkoutLogger\\settings.xml");
+                FileStream file = File.Create(filename);
+
+                instance.DaysFolder = "C:\\data\\WorkoutLogger\\days";
+                instance.TemplatesFolder = "C:\\data\\WorkoutLogger\\templates";
+                instance.UnitSystem = UnitType.METRIC;
+                instance.DatabaseConnection = DatabaseType.XML;
+
                 serial.Serialize(file, instance);
+                file.Close();
+            }
+            else
+            {
+                StreamReader file = new StreamReader(filename);
+                instance = (Settings)serial.Deserialize(file);
+                file.Close();
+            }
+
+        }
+        public static void Update()
+        {
+
+            if (File.Exists(filename))
+            {
+                FileStream file = File.Create(filename);
+                serial.Serialize(file, instance);
+                file.Close();
             }
         }
         public static Settings Instance
@@ -25,21 +52,14 @@ namespace WorkoutLoggerLibrary
             get
             {
                 if (instance != null) return instance;
-                string filename = "C:\\data\\WorkoutLogger\\settings.xml";
 
                 using (StringReader reader = new StringReader(filename)) return instance = (Settings)serial.Deserialize(reader);
             }
         }
 
-        public Settings()
-        {
-            DaysFolder = "C:\\data\\WorkoutLogger\\days";
-            TemplatesFolder = "C:\\data\\WorkoutLogger\\templates";
-            UnitSystem = UnitType.METRIC;
-        }
-
         public string DaysFolder { get; set; } 
         public string TemplatesFolder { get; set; } 
-        public UnitType UnitSystem { get; set; } 
+        public UnitType UnitSystem { get; set; }
+        public DatabaseType DatabaseConnection { get; set; }
     }
 }

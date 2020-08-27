@@ -47,7 +47,7 @@ namespace WorkoutLoggerLibrary
 
         public static string FileExtension()
         {
-            switch (GlobalConfig.DatabaseUsed)
+            switch (Settings.Instance.DatabaseConnection)
             {
                 case DatabaseType.JSON:
                     return ".json";

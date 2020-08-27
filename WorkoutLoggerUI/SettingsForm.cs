@@ -30,6 +30,8 @@ namespace WorkoutLoggerUI
             {
                 string folderPath = Path.GetDirectoryName(openFolderTemplates.FileName);
                 textBoxTemplatesLoc.Text = folderPath;
+                Settings.Instance.TemplatesFolder = folderPath;
+                Settings.Update();
             }
         }
 
@@ -39,6 +41,8 @@ namespace WorkoutLoggerUI
             {
                 string folderPath = Path.GetDirectoryName(openFolderDays.FileName);
                 textBoxDaysLoc.Text = folderPath;
+                Settings.Instance.DaysFolder = folderPath;
+                Settings.Update();
             }
         }
 
@@ -50,12 +54,20 @@ namespace WorkoutLoggerUI
 
         private void radioJson_CheckedChanged(object sender, EventArgs e)
         {
-            GlobalConfig.DatabaseUsed = DatabaseType.JSON;
+            if (radioJson.Checked)
+            {
+                Settings.Instance.DatabaseConnection = DatabaseType.JSON;
+            }
+            Settings.Update();
         }
 
         private void radioXML_CheckedChanged(object sender, EventArgs e)
         {
-            GlobalConfig.DatabaseUsed = DatabaseType.XML;
+            if (radioXML.Checked)
+            {
+                Settings.Instance.DatabaseConnection = DatabaseType.XML;
+            }
+            Settings.Update();
         }
         
         #endregion
@@ -63,12 +75,20 @@ namespace WorkoutLoggerUI
         #region Unit Type Radio Buttons
         private void radioMetric_CheckedChanged(object sender, EventArgs e)
         {
-            GlobalConfig.UnitUsed = UnitType.METRIC;
+            if (radioMetric.Checked)
+            {
+                Settings.Instance.UnitSystem = UnitType.METRIC;
+            }
+            Settings.Update();
         }
 
         private void radioImperial_CheckedChanged(object sender, EventArgs e)
         {
-            GlobalConfig.UnitUsed = UnitType.IMPERIAL;
+            if (radioImperial.Checked)
+            {
+                Settings.Instance.UnitSystem = UnitType.IMPERIAL;
+            }
+            Settings.Update();
         }
 
         #endregion
@@ -84,7 +104,7 @@ namespace WorkoutLoggerUI
 
         private void LoadPreviousSettings()
         {
-            switch (GlobalConfig.DatabaseUsed)
+            switch (Settings.Instance.DatabaseConnection)
             {
                 case DatabaseType.JSON:
                     radioJson.Checked = true;
@@ -96,7 +116,7 @@ namespace WorkoutLoggerUI
                     break;
             }
 
-            switch (GlobalConfig.UnitUsed)
+            switch (Settings.Instance.UnitSystem)
             {
                 case UnitType.METRIC:
                     radioMetric.Checked = true;
@@ -108,8 +128,8 @@ namespace WorkoutLoggerUI
                     break;
             }
 
-            textBoxDaysLoc.Text = GlobalConfig.DaysFolder;
-            textBoxTemplatesLoc.Text = GlobalConfig.TemplatesFolder;
+            textBoxDaysLoc.Text = Settings.Instance.DaysFolder;
+            textBoxTemplatesLoc.Text = Settings.Instance.TemplatesFolder;
 
         }
 

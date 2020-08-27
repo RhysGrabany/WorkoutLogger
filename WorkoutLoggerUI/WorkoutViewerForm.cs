@@ -495,11 +495,11 @@ namespace WorkoutLoggerUI
 
         private void CheckUnitLabel()
         {
-            if (labelWeightUnit.Text == "Kg" && GlobalConfig.UnitUsed == UnitType.IMPERIAL)
+            if (labelWeightUnit.Text == "Kg" && Settings.Instance.UnitSystem == UnitType.IMPERIAL)
             {
                 labelWeightUnit.Text = "Lb";
             }
-            else if (labelWeightUnit.Text == "Lb" && GlobalConfig.UnitUsed == UnitType.METRIC)
+            else if (labelWeightUnit.Text == "Lb" && Settings.Instance.UnitSystem == UnitType.METRIC)
             {
                 labelWeightUnit.Text = "Kg";
             }

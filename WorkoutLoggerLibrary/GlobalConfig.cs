@@ -15,26 +15,11 @@ namespace WorkoutLoggerLibrary
         public const int NoOfSets = 5;
 
         /// <summary>
-        /// For using the correct DataConnection
-        /// </summary>
-        public static IDataConnection Connection { get; private set; }
-
-        /// <summary>
-        /// This holds the DatabaseType being used
-        /// It's mostly for utility work and finding the file extension
-        /// </summary>
-        public static DatabaseType DatabaseUsed { get; set; }
-        public static UnitType UnitUsed { get; set; }
-
-        /// <summary>
         /// This is holding the data needed from the LoadDay window
         /// </summary>
         public static DateModel DayData { get; set; }
 
-        public static string TemplatesFolder { get; set; } = "test"; //= $"{ ConfigurationManager.AppSettings["tfilePath"] }";
-
-        public static string DaysFolder { get; set; } = "test"; //= $"{ ConfigurationManager.AppSettings["filePath"] }";
-
+        public static IDataConnection Connection { get; private set; }
 
         public static void InitialiseConnections(DatabaseType db)
         {
@@ -44,12 +29,12 @@ namespace WorkoutLoggerLibrary
                 case DatabaseType.XML:
                     XmlConnector text = new XmlConnector();
                     Connection = text;
-                    DatabaseUsed = DatabaseType.XML;
+                    Settings.Instance.DatabaseConnection = DatabaseType.XML;
                     break;
                 case DatabaseType.JSON:
                     JsonConnector json = new JsonConnector();
                     Connection = json;
-                    DatabaseUsed = DatabaseType.JSON;
+                    Settings.Instance.DatabaseConnection = DatabaseType.JSON;
                     break;
                 default:
                     break;
