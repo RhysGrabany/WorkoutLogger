@@ -12,12 +12,13 @@ namespace WorkoutLoggerLibrary
     {
         private static readonly XmlSerializer serial = new XmlSerializer(typeof(Settings));
         private static Settings instance = new Settings();
-        private static string file = "settings.xml";
-        private static string folder = "C:\\data\\WorkoutLogger";
-        private static string fullFilePath = $"{ folder }\\{ file }";
+        private static string settingsFile = "settings.xml";
+        private static string cacheObjectFile = "cache.xml";
+        private static string folder = @"C:\data\WorkoutLogger";
+        private static string fullFilePath = $"{ folder }\\{ settingsFile }";
 
         /// <summary>
-        /// This method is called on boot and will aautomatically set the values to the default
+        /// This method is called on boot and will automatically set the values to the default
         /// if there is no settings.xml file. If there is a settings.xml file, then the method
         /// will take the info from the file for use in the program.
         /// </summary>
@@ -29,8 +30,9 @@ namespace WorkoutLoggerLibrary
                 Directory.CreateDirectory(folder);
                 FileStream file = File.Create(fullFilePath);
 
-                instance.DaysFolder = "C:\\data\\WorkoutLogger\\days";
-                instance.TemplatesFolder = "C:\\data\\WorkoutLogger\\templates";
+                instance.DaysFolder = $"{ folder }\\days";
+                instance.TemplatesFolder = $"{ folder }\\templates";
+                instance.CacheObjectFile = $"{ folder }\\{ cacheObjectFile }";
                 instance.UnitSystem = UnitType.METRIC;
                 instance.DatabaseConnection = DatabaseType.XML;
 
@@ -79,7 +81,9 @@ namespace WorkoutLoggerLibrary
         /// <summary>
         /// The folder to hold the information for Templates
         /// </summary>
-        public string TemplatesFolder { get; set; } 
+        public string TemplatesFolder { get; set; }
+
+        public string CacheObjectFile { get; set; }
         /// <summary>
         /// The UnitType being used
         /// </summary>
