@@ -45,6 +45,17 @@ namespace WorkoutLoggerLibrary
                 : $"{ Settings.Instance.DaysFolder }\\{ fileName }";
         }
 
+        public static void InitialiseCacheFile(this string fileName)
+        {
+            using (var fs = new FileStream(fileName, FileMode.Append, FileAccess.Write))
+            {
+                using (var sw = new StreamWriter(fs))
+                {
+                    sw.WriteLine("id,name,date,template");
+                }
+            }
+        }
+
         public static string FileExtension()
         {
             switch (Settings.Instance.DatabaseConnection)

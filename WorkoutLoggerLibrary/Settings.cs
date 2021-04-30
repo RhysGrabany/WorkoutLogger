@@ -13,7 +13,7 @@ namespace WorkoutLoggerLibrary
         private static readonly XmlSerializer serial = new XmlSerializer(typeof(Settings));
         private static Settings instance = new Settings();
         private static string settingsFile = "settings.xml";
-        private static string cacheObjectFile = "cache.txt";
+        private static string cacheObjectFile = "cache.csv";
         private static string folder = @"C:\data\WorkoutLogger";
         private static string fullFilePath = $"{ folder }\\{ settingsFile }";
 
@@ -41,8 +41,11 @@ namespace WorkoutLoggerLibrary
 
                 // Creating the cache file
                 file = File.Create($"{ folder}\\{ cacheObjectFile }");
-
                 file.Close();
+
+
+                Utility.InitialiseCacheFile(instance.CacheObjectFile);
+
             }
             else
             {
