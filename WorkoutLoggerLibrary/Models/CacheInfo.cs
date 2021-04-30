@@ -10,6 +10,7 @@ namespace WorkoutLoggerLibrary.Models
         public int Id { get; set; } = 1;
         public string Name { get; set; }
         public DateTime Date { get; set; }
+        public bool TemplateObject { get; set; } = false;
 
 
 

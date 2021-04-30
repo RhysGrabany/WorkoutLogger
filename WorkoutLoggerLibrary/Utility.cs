@@ -56,8 +56,5 @@ namespace WorkoutLoggerLibrary
             }
             return ".xml";
         }
-
-
-
     }
 }

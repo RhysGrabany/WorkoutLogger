@@ -13,7 +13,7 @@ namespace WorkoutLoggerLibrary
         private static readonly XmlSerializer serial = new XmlSerializer(typeof(Settings));
         private static Settings instance = new Settings();
         private static string settingsFile = "settings.xml";
-        private static string cacheObjectFile = "cache.xml";
+        private static string cacheObjectFile = "cache.txt";
         private static string folder = @"C:\data\WorkoutLogger";
         private static string fullFilePath = $"{ folder }\\{ settingsFile }";
 
@@ -27,6 +27,8 @@ namespace WorkoutLoggerLibrary
 
             if (!File.Exists(fullFilePath))
             {
+                // Create dir and settings file, then populate the settings file
+                // with the needed info
                 Directory.CreateDirectory(folder);
                 FileStream file = File.Create(fullFilePath);
 
@@ -35,8 +37,11 @@ namespace WorkoutLoggerLibrary
                 instance.CacheObjectFile = $"{ folder }\\{ cacheObjectFile }";
                 instance.UnitSystem = UnitType.METRIC;
                 instance.DatabaseConnection = DatabaseType.XML;
-
                 serial.Serialize(file, instance);
+
+                // Creating the cache file
+                file = File.Create($"{ folder}\\{ cacheObjectFile }");
+
                 file.Close();
             }
             else
@@ -82,7 +87,10 @@ namespace WorkoutLoggerLibrary
         /// The folder to hold the information for Templates
         /// </summary>
         public string TemplatesFolder { get; set; }
-
+        /// <summary>
+        /// The file that holds all the cache to templates and 
+        /// days
+        /// </summary>
         public string CacheObjectFile { get; set; }
         /// <summary>
         /// The UnitType being used
