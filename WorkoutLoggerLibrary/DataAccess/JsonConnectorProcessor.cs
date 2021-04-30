@@ -22,8 +22,7 @@ namespace WorkoutLoggerLibrary.DataAccess.JsonHelpers
         {
 
             Type type = typeof(T);
-            bool template = true;
-            if (type == typeof(DateModel)) template = false;
+            bool template = type != typeof(DateModel);
 
             TextWriter writer = null;
             var contents = Newtonsoft.Json.JsonConvert.SerializeObject(model);

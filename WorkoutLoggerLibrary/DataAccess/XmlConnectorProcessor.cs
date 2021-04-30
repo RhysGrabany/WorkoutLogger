@@ -23,10 +23,9 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
         {
 
             Type type = typeof(T);
-            bool template = true;
-            if (type == typeof(DateModel)) template = false;
+            bool template = type != typeof(DateModel);
 
-            System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(T));
+            System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(type);
             FileStream file = File.Create(Utility.FullFilePath(fileName, template));
             writer.Serialize(file, model);
             file.Close();
