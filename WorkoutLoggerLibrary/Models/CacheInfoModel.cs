@@ -8,18 +8,23 @@ namespace WorkoutLoggerLibrary.Models
     {
 
         public CacheInfoModel() { }
+
+        public CacheInfoModel(string name, DateTime date, bool template)
+        {
+            Name = name;
+            Date = date;
+            TemplateObject = template;
+        }
         public CacheInfoModel(int id, string name,
-            DateTime date, bool? template)
+            DateTime date, bool template)
         {
             //TODO: Change this to check last id and then +1
-            Id = ReturnIdLastRecord();
-
-
-
+            //Id = ReturnIdLastRecord();
+            Id = id;
 
             Name = name;
             Date = date;
-            TemplateObject = (bool)template;
+            TemplateObject = template;
 
         }
 

@@ -24,13 +24,17 @@ namespace WorkoutLoggerLibrary.DataAccess
                     string line;
                     while((line = sr.ReadLine()) != null)
                     {
+                        //int id;
                         string[] lineSplit = line.Split(',');
-                        //retList.Add(new CacheInfoModel(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3]));
+                        //int.TryParse(lineSplit[0], out id);
+
+                        retList.Add(new CacheInfoModel(int.Parse(lineSplit[0]), 
+                            lineSplit[1], DateTime.Parse(lineSplit[2]), bool.Parse(lineSplit[3])));
                     }
                 }
             }
 
-            throw new NotImplementedException();
+            return retList;
         }
 
         public static void CsvWrite(this CacheInfoModel model, string fileName)

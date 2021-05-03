@@ -53,7 +53,6 @@ namespace WorkoutLoggerLibrary
             return Settings.Instance.CacheObjectFile;
         }
 
-
         public static void InitialiseCacheFile(this string fileName)
         {
             using (var fs = new FileStream(fileName, FileMode.Append, FileAccess.Write))
