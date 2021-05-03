@@ -12,14 +12,18 @@ namespace WorkoutLoggerLibrary.Models
             DateTime date, bool? template)
         {
             //TODO: Change this to check last id and then +1
-            Id = id;
+            Id = ReturnIdLastRecord();
+
+
+
+
             Name = name;
             Date = date;
             TemplateObject = (bool)template;
 
         }
 
-        public int Id { get; set; } = 1;
+        public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public bool TemplateObject { get; set; } = false;
@@ -27,6 +31,16 @@ namespace WorkoutLoggerLibrary.Models
         public string CsvFormat()
         {
             return $"{ Id },{ Name },{ Date.ToString("d") },{ TemplateObject }";
+        }
+
+        public int ReturnIdLastRecord()
+        {
+
+
+
+
+
+            return 0;
         }
 
     }

@@ -34,6 +34,7 @@ namespace WorkoutLoggerLibrary
 
                 instance.DaysFolder = $"{ folder }\\days";
                 instance.TemplatesFolder = $"{ folder }\\templates";
+                instance.DataFolder = folder;
                 instance.CacheObjectFile = $"{ folder }\\{ cacheObjectFile }";
                 instance.UnitSystem = UnitType.METRIC;
                 instance.DatabaseConnection = DatabaseType.XML;
@@ -90,6 +91,9 @@ namespace WorkoutLoggerLibrary
         /// The folder to hold the information for Templates
         /// </summary>
         public string TemplatesFolder { get; set; }
+
+        public string DataFolder { get; set; }
+
         /// <summary>
         /// The file that holds all the cache to templates and 
         /// days

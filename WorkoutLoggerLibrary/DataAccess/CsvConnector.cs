@@ -11,7 +11,7 @@ namespace WorkoutLoggerLibrary.DataAccess
     {
         public List<CacheInfoModel> CsvLoad()
         {
-            throw new NotImplementedException();
+            return CsvConnectorProcessor.CsvLoad(Utility.FullCacheFilePath());
         }
 
         public void Write(CacheInfoModel cacheModel)

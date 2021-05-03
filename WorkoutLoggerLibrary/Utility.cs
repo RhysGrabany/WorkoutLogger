@@ -16,7 +16,6 @@ namespace WorkoutLoggerLibrary
         /// <returns></returns>
         public static string FindFile(string partial, bool template)
         {
-
             string path = template ? Settings.Instance.TemplatesFolder : 
                 Settings.Instance.DaysFolder;
             IEnumerable<string> files = Directory.GetFiles(path, $"*{ FileExtension() }", SearchOption.TopDirectoryOnly);
@@ -30,7 +29,6 @@ namespace WorkoutLoggerLibrary
             }
 
             return null;
-
         }
 
         /// <summary>
@@ -44,6 +42,17 @@ namespace WorkoutLoggerLibrary
             return template ? $"{ Settings.Instance.TemplatesFolder }\\{ fileName }"
                 : $"{ Settings.Instance.DaysFolder }\\{ fileName }";
         }
+
+        public static string FullFolderPath()
+        {
+            return Settings.Instance.DataFolder;
+        }
+
+        public static string FullCacheFilePath()
+        {
+            return Settings.Instance.CacheObjectFile;
+        }
+
 
         public static void InitialiseCacheFile(this string fileName)
         {
