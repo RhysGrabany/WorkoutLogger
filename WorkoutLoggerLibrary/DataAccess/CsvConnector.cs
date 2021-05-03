@@ -14,8 +14,9 @@ namespace WorkoutLoggerLibrary.DataAccess
             throw new NotImplementedException();
         }
 
-        public void Write(CacheInfoModel cacheModel, string fileName)
+        public void Write(CacheInfoModel cacheModel)
         {
+            string fileName = "cache.csv";
             cacheModel.CsvWrite(fileName);
         }
     }

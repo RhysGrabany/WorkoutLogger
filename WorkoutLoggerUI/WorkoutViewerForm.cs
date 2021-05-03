@@ -37,9 +37,12 @@ namespace WorkoutLoggerUI
                 List<ExerciseModel> exercises = ExerciseReturn(false);
 
                 DateModel model = new DateModel(nameDay, exercises, dailyWeight, descriptionDay);
+                CacheInfoModel cacheModel = new CacheInfoModel(1, model.NameDay, model.DateDay, false);
 
                 Directory.CreateDirectory($"{ Settings.Instance.DaysFolder }");
                 GlobalConfig.Connection.Creating(model);
+
+                GlobalConfig.CsvConnection.Write(cacheModel);
 
                 ClearTextboxes();
 

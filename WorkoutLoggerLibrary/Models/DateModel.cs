@@ -48,7 +48,6 @@ namespace WorkoutLoggerLibrary.Models
             DescriptionDay = descriptionDay;
 
             DateDay = DateTime.Today;
-
         }
     }
 }

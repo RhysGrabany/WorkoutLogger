@@ -15,14 +15,15 @@ namespace WorkoutLoggerLibrary.DataAccess
             throw new NotImplementedException();
         }
 
-        public static void CsvWrite<CacheInfoModel>(string CsvFormat, string fileName)
+        public static void CsvWrite(this CacheInfoModel model, string fileName)
         {
-            
-            using (var fs = new FileStream(fileName, FileMode.Append, FileAccess.Write))
+            string fullFilePath = @"C:\data\WorkoutLogger\cache.csv";
+            // TODO: Exception when file is open
+            using (var fs = new FileStream(fullFilePath, FileMode.Append, FileAccess.Write))
             {
                 using (var sw = new StreamWriter(fs))
                 {
-                    sw.WriteLine(CsvFormat);
+                    sw.WriteLine(model.CsvFormat());
                 }
             }
         }

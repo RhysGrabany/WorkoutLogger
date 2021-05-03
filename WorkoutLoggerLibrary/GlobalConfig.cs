@@ -21,8 +21,12 @@ namespace WorkoutLoggerLibrary
 
         public static IDataConnection Connection { get; private set; }
 
+        public static CsvConnector CsvConnection { get; private set; }
+
         public static void InitialiseConnections(DatabaseType db)
         {
+
+            CsvConnection = new CsvConnector();
 
             switch (db)
             {
