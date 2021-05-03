@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WorkoutLoggerLibrary.Models
 {
-    public class CacheInfo
+    public class CacheInfoModel
     {
 
         public int Id { get; set; } = 1;
@@ -12,7 +12,10 @@ namespace WorkoutLoggerLibrary.Models
         public DateTime Date { get; set; }
         public bool TemplateObject { get; set; } = false;
 
-
+        public string CsvFormat()
+        {
+            return $"{ this.Id },{ this.Name },{ this.Date },{ this.TemplateObject }";
+        }
 
     }
 }
