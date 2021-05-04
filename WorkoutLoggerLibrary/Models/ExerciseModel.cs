@@ -6,6 +6,7 @@ namespace WorkoutLoggerLibrary.Models
 {
 	public class ExerciseModel
 	{
+        public int Id { get; set; }
         /// <summary>
         /// The name for the selected exercise
         /// </summary>
@@ -26,11 +27,13 @@ namespace WorkoutLoggerLibrary.Models
         public ExerciseModel() { }
 
         public ExerciseModel(
+            int id,
             string exerciseName, 
             int exerciseSets, 
             List<int> exerciseReps, 
             List<decimal> exerciseWeight)
         {
+            Id = id;
             ExerciseName = exerciseName;
             ExerciseSets = exerciseSets;
             ExerciseReps = exerciseReps;
@@ -38,10 +41,12 @@ namespace WorkoutLoggerLibrary.Models
         }
 
         public ExerciseModel(
+            int id,
             string exerciseName,
             int exerciseSets,
             List<decimal> exerciseWeight)
         {
+            Id = id;
             ExerciseName = exerciseName;
             ExerciseSets = exerciseSets;
             ExerciseWeight = exerciseWeight;

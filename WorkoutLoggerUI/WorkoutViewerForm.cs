@@ -36,8 +36,9 @@ namespace WorkoutLoggerUI
                 string descriptionDay = textBoxDescription.Text;
                 List<ExerciseModel> exercises = ExerciseReturn(false);
 
-                DateModel model = new DateModel(nameDay, exercises, dailyWeight, descriptionDay);
-                CacheInfoModel cacheModel = new CacheInfoModel(1, model.NameDay, model.DateDay, false);
+                // TODO: This might need changed
+                CacheInfoModel cacheModel = new CacheInfoModel(nameDay, DateTime.Today, false);
+                DateModel model = new DateModel(cacheModel.Id, nameDay, exercises, dailyWeight, descriptionDay);
 
                 //Directory.CreateDirectory($"{ Settings.Instance.DaysFolder }");
                 GlobalConfig.Connection.Creating(model);
@@ -274,13 +275,14 @@ namespace WorkoutLoggerUI
                     List<decimal> weights = WeightsList(i);
                     int sets = template ? weights.Count : reps.Count;
 
+                    // TODO: Change the Id attribute
                     if (!template)
                     {
-                        exercises.Add(new ExerciseModel(exercise, sets, reps, weights));
+                        exercises.Add(new ExerciseModel(0, exercise, sets, reps, weights));
                     } 
                     else
                     {
-                        exercises.Add(new ExerciseModel(exercise, sets, weights));
+                        exercises.Add(new ExerciseModel(0, exercise, sets, weights));
                     }
 
                 }

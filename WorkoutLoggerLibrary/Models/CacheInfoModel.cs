@@ -36,7 +36,7 @@ namespace WorkoutLoggerLibrary.Models
 
         public string CsvFormat()
         {
-            return $"{ Id },{ Name },{ Date.ToString("d") },{ TemplateObject }";
+            return $"{ Id },{ Name },{Date:d},{ TemplateObject }";
         }
 
         public int ReturnIdLastRecord()

@@ -6,6 +6,7 @@ namespace WorkoutLoggerLibrary.Models
 {
     public class DateModel
     {
+        public int Id { get; set; }
         /// <summary>
         /// Name of the day in a short sense
         /// </summary>
@@ -32,11 +33,13 @@ namespace WorkoutLoggerLibrary.Models
         public DateModel() { }
 
         public DateModel(
+            int id,
             string nameDay,
             List<ExerciseModel> exercisesDay, 
             string weightDay,
             string descriptionDay)
         {
+            Id = id;
             NameDay = nameDay;
 
             ExercisesDay = exercisesDay;
