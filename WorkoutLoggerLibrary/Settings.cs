@@ -32,13 +32,17 @@ namespace WorkoutLoggerLibrary
                 Directory.CreateDirectory(folder);
                 FileStream file = File.Create(fullFilePath);
 
-                instance.DaysFolder = $"{ folder }\\days";
-                instance.TemplatesFolder = $"{ folder }\\templates";
+                instance.DaysFolder = $"{ folder }\\days.xml";
+
+                instance.TemplatesFolder = $"{ folder }\\templates.xml";
                 instance.DataFolder = folder;
                 instance.CacheObjectFile = $"{ folder }\\{ cacheObjectFile }";
                 instance.UnitSystem = UnitType.METRIC;
                 instance.DatabaseConnection = DatabaseType.XML;
                 serial.Serialize(file, instance);
+
+                file = File.Create(instance.DaysFolder);
+                file = File.Create(instance.TemplatesFolder);
 
                 // Creating the cache file
                 file = File.Create($"{ folder}\\{ cacheObjectFile }");

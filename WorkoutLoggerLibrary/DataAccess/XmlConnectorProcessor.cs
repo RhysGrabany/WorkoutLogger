@@ -22,13 +22,24 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
         public static void XmlWrite<T>(this T model, string fileName)
         {
 
-            Type type = typeof(T);
+            Type type = model.GetType();
             bool template = type != typeof(DateModel);
 
-            System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(type);
-            FileStream file = File.Create(Utility.FullFilePath(fileName, template));
-            writer.Serialize(file, model);
-            file.Close();
+            //System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(type);
+            //FileStream file = File.Create(Utility.FullFilePath(fileName, template));
+            //writer.Serialize(file, model);
+            //file.Close();
+
+            string xmlString = SerialiseUtility.ModelToXml<T>(model);
+
+            using (var fs = new FileStream(fileName, FileMode.Append, FileAccess.Write))
+            {
+                using (var sw = new StreamWriter(fs))
+                {
+                    sw.Write(xmlString);
+                }
+            }
+
 
         }
 

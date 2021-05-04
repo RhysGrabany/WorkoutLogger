@@ -6,6 +6,7 @@ using WorkoutLoggerLibrary.DataAccess.JsonHelpers;
 
 namespace WorkoutLoggerLibrary.DataAccess
 {
+    //TODO: This class will get restructured when I fix serialising onto one file
     public class JsonConnector : IDataConnection
     {
         /// <summary>

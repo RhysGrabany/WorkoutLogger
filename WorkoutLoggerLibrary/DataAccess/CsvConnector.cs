@@ -7,6 +7,7 @@ using WorkoutLoggerLibrary.Models;
 
 namespace WorkoutLoggerLibrary.DataAccess
 {
+    //TODO: This will be changed in the future to extend IDataConnection, just need to fix some stuff first
     public class CsvConnector
     {
         public List<CacheInfoModel> CsvLoad()

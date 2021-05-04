@@ -7,6 +7,7 @@ using System.IO;
 
 namespace WorkoutLoggerLibrary.DataAccess
 {
+    //TODO: This class will get restructured when I fix serialising onto one file
     public class XmlConnector : IDataConnection
     {
 
@@ -18,10 +19,8 @@ namespace WorkoutLoggerLibrary.DataAccess
         {
 
             DateTime dayName = DateTime.Today;
-            string fileName = $"{ dayName.ToString("d").Replace("/", "_") }{ model.NameDay.Replace(" ", "") }.xml";
-
-            model.XmlWrite<DateModel>(fileName);
-
+            //string fileName = $"{ dayName.ToString("d").Replace("/", "_") }{ model.NameDay.Replace(" ", "") }.xml";
+            model.XmlWrite<DateModel>(Settings.Instance.DaysFolder);
         }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace WorkoutLoggerLibrary.DataAccess
         public void Creating(TemplateModel model)
         {
             string fileName = $"{ model.NameTemplate.Replace(" ", "") }.xml";
-
             model.XmlWrite<TemplateModel>(fileName);
         }
 
