@@ -20,7 +20,7 @@ namespace WorkoutLoggerLibrary.DataAccess
 
             DateTime dayName = DateTime.Today;
             //string fileName = $"{ dayName.ToString("d").Replace("/", "_") }{ model.NameDay.Replace(" ", "") }.xml";
-            model.XmlWrite<DateModel>(Settings.Instance.DaysFolder);
+            model.XmlWrite<DateModel>(Settings.Instance.DaysDataFile);
         }
 
         /// <summary>
@@ -40,9 +40,9 @@ namespace WorkoutLoggerLibrary.DataAccess
         /// <typeparam name="T">Model being deserialized</typeparam>
         /// <param name="path">The path to the serialized object file</param>
         /// <returns>The deserialized object that is ready to be used</returns>
-        public T Loading<T>(string path)
+        public T Loading<T>(string path, int id)
         {
-            return path.XmlLoad<T>();
+            return path.XmlLoad<T>(id);
         }
 
     }

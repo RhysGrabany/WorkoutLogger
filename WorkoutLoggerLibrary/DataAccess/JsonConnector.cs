@@ -42,7 +42,7 @@ namespace WorkoutLoggerLibrary.DataAccess
         /// <typeparam name="T">Model being deserialized</typeparam>
         /// <param name="path">The path to the serialized object file</param>
         /// <returns>The deserialized object that is ready to be used</returns>
-        public T Loading<T>(string path)
+        public T Loading<T>(string path, int id)
         {
             return path.JsonLoad<T>();
         }

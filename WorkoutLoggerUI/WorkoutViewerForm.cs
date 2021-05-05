@@ -82,7 +82,7 @@ namespace WorkoutLoggerUI
                 List<ExerciseModel> exercises = ExerciseReturn(true);
                 TemplateModel model = new TemplateModel(nameTemplate, exercises);
 
-                Directory.CreateDirectory($"{ Settings.Instance.TemplatesFolder }");
+                Directory.CreateDirectory($"{ Settings.Instance.TemplatesDataFile }");
                 GlobalConfig.Connection.Creating(model);
 
                 if (!comboBoxLoad.Items.Contains(nameTemplate.Replace(" ", ""))) comboBoxLoad.Items.Add(nameTemplate.Replace(" ", ""));
@@ -102,7 +102,7 @@ namespace WorkoutLoggerUI
             // matches the text for the template
             // then remove that option from the combobox
             string deleteTemplate = $"{ comboBoxLoad.Text }{ Utility.FileExtension() }";
-            string path = Settings.Instance.TemplatesFolder;
+            string path = Settings.Instance.TemplatesDataFile;
             IEnumerable<string> files = Directory.GetFiles(path, $"*{ Utility.FileExtension() }", SearchOption.TopDirectoryOnly);
 
 
@@ -126,7 +126,7 @@ namespace WorkoutLoggerUI
             string loadTemplate = $"{ comboBoxLoad.Text }{ Utility.FileExtension() }";
 
             string filePath = Utility.FindFile(loadTemplate, true);
-            TemplateModel model = GlobalConfig.Connection.Loading<TemplateModel>(filePath);
+            TemplateModel model = GlobalConfig.Connection.Loading<TemplateModel>(filePath, 0);
 
             FillTextBoxes(model);
         }
@@ -413,7 +413,7 @@ namespace WorkoutLoggerUI
             // save the file location for templates
             // Get the files in the template folder, only load the *.xml files,
             // then get the file names for each file (exclude the paths)
-            string templateFolder = Settings.Instance.TemplatesFolder;
+            string templateFolder = Settings.Instance.TemplatesDataFile;
             if (!Directory.Exists(templateFolder)) return;
             IEnumerable<string> files = Directory.GetFiles(templateFolder, $"*{ Utility.FileExtension() }"
                 , SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x));

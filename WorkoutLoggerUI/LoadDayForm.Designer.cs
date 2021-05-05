@@ -35,11 +35,13 @@
             this.buttonLoadDay = new System.Windows.Forms.Button();
             this.buttonDeleteDay = new System.Windows.Forms.Button();
             this.buttonExitForm = new System.Windows.Forms.Button();
+            this.columnId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listViewDays
             // 
             this.listViewDays.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnId,
             this.columnName,
             this.columnDate});
             this.listViewDays.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -57,12 +59,12 @@
             // columnName
             // 
             this.columnName.Text = "Name";
-            this.columnName.Width = 100;
+            this.columnName.Width = 67;
             // 
             // columnDate
             // 
             this.columnDate.Text = "Date";
-            this.columnDate.Width = 90;
+            this.columnDate.Width = 83;
             // 
             // buttonLoadDay
             // 
@@ -94,6 +96,11 @@
             this.buttonExitForm.UseVisualStyleBackColor = true;
             this.buttonExitForm.Click += new System.EventHandler(this.buttonExitForm_Click);
             // 
+            // columnId
+            // 
+            this.columnId.Text = "Id";
+            this.columnId.Width = 40;
+            // 
             // LoadDayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
@@ -122,5 +129,6 @@
         private System.Windows.Forms.Button buttonLoadDay;
         private System.Windows.Forms.Button buttonDeleteDay;
         private System.Windows.Forms.Button buttonExitForm;
+        private System.Windows.Forms.ColumnHeader columnId;
     }
 }

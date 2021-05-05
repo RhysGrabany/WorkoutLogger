@@ -40,9 +40,10 @@ namespace WorkoutLoggerUI
         private void buttonLoadDay_Click(object sender, EventArgs e)
         {
             //TODO: Exception when no day is selected and load button is pressed
+            // TODO: Change this to load the proper object from csv and file
             string loadDate = $"{ listViewDays.SelectedItems[0].Text }{ Utility.FileExtension() }";
             string filePath = Utility.FindFile(loadDate, false);
-            GlobalConfig.DayData = GlobalConfig.Connection.Loading<DateModel>(filePath);
+            GlobalConfig.DayData = GlobalConfig.Connection.Loading<DateModel>(filePath, 0);
 
             GlobalConfig.CsvConnection.CsvLoad();
 
@@ -54,7 +55,7 @@ namespace WorkoutLoggerUI
         {
             string deleteTemplate = $"{ listViewDays.SelectedItems[0].SubItems[1].Text.Replace("/", "_") }" +
                 $"{ listViewDays.SelectedItems[0].SubItems[0].Text }{ Utility.FileExtension() }";
-            string path = Settings.Instance.DaysFolder;
+            string path = Settings.Instance.DaysDataFile;
 
             File.Delete($"{ path }\\{ deleteTemplate }");
 
@@ -80,24 +81,40 @@ namespace WorkoutLoggerUI
             // iterate through the files and use the method to parse the data,
             // then add the data to the listview
 
-            if (!Directory.Exists(Settings.Instance.DaysFolder))
+            if (!File.Exists(Settings.Instance.DaysDataFile))
             {
                 return;
             }
 
-            string dayFilePath = $"{ Settings.Instance.DaysFolder }";
-            IEnumerable<string> files = Directory.GetFiles(dayFilePath, $"*{ Utility.FileExtension() }"
-                , SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x)).Reverse();
+            List<CacheInfoModel> csvList = Utility.ReturnCacheModels();
 
-            foreach (string file in files)
+            // Name, Day
+            foreach (var csvItem in csvList)
             {
-                string[] parsedFile = ParsedFile(file);
-                ListViewItem listItem = new ListViewItem(parsedFile[1]);
-                listItem.SubItems.Add(parsedFile[0]);
+                ListViewItem listItem = new ListViewItem(csvItem.Id.ToString());
+                listItem.SubItems.Add(csvItem.Name);
+                listItem.SubItems.Add(csvItem.Date.ToString("d"));
+
                 listViewDays.Items.Add(listItem);
             }
 
+
+            // TODO: Obsolete Code?
+            //string dayFilePath = $"{ Settings.Instance.DaysDataFile }";
+            //IEnumerable<string> files = Directory.GetFiles(dayFilePath, $"*{ Utility.FileExtension() }"
+            //    , SearchOption.TopDirectoryOnly).Select(x => Path.GetFileName(x)).Reverse();
+
+            //foreach (string file in files)
+            //{
+            //    string[] parsedFile = ParsedFile(file);
+            //    ListViewItem listItem = new ListViewItem(parsedFile[1]);
+            //    listItem.SubItems.Add(parsedFile[0]);
+            //    listViewDays.Items.Add(listItem);
+            //}
+
         }
+
+        // TODO: Obsolete Code?
 
         /// <summary>
         /// Parses the file name into a useable format for the listView

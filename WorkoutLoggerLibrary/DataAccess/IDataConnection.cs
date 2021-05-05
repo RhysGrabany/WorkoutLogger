@@ -27,7 +27,7 @@ namespace WorkoutLoggerLibrary.DataAccess
         /// <typeparam name="T">The model being loaded from file and deserialized</typeparam>
         /// <param name="path">The path to which the Template is to be loaded from</param>
         /// <returns>The deserialised TemplateModel</returns>
-        T Loading<T>(string path);
+        T Loading<T>(string path, int id);
 
 
     }

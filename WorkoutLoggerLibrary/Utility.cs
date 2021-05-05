@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Configuration;
 using System.IO;
+using WorkoutLoggerLibrary.Models;
 
 namespace WorkoutLoggerLibrary
 {
@@ -16,8 +17,8 @@ namespace WorkoutLoggerLibrary
         /// <returns></returns>
         public static string FindFile(string partial, bool template)
         {
-            string path = template ? Settings.Instance.TemplatesFolder : 
-                Settings.Instance.DaysFolder;
+            string path = template ? Settings.Instance.TemplatesDataFile : 
+                Settings.Instance.DaysDataFile;
             IEnumerable<string> files = Directory.GetFiles(path, $"*{ FileExtension() }", SearchOption.TopDirectoryOnly);
 
             foreach (string file in files)
@@ -39,8 +40,8 @@ namespace WorkoutLoggerLibrary
         public static string FullFilePath(this string fileName, bool template)
         {
 
-            return template ? $"{ Settings.Instance.TemplatesFolder }\\{ fileName }"
-                : $"{ Settings.Instance.DaysFolder }\\{ fileName }";
+            return template ? $"{ Settings.Instance.TemplatesDataFile }\\{ fileName }"
+                : $"{ Settings.Instance.DaysDataFile }\\{ fileName }";
         }
 
         public static string FullFolderPath()
@@ -53,15 +54,9 @@ namespace WorkoutLoggerLibrary
             return Settings.Instance.CacheObjectFile;
         }
 
-        public static void InitialiseCacheFile(this string fileName)
+        public static List<CacheInfoModel> ReturnCacheModels()
         {
-            using (var fs = new FileStream(fileName, FileMode.Append, FileAccess.Write))
-            {
-                using (var sw = new StreamWriter(fs))
-                {
-                    sw.WriteLine("id,name,date,template");
-                }
-            }
+            return GlobalConfig.CsvConnection.CsvLoad();
         }
 
         public static string FileExtension()

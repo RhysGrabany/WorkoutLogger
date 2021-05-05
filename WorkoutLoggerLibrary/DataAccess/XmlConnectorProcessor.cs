@@ -4,6 +4,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using WorkoutLoggerLibrary.Models;
 
 namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
@@ -21,10 +22,7 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
         /// <param name="fileName">The file location being written to</param>
         public static void XmlWrite<T>(this T model, string fileName)
         {
-
-            Type type = model.GetType();
-            bool template = type != typeof(DateModel);
-
+            //TODO: Obsolete?
             //System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(type);
             //FileStream file = File.Create(Utility.FullFilePath(fileName, template));
             //writer.Serialize(file, model);
@@ -39,8 +37,6 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
                     sw.Write(xmlString);
                 }
             }
-
-
         }
 
         #endregion
@@ -53,9 +49,19 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
         /// <param name="file">The xml file being parsed</param>
         /// <typeparam name="T">The model being loaded from file and being deserialised</typeparam>
         /// <returns>The deserialised object that can be used</returns>
-        public static T XmlLoad<T>(this string file)
+        public static T XmlLoad<T>(this string file, int id)
         {
+            // We need to grab the object based on the id
 
+            var xmlReader = XmlReader.Create(file);
+            xmlReader.MoveToContent();
+
+
+
+
+
+
+            // TODO: Obsolete code?
             System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(T));
             StreamReader f = new StreamReader(file);
             T overview = (T)reader.Deserialize(f);

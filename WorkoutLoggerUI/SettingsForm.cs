@@ -30,7 +30,7 @@ namespace WorkoutLoggerUI
             {
                 string folderPath = Path.GetDirectoryName(openFolderTemplates.FileName);
                 textBoxTemplatesLoc.Text = folderPath;
-                Settings.Instance.TemplatesFolder = folderPath;
+                Settings.Instance.TemplatesDataFile = folderPath;
                 Settings.Update();
             }
         }
@@ -41,7 +41,7 @@ namespace WorkoutLoggerUI
             {
                 string folderPath = Path.GetDirectoryName(openFolderDays.FileName);
                 textBoxDaysLoc.Text = folderPath;
-                Settings.Instance.DaysFolder = folderPath;
+                Settings.Instance.DaysDataFile = folderPath;
                 Settings.Update();
             }
         }
@@ -128,8 +128,8 @@ namespace WorkoutLoggerUI
                     break;
             }
 
-            textBoxDaysLoc.Text = Settings.Instance.DaysFolder;
-            textBoxTemplatesLoc.Text = Settings.Instance.TemplatesFolder;
+            textBoxDaysLoc.Text = Settings.Instance.DaysDataFile;
+            textBoxTemplatesLoc.Text = Settings.Instance.TemplatesDataFile;
 
         }
 
