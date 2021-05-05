@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using System.Xml.Linq;
 using WorkoutLoggerLibrary.Models;
 
 namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
@@ -52,11 +53,12 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
         public static T XmlLoad<T>(this string file, int id)
         {
             // We need to grab the object based on the id
+            // Need to change the way Xml saves to file, bugs out when multiple roots are available
 
-            var xmlReader = XmlReader.Create(file);
-            xmlReader.MoveToContent();
+            var xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(File.ReadAllText(file));
 
-
+            
 
 
 

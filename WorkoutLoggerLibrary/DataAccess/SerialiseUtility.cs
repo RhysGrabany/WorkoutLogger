@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Xml;
 
 namespace WorkoutLoggerLibrary.DataAccess
 {
@@ -11,10 +12,21 @@ namespace WorkoutLoggerLibrary.DataAccess
         public static string ModelToXml<T>(T model)
         {
             System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(model.GetType());
-            using(StringWriter sr = new StringWriter())
+            var xmlSettings = new XmlWriterSettings()
             {
-                writer.Serialize(sr, model);
-                return sr.ToString();
+                OmitXmlDeclaration = true,
+                ConformanceLevel = ConformanceLevel.Auto,
+                Indent = true
+            };
+
+
+            using (StringWriter sr = new StringWriter())
+            {
+                using (XmlWriter xml = XmlWriter.Create(sr, xmlSettings))
+                {
+                    writer.Serialize(xml, model);
+                    return sr.ToString();
+                }
             }
 
         }

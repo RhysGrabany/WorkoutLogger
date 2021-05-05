@@ -26,7 +26,6 @@ namespace WorkoutLoggerLibrary.DataAccess
                     {
                         //int id;
                         string[] lineSplit = line.Split(',');
-                        //int.TryParse(lineSplit[0], out id);
 
                         retList.Add(new CacheInfoModel(int.Parse(lineSplit[0]), 
                             lineSplit[1], DateTime.Parse(lineSplit[2]), bool.Parse(lineSplit[3])));

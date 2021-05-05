@@ -42,10 +42,12 @@ namespace WorkoutLoggerUI
             //TODO: Exception when no day is selected and load button is pressed
             // TODO: Change this to load the proper object from csv and file
             string loadDate = $"{ listViewDays.SelectedItems[0].Text }{ Utility.FileExtension() }";
-            string filePath = Utility.FindFile(loadDate, false);
-            GlobalConfig.DayData = GlobalConfig.Connection.Loading<DateModel>(filePath, 0);
+            string path = Settings.Instance.DaysDataFile;
+            int loadId = int.Parse(listViewDays.SelectedItems[0].Text);
+            //string filePath = Utility.FindFile(loadDate, false);
+            //GlobalConfig.DayData = GlobalConfig.Connection.Loading<DateModel>(filePath, 0);
 
-            GlobalConfig.CsvConnection.CsvLoad();
+            GlobalConfig.Connection.Loading<DateModel>(path, loadId);
 
             this.Close();
             FormOpen = false;
@@ -88,7 +90,6 @@ namespace WorkoutLoggerUI
 
             List<CacheInfoModel> csvList = Utility.ReturnCacheModels();
 
-            // Name, Day
             foreach (var csvItem in csvList)
             {
                 ListViewItem listItem = new ListViewItem(csvItem.Id.ToString());

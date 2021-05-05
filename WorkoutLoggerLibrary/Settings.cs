@@ -36,6 +36,8 @@ namespace WorkoutLoggerLibrary
 
                 CreateFileAndClose(instance.DaysDataFile);
                 CreateFileAndClose(instance.TemplatesDataFile);
+
+                InitialiseXmlFiles();
             }
             else
             {
@@ -96,6 +98,24 @@ namespace WorkoutLoggerLibrary
                 using (var sw = new StreamWriter(fs))
                 {
                     sw.WriteLine("id,name,date,template");
+                }
+            }
+        }
+
+        private static void InitialiseXmlFiles()
+        {
+
+            List<string> xmlFiles = new List<string>() 
+            { Settings.Instance.DaysDataFile, Settings.Instance.TemplatesDataFile };
+
+            foreach (var file in xmlFiles)
+            {
+                using (var fs = new FileStream(file, FileMode.Append, FileAccess.Write))
+                {
+                    using (var sw = new StreamWriter(fs))
+                    {
+                        sw.WriteLine("<?xml version=\"1.0\" encoding=\"utf-16\"?>");
+                    }
                 }
             }
         }
