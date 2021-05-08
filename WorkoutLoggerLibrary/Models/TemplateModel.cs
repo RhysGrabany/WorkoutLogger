@@ -6,6 +6,8 @@ namespace WorkoutLoggerLibrary.Models
 {
     public class TemplateModel
     {
+
+        public int Id { get; set; }
         /// <summary>
         /// The name given for this template of day
         /// </summary>

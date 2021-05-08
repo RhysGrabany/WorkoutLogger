@@ -21,7 +21,7 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
         /// <typeparam name="T">The model being passed over to be written to file</typeparam>
         /// <param name="model">The current model being written</param>
         /// <param name="fileName">The file location being written to</param>
-        public static void XmlWrite<T>(this T model, string fileName)
+        public static void XmlWrite<T>(this T model, string fileName, int id)
         {
             //TODO: Obsolete?
             //System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(type);
@@ -31,13 +31,29 @@ namespace WorkoutLoggerLibrary.DataAccess.XmlHelpers
 
             string xmlString = SerialiseUtility.ModelToXml<T>(model);
 
-            using (var fs = new FileStream(fileName, FileMode.Append, FileAccess.Write))
-            {
-                using (var sw = new StreamWriter(fs))
-                {
-                    sw.Write(xmlString);
-                }
-            }
+            //using (var fs = new FileStream(fileName, FileMode.Append, FileAccess.Write))
+            //{
+            //    using (var sw = new StreamWriter(fs))
+            //    {
+            //        sw.Write(xmlString);
+            //    }
+            //}
+
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(fileName);
+
+            XmlElement xmlId = xmlDoc.CreateElement("Id");
+            xmlId.InnerText = id.ToString();
+
+            XmlElement xmlModel = xmlDoc.CreateElement("Model");
+            xmlModel.InnerText = xmlString;
+
+            xmlId.AppendChild(xmlModel);
+
+            xmlDoc.DocumentElement.AppendChild(xmlId);
+            xmlDoc.Save(fileName);
+
+
         }
 
         #endregion

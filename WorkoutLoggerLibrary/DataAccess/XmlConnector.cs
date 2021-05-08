@@ -20,7 +20,7 @@ namespace WorkoutLoggerLibrary.DataAccess
 
             DateTime dayName = DateTime.Today;
             //string fileName = $"{ dayName.ToString("d").Replace("/", "_") }{ model.NameDay.Replace(" ", "") }.xml";
-            model.XmlWrite<DateModel>(Settings.Instance.DaysDataFile);
+            model.XmlWrite<DateModel>(Settings.Instance.DaysDataFile, model.Id);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace WorkoutLoggerLibrary.DataAccess
         public void Creating(TemplateModel model)
         {
             string fileName = $"{ model.NameTemplate.Replace(" ", "") }.xml";
-            model.XmlWrite<TemplateModel>(fileName);
+            model.XmlWrite<TemplateModel>(fileName, model.Id);
         }
 
         /// <summary>

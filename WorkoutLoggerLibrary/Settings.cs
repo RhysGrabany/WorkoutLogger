@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -105,7 +106,7 @@ namespace WorkoutLoggerLibrary
         private static void InitialiseXmlFiles()
         {
 
-            List<string> xmlFiles = new List<string>() 
+            List<string> xmlFiles = new List<string>()
             { Settings.Instance.DaysDataFile, Settings.Instance.TemplatesDataFile };
 
             foreach (var file in xmlFiles)
@@ -114,10 +115,18 @@ namespace WorkoutLoggerLibrary
                 {
                     using (var sw = new StreamWriter(fs))
                     {
-                        sw.WriteLine("<?xml version=\"1.0\" encoding=\"utf-16\"?>");
+                        sw.WriteLine("<?xml version=\"1.0\"?>");
                     }
                 }
             }
+
+            using (XmlWriter wr = XmlWriter.Create(Settings.Instance.DaysDataFile))
+            {
+                wr.WriteStartElement("Days");
+                wr.WriteEndElement();
+                wr.Flush();
+            }
+
         }
 
         private static void CreateFileAndClose(string fileName)
